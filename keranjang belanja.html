@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keranjang Belanja - Roster Gallery</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#f9f9f9;color:#333;line-height:1.6}
+    .navbar{background:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 6px rgba(0,0,0,0.08);position:sticky;top:0;z-index:1000}
+    .logo img{height:40px}
+    .menu-toggle{font-size:24px;border:none;background:none;cursor:pointer}
+    .side-menu{position:fixed;left:-260px;top:0;width:250px;height:100%;background:#fff;box-shadow:2px 0 8px rgba(0,0,0,0.1);padding:20px;transition:.3s;display:flex;flex-direction:column}
+    .side-menu a{padding:12px 0;color:#333;text-decoration:none;font-weight:500}
+    .side-menu a:hover,.side-menu a.active{color:#ff5a5f}
+    .side-menu .close-btn{align-self:flex-end;font-size:28px;border:none;background:none;cursor:pointer;margin-bottom:20px}
+
+    .cart{padding:20px}
+    .cart h1{margin-bottom:20px}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+    th,td{padding:12px;text-align:center;border-bottom:1px solid #eee}
+    th{background:#f4f4f4}
+    td img{height:60px;border-radius:6px}
+    .qty-btn{padding:4px 8px;margin:0 4px;cursor:pointer;background:#ff5a5f;color:#fff;border:none;border-radius:4px}
+    .remove-btn{color:#ff5a5f;cursor:pointer;font-size:14px}
+    .summary{margin-top:20px;background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+    .summary h2{margin-bottom:15px}
+    .summary p{margin:8px 0;font-size:15px}
+    .btn{display:inline-block;margin-top:15px;padding:10px 16px;background:#25D366;color:#fff;border-radius:8px;text-decoration:none;font-weight:500}
+    .btn:hover{background:#1ebe5c}
+
+    footer{text-align:center;padding:20px;margin-top:30px;background:#fff;color:#777;font-size:14px;border-top:1px solid #eee}
+    .whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;font-size:22px;padding:12px 14px;border-radius:50%;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:.3s}
+    .whatsapp-float:hover{background:#1ebe5c}
+    select{padding:6px;border-radius:6px;border:1px solid #ccc}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo"><img src="assets/logo.png" alt="Roster Gallery"></a>
+    <button class="menu-toggle">☰</button>
+  </header>
+
+  <!-- Sidebar Menu -->
+  <nav class="side-menu" id="sideMenu">
+    <button class="close-btn">×</button>
+    <a href="index.html">Beranda</a>
+    <a href="katalog.html">Katalog</a>
+    <a href="keranjang.html" class="active">Keranjang</a>
+    <a href="tentang.html">Tentang Kami</a>
+    <a href="kontak.html">Kontak</a>
+    <a href="https://shopee.co.id/shop/1612913099" target="_self">Shopee</a>
+  </nav>
+
+  <!-- Cart Section -->
+  <section class="cart">
+    <h1>Keranjang Belanja</h1>
+    <h2>tips updet jumlah manual tekan enter</h2>
+    <table id="cartTable">
+      <thead>
+        <tr>
+          <th>Produk</th>
+          <th>Varian</th>
+          <th>Harga</th>
+          <th>Jumlah</th>
+          <th>Subtotal</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Contoh produk dummy -->
+        <tr>
+          <td><img src="assets/putih1.jpg" alt=""> <br> Motif Putih 1</td>
+          <td>
+            <select onchange="changeVariant(this)">
+              <option value="Putih" data-price="10000">Putih</option>
+              <option value="Abu" data-price="9000">Abu</option>
+              <option value="Merah" data-price="11000">Merah</option>
+            </select>
+          </td>
+          <td class="price">Rp10.000</td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          </td>
+          <td class="subtotal">Rp10.000</td>
+          <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+        </tr>
+
+  <tr>
+    <td><img src="assets/putih2.jpg" alt=""> <br> Motif Putih 2</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih3.jpg" alt=""> <br> Motif Putih 3</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih4.jpg" alt=""> <br> Motif Putih 4</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+          <td><img src="assets/putih5.jpg" alt=""> <br> Motif Putih 5</td>
+          <td>
+            <select onchange="changeVariant(this)">
+              <option value="Putih" data-price="10000">Putih</option>
+              <option value="Abu" data-price="9000">Abu</option>
+              <option value="Merah" data-price="11000">Merah</option>
+            </select>
+          </td>
+          <td class="price">Rp10.000</td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          </td>
+          <td class="subtotal">Rp10.000</td>
+          <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+        </tr>
+
+  <tr>
+    <td><img src="assets/putih6.jpg" alt=""> <br> Motif Putih 6</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih7.jpg" alt=""> <br> Motif Putih 7</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih8.jpg" alt=""> <br> Motif Putih 8</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+  <tr>
+          <td><img src="assets/putih9.jpg" alt=""> <br> Motif Putih 9</td>
+          <td>
+            <select onchange="changeVariant(this)">
+              <option value="Putih" data-price="10000">Putih</option>
+              <option value="Abu" data-price="9000">Abu</option>
+              <option value="Merah" data-price="11000">Merah</option>
+            </select>
+          </td>
+          <td class="price">Rp10.000</td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          </td>
+          <td class="subtotal">Rp10.000</td>
+          <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+        </tr>
+
+  <tr>
+    <td><img src="assets/putih10.jpg" alt=""> <br> Motif Putih 10</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih11.jpg" alt=""> <br> Motif Putih 11</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih12.jpg" alt=""> <br> Motif Putih 12</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+  <tr>
+          <td><img src="assets/putih13.jpg" alt=""> <br> Motif Putih 13</td>
+          <td>
+            <select onchange="changeVariant(this)">
+              <option value="Putih" data-price="10000">Putih</option>
+              <option value="Abu" data-price="9000">Abu</option>
+              <option value="Merah" data-price="11000">Merah</option>
+            </select>
+          </td>
+          <td class="price">Rp10.000</td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          </td>
+          <td class="subtotal">Rp10.000</td>
+          <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+        </tr>
+
+  <tr>
+    <td><img src="assets/putih14.jpg" alt=""> <br> Motif Putih 14</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih15.jpg" alt=""> <br> Motif Putih 15</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih16.jpg" alt=""> <br> Motif Putih 16</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+  <tr>
+          <td><img src="assets/putih17.jpg" alt=""> <br> Motif Putih 17</td>
+          <td>
+            <select onchange="changeVariant(this)">
+              <option value="Putih" data-price="10000">Putih</option>
+              <option value="Abu" data-price="9000">Abu</option>
+              <option value="Merah" data-price="11000">Merah</option>
+            </select>
+          </td>
+          <td class="price">Rp10.000</td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          </td>
+          <td class="subtotal">Rp10.000</td>
+          <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+        </tr>
+
+  <tr>
+    <td><img src="assets/putih18.jpg" alt=""> <br> Motif Putih 18</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih19.jpg" alt=""> <br> Motif Putih 19</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih20.jpg" alt=""> <br> Motif Putih 20</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+  <tr>
+          <td><img src="assets/putih21.jpg" alt=""> <br> Motif Putih 21</td>
+          <td>
+            <select onchange="changeVariant(this)">
+              <option value="Putih" data-price="10000">Putih</option>
+              <option value="Abu" data-price="9000">Abu</option>
+              <option value="Merah" data-price="11000">Merah</option>
+            </select>
+          </td>
+          <td class="price">Rp10.000</td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          </td>
+          <td class="subtotal">Rp10.000</td>
+          <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+        </tr>
+
+  <tr>
+    <td><img src="assets/putih22.jpg" alt=""> <br> Motif Putih 22</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih23.jpg" alt=""> <br> Motif Putih 23</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih24.jpg" alt=""> <br> Motif Putih 24</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+  <tr>
+          <td><img src="assets/putih25.jpg" alt=""> <br> Motif Putih 25</td>
+          <td>
+            <select onchange="changeVariant(this)">
+              <option value="Putih" data-price="10000">Putih</option>
+              <option value="Abu" data-price="9000">Abu</option>
+              <option value="Merah" data-price="11000">Merah</option>
+            </select>
+          </td>
+          <td class="price">Rp10.000</td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          </td>
+          <td class="subtotal">Rp10.000</td>
+          <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+        </tr>
+
+  <tr>
+    <td><img src="assets/putih26.jpg" alt=""> <br> Motif Putih 26</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih27.jpg" alt=""> <br> Motif Putih 27</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih28.jpg" alt=""> <br> Motif Putih 28</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+  <tr>
+          <td><img src="assets/putih29.jpg" alt=""> <br> Motif Putih 29</td>
+          <td>
+            <select onchange="changeVariant(this)">
+              <option value="Putih" data-price="10000">Putih</option>
+              <option value="Abu" data-price="9000">Abu</option>
+              <option value="Merah" data-price="11000">Merah</option>
+            </select>
+          </td>
+          <td class="price">Rp10.000</td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          </td>
+          <td class="subtotal">Rp10.000</td>
+          <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+        </tr>
+
+  <tr>
+    <td><img src="assets/putih30.jpg" alt=""> <br> Motif Putih 30</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih31.jpg" alt=""> <br> Motif Putih 31</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih32.jpg" alt=""> <br> Motif Putih 32</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+  <tr>
+          <td><img src="assets/putih33.jpg" alt=""> <br> Motif Putih 33</td>
+          <td>
+            <select onchange="changeVariant(this)">
+              <option value="Putih" data-price="10000">Putih</option>
+              <option value="Abu" data-price="9000">Abu</option>
+              <option value="Merah" data-price="11000">Merah</option>
+            </select>
+          </td>
+          <td class="price">Rp10.000</td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          </td>
+          <td class="subtotal">Rp10.000</td>
+          <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+        </tr>
+
+  <tr>
+    <td><img src="assets/putih34.jpg" alt=""> <br> Motif Putih 34</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <tr>
+    <td><img src="assets/putih35.jpg" alt=""> <br> Motif Putih 35</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000" selected>Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp10.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp10.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+  <!-- Abu 1 -->
+  <tr>
+    <td><img src="assets/abu1.jpg" alt=""> <br> Motif Abu 1</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000">Putih</option>
+        <option value="Abu" data-price="9000" selected>Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp9.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp9.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <!-- Abu 2 -->
+  <tr>
+    <td><img src="assets/abu2.jpg" alt=""> <br> Motif Abu 2</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000">Putih</option>
+        <option value="Abu" data-price="9000" selected>Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp9.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp9.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <!-- Abu 3 -->
+  <tr>
+    <td><img src="assets/abu3.jpg" alt=""> <br> Motif Abu 3</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000">Putih</option>
+        <option value="Abu" data-price="9000" selected>Abu</option>
+        <option value="Merah" data-price="11000">Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp9.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp9.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <!-- Merah 1 -->
+  <tr>
+    <td><img src="assets/merah1.jpg" alt=""> <br> Motif Merah 1</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000">Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000" selected>Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp11.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp11.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+
+  <!-- Merah 2 -->
+  <tr>
+    <td><img src="assets/merah2.jpg" alt=""> <br> Motif Merah 2</td>
+    <td>
+      <select onchange="changeVariant(this)">
+        <option value="Putih" data-price="10000">Putih</option>
+        <option value="Abu" data-price="9000">Abu</option>
+        <option value="Merah" data-price="11000" selected>Merah</option>
+      </select>
+    </td>
+    <td class="price">Rp11.000</td>
+    <td>
+      <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
+    <input type="number" class="qty-input" value="0" min="1" onchange="manualQty(this)">
+    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+    </td>
+    <td class="subtotal">Rp11.000</td>
+    <td><span class="remove-btn" onclick="removeItem(this)">Hapus</span></td>
+  </tr>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h2>Ringkasan Pesanan</h2>
+      <p>Total: <span id="totalHarga">Rp10.000</span></p>
+      <label><input type="radio" name="bayar" value="COD" checked> Bayar di Tempat (COD)</label><br>
+      <label><input type="radio" name="bayar" value="Transfer"> Transfer Bank</label><br>
+      <a href="#" class="btn" onclick="checkout()">Lanjutkan via WhatsApp</a>
+    </div>
+  </section>
+
+  <footer><p>© 2025 Roster Gallery | Semua Hak Dilindungi</p></footer>
+  <a href="https://wa.me/6283872793673" class="whatsapp-float">💬</a>
+
+  <script>
+    // Toggle Side Menu
+    const sideMenu=document.getElementById("sideMenu"),
+          toggleBtn=document.querySelector(".menu-toggle"),
+          closeBtn=document.querySelector(".close-btn");
+    if(toggleBtn&&sideMenu){toggleBtn.addEventListener("click",()=>{sideMenu.style.left="0"})}
+    if(closeBtn&&sideMenu){closeBtn.addEventListener("click",()=>{sideMenu.style.left="-260px"})}
+
+    // Update Qty & Total
+    function updateQty(btn,delta){
+      const row=btn.closest("tr");
+      const qtyEl=row.querySelector(".qty");
+      let qty=parseInt(qtyEl.textContent)+delta;
+      if(qty<1)qty=1;
+      qtyEl.textContent=qty;
+      const price=parseInt(row.querySelector(".price").textContent.replace(/\D/g,""));
+      row.querySelector(".subtotal").textContent="Rp"+(qty*price).toLocaleString("id-ID");
+      updateTotal();
+    }
+
+    function manualQty(input){
+  const row = input.closest("tr");
+  let qty = parseInt(input.value);
+  if(isNaN(qty) || qty < 1) qty = 1;
+  input.value = qty;
+  const price = parseInt(row.querySelector(".price").textContent.replace(/\D/g,""));
+  row.querySelector(".subtotal").textContent = "Rp" + (qty * price).toLocaleString("id-ID");
+  updateTotal();
+}
+
+function updateQty(btn, delta){
+  const row = btn.closest("tr");
+  const input = row.querySelector(".qty-input");
+  let qty = parseInt(input.value) + delta;
+  if(qty < 1) qty = 1;
+  input.value = qty;
+  const price = parseInt(row.querySelector(".price").textContent.replace(/\D/g,""));
+  row.querySelector(".subtotal").textContent = "Rp" + (qty * price).toLocaleString("id-ID");
+  updateTotal();
+}
+document.querySelectorAll(".qty-input").forEach(input=>{
+  input.addEventListener("input", ()=>updateQtyManual(input));
+});
+
+
+    function changeVariant(select){
+      const row=select.closest("tr");
+      const price=parseInt(select.options[select.selectedIndex].dataset.price);
+      row.querySelector(".price").textContent="Rp"+price.toLocaleString("id-ID");
+      const qty=parseInt(row.querySelector(".qty").textContent);
+      row.querySelector(".subtotal").textContent="Rp"+(qty*price).toLocaleString("id-ID");
+      updateTotal();
+    }
+
+    function removeItem(btn){
+      btn.closest("tr").remove();
+      updateTotal();
+    }
+
+    function updateTotal(){
+      let total=0;
+      document.querySelectorAll(".subtotal").forEach(s=>{
+        total+=parseInt(s.textContent.replace(/\D/g,""))||0;
+      });
+      document.getElementById("totalHarga").textContent="Rp"+total.toLocaleString("id-ID");
+    }
+
+function checkout(){
+  let pesan = "Halo, saya ingin memesan:\n";
+  const rows = document.querySelectorAll("#cartTable tbody tr");
+  let adaPesanan = false;
+
+  rows.forEach(row=>{
+    let nama = row.cells[0]?.innerText.trim() || "Produk";
+    let varian = row.cells[1]?.innerText.trim() || "-";
+    let qtyEl = row.querySelector(".qty") || row.querySelector(".qty-input");
+    let qty = qtyEl ? (qtyEl.textContent || qtyEl.value) : "0";
+    let sub = row.querySelector(".subtotal")?.textContent || "Rp0";
+
+    if(parseInt(qty) > 0){  // ✅ hanya kirim kalau qty > 0
+      pesan += `- ${nama} (${varian}) x${qty} = ${sub}\n`;
+      adaPesanan = true;
+    }
+  });
+
+  if(!adaPesanan){
+    alert("Keranjang masih kosong, silakan pilih produk dulu.");
+    return;
+  }
+
+  pesan += "\nTotal: " + (document.getElementById("totalHarga")?.textContent || "Rp0");
+  let bayar = document.querySelector("input[name='bayar']:checked");
+  pesan += "\nMetode Bayar: " + (bayar ? bayar.value : "Tidak dipilih");
+
+  window.open("https://wa.me/6283872793673?text=" + encodeURIComponent(pesan), "_blank");
+}
+  </script>
+</body>
+</html>

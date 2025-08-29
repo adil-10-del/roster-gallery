@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roster Gallery - Roster Estetik untuk Hunian Modern</title>
+  <meta name="description" content="Roster Gallery menghadirkan roster beton berkualitas tinggi dengan desain estetik, kokoh, dan fungsional.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+<header class="navbar">
+  <a href="index.html" class="logo">
+    <img src="assets/logo.png" alt="Roster Gallery">
+  </a>
+  <button class="menu-toggle" aria-label="Buka menu">☰</button>
+</header>
+
+<!-- Sidebar Menu -->
+<nav class="side-menu" id="sideMenu">
+  <button class="close-btn">×</button>
+  <a href="index.html" class="active">Beranda</a>
+  <a href="katalog.html">Katalog</a>
+  <a href="keranjang belanja.html">Keranjang Belanja</a>
+  <a href="tentang.html">Tentang Kami</a>
+  <a href="kontak.html">Kontak</a>
+  <a href="https://shopee.co.id/shop/1612913099" target="_self">Shopee</a>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Roster Estetik untuk Hunian Modern</h1>
+    <p>Roster Gallery menghadirkan roster beton berkualitas tinggi dengan desain estetik, kokoh, dan fungsional.</p>
+    <div class="cta-buttons">
+      <a href="katalog.html" class="btn">Lihat Koleksi</a>
+      <a href="https://wa.me/6283872793673" class="btn-secondary" target="_self">Pesan via WhatsApp</a>
+    </div>
+    <img src="assets/banner.jpg" alt="Roster Beton" class="hero-img">
+  </section>
+
+  <!-- Kelebihan -->
+  <section class="features">
+    <h2>Mengapa Pilih Roster Gallery?</h2>
+    <ul>
+      <li>✅ Motif beragam dan ukuran bervariasi</li>
+      <li>✅ Kokoh, awet, dan tahan segala cuaca</li>
+      <li>✅ Mempercantik desain rumah</li>
+      <li>✅ Mendukung sirkulasi udara & cahaya alami</li>
+    </ul>
+  </section>
+
+  <!-- Produk Terlaris -->
+  <section class="products">
+    <h2>varian produk</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="assets/abu1.jpg" alt="Roster All Abu">
+        <h3>Roster All Abu</h3>
+        <p>Rp9.000 / pcs</p>
+      </div>
+      <div class="product-card">
+        <img src="assets/putih18.jpg" alt="Roster All Putih">
+        <h3>Roster All Putih</h3>
+        <p>Rp10.000 / pcs</p>
+      </div>
+      <div class="product-card">
+        <img src="assets/gambar3.jpg" alt="Roster All Merah">
+        <h3>Roster All Merah</h3>
+        <p>Rp11.000 / pcs</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Roster Gallery | Semua Hak Dilindungi</p>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/6283872793673" class="whatsapp-float" target="_self">💬</a>
+
+</body>
+<script src="script.js" defer></script>
+<script>
+  const sideMenu=document.getElementById("sideMenu"),
+        toggleBtn=document.querySelector(".menu-toggle"),
+        closeBtn=document.querySelector(".close-btn");
+
+  if(toggleBtn&&sideMenu){
+    toggleBtn.addEventListener("click",()=>{sideMenu.style.left="0"});
+  }
+  if(closeBtn&&sideMenu){
+    closeBtn.addEventListener("click",()=>{sideMenu.style.left="-260px"});
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Produk - Roster Gallery</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#f9f9f9;color:#333;line-height:1.6}
+    .navbar{background:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 6px rgba(0,0,0,0.08);position:sticky;top:0;z-index:1000}
+    .logo img{height:40px}
+    .menu-toggle{font-size:24px;border:none;background:none;cursor:pointer}
+    .side-menu{position:fixed;left:-260px;top:0;width:250px;height:100%;background:#fff;box-shadow:2px 0 8px rgba(0,0,0,0.1);padding:20px;transition:.3s;display:flex;flex-direction:column}
+    .side-menu a{padding:12px 0;color:#333;text-decoration:none;font-weight:500}
+    .side-menu a:hover,.side-menu a.active{color:#ff5a5f}
+    .side-menu .close-btn{align-self:flex-end;font-size:28px;border:none;background:none;cursor:pointer;margin-bottom:20px}
+    .hero{text-align:center;padding:40px 20px;background:#fff}
+    .hero h1{font-size:32px;margin-bottom:10px}
+    .hero p{font-size:16px;color:#555;margin-bottom:20px}
+    .hero .cta-buttons{display:flex;gap:10px;justify-content:center;margin-bottom:20px}
+    .hero .btn,.btn-secondary{padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:500;font-size:14px}
+    .btn{background:#ff5a5f;color:#fff}.btn:hover{background:#e14b50}
+    .btn-secondary{background:#25D366;color:#fff}.btn-secondary:hover{background:#1ebe5c}
+    .hero-img{margin-top:20px;max-width:100%;border-radius:12px}
+    .filter{background:#fff;margin:20px;padding:20px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+    .filter h2{margin-bottom:15px;font-size:20px}
+    .filter-box{display:flex;flex-wrap:wrap;gap:15px}
+    .filter-box input,.filter-box select{padding:10px 12px;border-radius:8px;border:1px solid #ddd;flex:1;min-width:180px}
+    .products{padding:20px}
+    .products h2{margin-bottom:20px;font-size:22px}
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+    .product-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.1);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;justify-content:space-between}
+    .product-card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.12)}
+    .product-card img{width:100%;height:180px;object-fit:cover}
+    .product-card h3{font-size:16px;margin:12px}
+    .price{font-size:15px;font-weight:bold;color:#ff5a5f;margin:0 12px}
+    .desc{font-size:13px;color:#555;margin:8px 12px 12px}
+    .actions{display:flex;gap:8px;margin:12px}
+    .actions .btn,.actions .btn-secondary{flex:1;text-align:center;cursor:pointer}
+    footer{text-align:center;padding:20px;margin-top:30px;background:#fff;color:#777;font-size:14px;border-top:1px solid #eee}
+    .whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;font-size:22px;padding:12px 14px;border-radius:50%;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:.3s}
+    .whatsapp-float:hover{background:#1ebe5c}
+    .hidden{display:none!important}
+    .no-results{grid-column:1/-1;text-align:center;padding:20px;color:#666;font-weight:600;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo"><img src="assets/logo.png" alt="Roster Gallery"></a>
+    <button class="menu-toggle">☰</button>
+  </header>
+
+  <!-- Sidebar Menu -->
+  <nav class="side-menu" id="sideMenu">
+    <button class="close-btn">×</button>
+    <a href="index.html">Beranda</a>
+    <a href="katalog.html" class="active">Katalog</a>
+    <a href="keranjang belanja.html">Keranjang Belanja</a>
+    <a href="tentang.html">Tentang Kami</a>
+    <a href="kontak.html">Kontak</a>
+    <a href="https://shopee.co.id/shop/1612913099" target="_self">Shopee</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Katalog Produk</h1>
+    <p>Temukan berbagai motif roster estetik dengan harga terjangkau.</p>
+    <div class="cta-buttons">
+      <a href="https://shopee.co.id/shop/1612913099" class="btn" target="_self">Lihat di Shopee</a>
+      <a href="https://wa.me/6283872793673" class="btn-secondary">Pesan via WhatsApp</a>
+    </div>
+    <img src="assets/banner.jpg" alt="Roster Beton" class="hero-img">
+  </section>
+
+  <!-- Filter -->
+  <section class="filter">
+    <h2>Filter Produk</h2>
+    <div class="filter-box">
+      <input type="text" id="filterMotif" placeholder="Cari nama motif...">
+      <select id="filterHarga">
+        <option value="">Semua Harga</option>
+        <option value="9000">Abu - Rp9.000</option>
+        <option value="10000">Putih - Rp10.000</option>
+        <option value="11000">Merah - Rp11.000</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Produk -->
+  <section class="products">
+    <h2>Daftar Produk</h2>
+    <div class="product-grid">
+      <!-- 3 Abu -->
+      <div class="product-card" data-motif="Motif Abu 1" data-harga="9000"><img src="assets/abu1.jpg"><h3>Motif Abu 1</h3><p class="price">Rp9.000</p><p class="desc">Roster abu motif 1.</p></div>
+      <div class="product-card" data-motif="Motif Abu 2" data-harga="9000"><img src="assets/abu2.jpg"><h3>Motif Abu 2</h3><p class="price">Rp9.000</p><p class="desc">Roster abu motif 2.</p></div>
+      <div class="product-card" data-motif="Motif Abu 3" data-harga="9000"><img src="assets/abu3.jpg"><h3>Motif Abu 3</h3><p class="price">Rp9.000</p><p class="desc">Roster abu motif 3.</p></div>
+      <!-- 2 Merah -->
+      <div class="product-card" data-motif="Motif Merah 1" data-harga="11000"><img src="assets/merah1.jpg"><h3>Motif Merah 1</h3><p class="price">Rp11.000</p><p class="desc">Roster merah motif 1.</p></div>
+      <div class="product-card" data-motif="Motif Merah 2" data-harga="11000"><img src="assets/merah2.jpg"><h3>Motif Merah 2</h3><p class="price">Rp11.000</p><p class="desc">Roster merah motif 2.</p></div>
+      <!-- 35 Putih -->
+      <!-- saya tulis contoh 1..5, sisanya tinggal copy pattern -->
+      <div class="product-card" data-motif="Motif Putih 1" data-harga="10000"><img src="assets/putih1.jpg"><h3>Motif Putih 1</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 1.</p></div>
+      <div class="product-card" data-motif="Motif Putih 2" data-harga="10000"><img src="assets/putih2.jpg"><h3>Motif Putih 2</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 2.</p></div>
+      <div class="product-card" data-motif="Motif Putih 3" data-harga="10000"><img src="assets/putih3.jpg"><h3>Motif Putih 3</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 3.</p></div>
+      <div class="product-card" data-motif="Motif Putih 4" data-harga="10000"><img src="assets/putih4.jpg"><h3>Motif Putih 4</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 4.</p></div>
+      <div class="product-card" data-motif="Motif Putih 5" data-harga="10000"><img src="assets/putih5.jpg"><h3>Motif Putih 5</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 5.</p></div>
+      <div class="product-card" data-motif="Motif Putih 6" data-harga="10000"><img src="assets/putih6.jpg"><h3>Motif Putih 6</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 6.</p></div>
+      <div class="product-card" data-motif="Motif Putih 7" data-harga="10000"><img src="assets/putih7.jpg"><h3>Motif Putih 7</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 7.</p></div>
+      <div class="product-card" data-motif="Motif Putih 8" data-harga="10000"><img src="assets/putih8.jpg"><h3>Motif Putih 8</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 8.</p></div>
+      <div class="product-card" data-motif="Motif Putih 9" data-harga="10000"><img src="assets/putih9.jpg"><h3>Motif Putih 9</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 9.</p></div>
+      <div class="product-card" data-motif="Motif Putih 10" data-harga="10000"><img src="assets/putih10.jpg"><h3>Motif Putih 10</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 10.</p></div>
+      <div class="product-card" data-motif="Motif Putih 11" data-harga="10000"><img src="assets/putih11.jpg"><h3>Motif Putih 11</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 11.</p></div>
+      <div class="product-card" data-motif="Motif Putih 12" data-harga="10000"><img src="assets/putih12.jpg"><h3>Motif Putih 12</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 12.</p></div>
+      <div class="product-card" data-motif="Motif Putih 13" data-harga="10000"><img src="assets/putih13.jpg"><h3>Motif Putih 13</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 13.</p></div>
+      <div class="product-card" data-motif="Motif Putih 14" data-harga="10000"><img src="assets/putih14.jpg"><h3>Motif Putih 14</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 14.</p></div>
+      <div class="product-card" data-motif="Motif Putih 15" data-harga="10000"><img src="assets/putih15.jpg"><h3>Motif Putih 15</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 15.</p></div>
+      <div class="product-card" data-motif="Motif Putih 16" data-harga="10000"><img src="assets/putih16.jpg"><h3>Motif Putih 16</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 16.</p></div>
+      <div class="product-card" data-motif="Motif Putih 17" data-harga="10000"><img src="assets/putih17.jpg"><h3>Motif Putih 17</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 17.</p></div>
+      <div class="product-card" data-motif="Motif Putih 18" data-harga="10000"><img src="assets/putih18.jpg"><h3>Motif Putih 18</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 18.</p></div>
+      <div class="product-card" data-motif="Motif Putih 19" data-harga="10000"><img src="assets/putih19.jpg"><h3>Motif Putih 19</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 19.</p></div>
+      <div class="product-card" data-motif="Motif Putih 20" data-harga="10000"><img src="assets/putih20.jpg"><h3>Motif Putih 20</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 20.</p></div>
+      <div class="product-card" data-motif="Motif Putih 21" data-harga="10000"><img src="assets/putih21.jpg"><h3>Motif Putih 21</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 21.</p></div>
+      <div class="product-card" data-motif="Motif Putih 22" data-harga="10000"><img src="assets/putih22.jpg"><h3>Motif Putih 22</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 22.</p></div>
+      <div class="product-card" data-motif="Motif Putih 23" data-harga="10000"><img src="assets/putih23.jpg"><h3>Motif Putih 23</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 23.</p></div>
+      <div class="product-card" data-motif="Motif Putih 24" data-harga="10000"><img src="assets/putih24.jpg"><h3>Motif Putih 24</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 24.</p></div>
+      <div class="product-card" data-motif="Motif Putih 25" data-harga="10000"><img src="assets/putih25.jpg"><h3>Motif Putih 25</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 25.</p></div>
+      <div class="product-card" data-motif="Motif Putih 26" data-harga="10000"><img src="assets/putih26.jpg"><h3>Motif Putih 26</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 26.</p></div>
+      <div class="product-card" data-motif="Motif Putih 27" data-harga="10000"><img src="assets/putih27.jpg"><h3>Motif Putih 27</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 27.</p></div>
+      <div class="product-card" data-motif="Motif Putih 28" data-harga="10000"><img src="assets/putih28.jpg"><h3>Motif Putih 28</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 28.</p></div>
+      <div class="product-card" data-motif="Motif Putih 29" data-harga="10000"><img src="assets/putih29.jpg"><h3>Motif Putih 29</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 29.</p></div>
+      <div class="product-card" data-motif="Motif Putih 30" data-harga="10000"><img src="assets/putih30.jpg"><h3>Motif Putih 30</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 30.</p></div>
+      <div class="product-card" data-motif="Motif Putih 31" data-harga="10000"><img src="assets/putih31.jpg"><h3>Motif Putih 31</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 31.</p></div>
+      <div class="product-card" data-motif="Motif Putih 32" data-harga="10000"><img src="assets/putih32.jpg"><h3>Motif Putih 32</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 32.</p></div>
+      <div class="product-card" data-motif="Motif Putih 33" data-harga="10000"><img src="assets/putih33.jpg"><h3>Motif Putih 33</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 33.</p></div>
+      <div class="product-card" data-motif="Motif Putih 34" data-harga="10000"><img src="assets/putih34.jpg"><h3>Motif Putih 34</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 34.</p></div>
+      <div class="product-card" data-motif="Motif Putih 35" data-harga="10000"><img src="assets/putih35.jpg"><h3>Motif Putih 35</h3><p class="price">Rp10.000</p><p class="desc">Roster putih motif 35.</p></div>
+
+      <!-- lanjutkan sampai Motif Putih 35 -->
+    </div>
+  </section>
+
+  <footer><p>© 2025 Roster Gallery | Semua Hak Dilindungi</p></footer>
+  <a href="https://wa.me/6283872793673" class="whatsapp-float">💬</a>
+
+  <script>
+    const sideMenu=document.getElementById("sideMenu"),
+          toggleBtn=document.querySelector(".menu-toggle"),
+          closeBtn=document.querySelector(".close-btn");
+    if(toggleBtn&&sideMenu){toggleBtn.addEventListener("click",()=>{sideMenu.style.left="0"})}
+    if(closeBtn&&sideMenu){closeBtn.addEventListener("click",()=>{sideMenu.style.left="-260px"})}
+
+    const motifInput=document.getElementById("filterMotif"),
+          hargaSelect=document.getElementById("filterHarga"),
+          productGrid=document.querySelector(".product-grid");
+    let products=Array.from(document.querySelectorAll(".product-card"));
+    const noResults=document.createElement("div");
+    noResults.className="no-results hidden";noResults.textContent="Produk tidak ditemukan.";
+    function norm(v){return String(v||"").toLowerCase().trim()}
+    function filterProduk(){
+      const motifVal=motifInput?norm(motifInput.value):"",hargaVal=hargaSelect?norm(hargaSelect.value):"";let anyVisible=false;
+      products.forEach(p=>{const motif=norm(p.dataset.motif),harga=norm(p.dataset.harga);const matchMotif=motif.includes(motifVal),matchHarga=(hargaVal===""||harga===hargaVal);
+        if(matchMotif&&matchHarga){p.classList.remove("hidden");anyVisible=true}else{p.classList.add("hidden")}});if(!anyVisible){noResults.classList.remove("hidden");if(productGrid&&!productGrid.contains(noResults))productGrid.appendChild(noResults)}else{noResults.classList.add("hidden");if(productGrid&&productGrid.contains(noResults))productGrid.removeChild(noResults)}}
+    if(motifInput)motifInput.addEventListener("input",filterProduk);
+    if(hargaSelect)hargaSelect.addEventListener("change",filterProduk);
+    document.addEventListener("DOMContentLoaded",()=>{products=Array.from(document.querySelectorAll(".product-card"));filterProduk()});
+  </script>
+</body>
+</html>
