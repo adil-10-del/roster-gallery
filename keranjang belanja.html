@@ -915,7 +915,7 @@ function checkout(){
 
   rows.forEach(row=>{
     let nama = row.cells[0]?.innerText.trim() || "Produk";
-    let varian = row.cells[1]?.innerText.trim() || "-";
+    let varian = row.querySelector("select").options[row.querySelector("select").selectedIndex].text;
     let qtyEl = row.querySelector(".qty") || row.querySelector(".qty-input");
     let qty = qtyEl ? (qtyEl.textContent || qtyEl.value) : "0";
     let sub = row.querySelector(".subtotal")?.textContent || "Rp0";
@@ -940,4 +940,5 @@ function checkout(){
   </script>
 </body>
 </html>
+
 
