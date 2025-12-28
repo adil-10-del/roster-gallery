@@ -1,1 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adil-10-del.github.io/roster-gallery/sitemap.xml
 
