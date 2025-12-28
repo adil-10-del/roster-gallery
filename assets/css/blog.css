@@ -1,0 +1,193 @@
+/* =====================
+   GLOBAL
+===================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f4; /* abu muda */
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  color: #b30000; /* merah brand */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* =====================
+   HEADER (SAMAKAN TEMPLATE)
+===================== */
+.blog-header {
+  background-color: #eee8dc; /* krem */
+  border-bottom: 4px solid #b30000;
+}
+
+.blog-header h1 {
+  margin: 0;
+  color: #b30000;
+  font-size: 28px;
+}
+
+.blog-header p {
+  margin: 5px 0 0;
+  color: #555;
+}
+
+/* =====================
+   LAYOUT
+===================== */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* =====================
+   TOPIK PILIHAN
+===================== */
+.topik-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.topik-card {
+  background-color: #fff;
+  border-left: 5px solid #b30000;
+  padding: 12px;
+  font-weight: bold;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.topik-card:hover {
+  background-color: #f8f8f8;
+}
+
+/* =====================
+   ARTIKEL LIST
+===================== */
+.artikel-item {
+  display: flex;
+  gap: 15px;
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-left: 4px solid #ccc;
+}
+
+.artikel-item img {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.artikel-item h3 {
+  margin: 0 0 5px;
+  font-size: 18px;
+}
+
+.artikel-item p {
+  margin: 5px 0;
+}
+
+.meta {
+  font-size: 12px;
+  color: #777;
+}
+
+/* =====================
+   SIDEBAR
+===================== */
+.blog-sidebar {
+  position: sticky;
+  top: 20px;
+}
+
+.sidebar-box {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-top: 4px solid #b30000;
+}
+
+.sidebar-box h3 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.sidebar-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-box ul li {
+  margin-bottom: 8px;
+}
+
+.sidebar-box ul li a {
+  color: #333;
+}
+
+/* =====================
+   CTA KATALOG
+===================== */
+.sidebar-box.cta {
+  text-align: center;
+  background-color: #b30000;
+}
+
+.sidebar-box.cta a {
+  display: block;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+}
+
+/* =====================
+   FOOTER
+===================== */
+.blog-footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .artikel-item {
+    flex-direction: column;
+  }
+
+  .artikel-item img {
+    width: 100%;
+    height: auto;
+  }
+}
