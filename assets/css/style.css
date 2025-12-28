@@ -64,6 +64,14 @@ body {
 .nav a:hover {
   color: var(--merah);
 }
+/* =====================
+   LOGO IMAGE
+===================== */
+.logo img {
+  max-height: 50px;
+  width: auto;
+  display: block;
+}
 
 /* =====================
    MAIN CONTENT
@@ -140,5 +148,10 @@ main {
 
   .nav a {
     margin: 0 10px;
+  }
+}
+@media (max-width: 768px) {
+  .logo img {
+    max-height: 42px;
   }
 }
