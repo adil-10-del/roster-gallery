@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Preview Surat Kerja Sama</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<section class="surat-container">
+
+  <div class="surat-box" id="suratContent">
+    <h2 style="text-align:center;">SURAT PERMOHONAN KERJA SAMA</h2>
+
+    <p>Kepada Yth,<br>
+    <b>Roster Gallery</b></p>
+
+    <p>Dengan hormat,</p>
+
+    <p>
+      Yang bertanda tangan di bawah ini:
+    </p>
+
+    <table>
+      <tr><td>Nama Perusahaan</td><td id="pPerusahaan"></td></tr>
+      <tr><td>Penanggung Jawab</td><td id="pNama"></td></tr>
+      <tr><td>Jenis Kerja Sama</td><td id="pJenis"></td></tr>
+      <tr><td>Alamat</td><td id="pAlamat"></td></tr>
+      <tr><td>Produk</td><td id="pProduk"></td></tr>
+      <tr><td>Volume</td><td id="pVolume"></td></tr>
+    </table>
+
+    <p>
+      Dengan ini mengajukan permohonan kerja sama pengadaan material bangunan.
+      Kami berharap dapat menjalin kerja sama yang saling menguntungkan.
+    </p>
+
+    <p>
+      Demikian surat ini kami sampaikan. Atas perhatian Bapak/Ibu kami ucapkan terima kasih.
+    </p>
+
+    <br>
+    <p>Hormat Kami,</p>
+    <p><b id="pNamaTtd"></b></p>
+  </div>
+
+  <div class="btn-group">
+    <button onclick="window.history.back()" class="btn secondary">Edit Data</button>
+    <button onclick="kirimWA()" class="btn">Kirim ke WhatsApp</button>
+  </div>
+
+</section>
+
+<script src="js/preview-surat.js"></script>
+</body>
+</html>
