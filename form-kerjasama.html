@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Kerja Sama | Roster Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header-small">
+  <div class="navbar">
+    <img src="assets/images/logo.jpg" class="logo">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="katalog.html">Katalog</a>
+      <a href="layanan.html">Layanan</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+  </div>
+
+  <div class="hero-text">
+    <h1>Formulir Kerja Sama</h1>
+    <p>Isi data berikut untuk pengajuan kerja sama</p>
+  </div>
+</header>
+
+<section class="form-section">
+  <form id="formKerjasama">
+
+    <label>Nama Perusahaan / Instansi</label>
+    <input type="text" id="perusahaan" required>
+
+    <label>Nama Penanggung Jawab</label>
+    <input type="text" id="nama" required>
+
+    <label>Jenis Kerja Sama</label>
+    <select id="jenis">
+      <option>PT / Kontraktor / Developer</option>
+      <option>Instansi Pemerintah</option>
+      <option>Instansi Swasta</option>
+      <option>Toko Material</option>
+      <option>Proyek Perumahan</option>
+      <option>Arsitek / Desainer</option>
+    </select>
+
+    <label>Alamat Proyek / Kantor</label>
+    <textarea id="alamat" required></textarea>
+
+    <label>Produk yang Dibutuhkan</label>
+    <input type="text" id="produk" placeholder="Contoh: Roster beton, paving, genteng">
+
+    <label>Perkiraan Volume / Kebutuhan</label>
+    <input type="text" id="volume">
+
+    <label>Catatan Tambahan</label>
+    <textarea id="catatan"></textarea>
+
+    <button type="submit" class="btn">Kirim & Lanjut ke WhatsApp</button>
+
+  </form>
+</section>
+
+<script src="js/form-kerjasama.js"></script>
+</body>
+</html>
