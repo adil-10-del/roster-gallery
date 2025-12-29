@@ -1,150 +1,152 @@
-/* =====================
-   GLOBAL
-===================== */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f4f4; /* abu muda */
-  color: #333;
-  line-height: 1.6;
-}
-
-a {
-  color: #b30000; /* merah brand */
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* =====================
-   HEADER (SAMAKAN TEMPLATE)
-===================== */
-.blog-header {
-  background-color: #eee8dc; /* krem */
-  border-bottom: 4px solid #b30000;
-}
-
-.blog-header h1 {
-  margin: 0;
-  color: #b30000;
-  font-size: 28px;
-}
-
-.blog-header p {
-  margin: 5px 0 0;
-  color: #555;
-}
-/* HEADER FLEX */
-.header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* SEARCH */
-.blog-search input {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 220px;
-}
-
-.blog-search input:focus {
-  outline: none;
-  border-color: #b30000;
-}
-
-/* =====================
-   LAYOUT
-===================== */
-.blog-grid {
+/* ===============================
+   BLOG GLOBAL
+================================ */
+.blog-layout {
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 30px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-/* =====================
+@media (max-width: 900px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   SEARCH
+================================ */
+.blog-search {
+  margin-bottom: 20px;
+}
+
+.blog-search input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* ===============================
    TOPIK PILIHAN
-===================== */
-.topik-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
+================================ */
+.topik-pilihan {
   margin-bottom: 30px;
 }
 
+.topik-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
 .topik-card {
-  background-color: #fff;
-  border-left: 5px solid #b30000;
+  display: block;
   padding: 12px;
-  font-weight: bold;
+  background: #f5f5f5;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
   color: #333;
-  transition: background 0.2s;
+  text-decoration: none;
 }
 
 .topik-card:hover {
-  background-color: #f8f8f8;
+  background: #e6e6e6;
 }
 
-/* =====================
+/* ===============================
    ARTIKEL LIST
-===================== */
+================================ */
+.artikel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .artikel-item {
   display: flex;
-  gap: 15px;
-  background-color: #fff;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-left: 4px solid #ccc;
+  gap: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 16px;
 }
 
 .artikel-item img {
-  width: 120px;
-  height: 90px;
+  width: 180px;
+  height: 120px;
   object-fit: cover;
-  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
+.artikel-item h2,
 .artikel-item h3 {
-  margin: 0 0 5px;
+  margin: 0 0 6px;
   font-size: 18px;
 }
 
 .artikel-item p {
-  margin: 5px 0;
+  margin: 0;
+  color: #555;
+  font-size: 14px;
 }
 
-.meta {
+.artikel-item .meta {
   font-size: 12px;
-  color: #777;
+  color: #888;
+  margin-bottom: 6px;
 }
 
-/* =====================
+@media (max-width: 600px) {
+  .artikel-item {
+    flex-direction: column;
+  }
+
+  .artikel-item img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ===============================
+   PAGINATION
+================================ */
+.pagination {
+  display: flex;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+.pagination a {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+}
+
+.pagination a.active,
+.pagination a:hover {
+  background: #c62828; /* merah brand */
+  color: #fff;
+  border-color: #c62828;
+}
+
+/* ===============================
    SIDEBAR
-===================== */
+================================ */
 .blog-sidebar {
   position: sticky;
   top: 20px;
 }
 
 .sidebar-box {
-  background-color: #fff;
-  padding: 15px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 16px;
   margin-bottom: 20px;
-  border-top: 4px solid #b30000;
+  border-radius: 6px;
 }
 
 .sidebar-box h3 {
@@ -158,55 +160,16 @@ a:hover {
   margin: 0;
 }
 
-.sidebar-box ul li {
+.sidebar-box li {
   margin-bottom: 8px;
 }
 
-.sidebar-box ul li a {
+.sidebar-box a {
+  text-decoration: none;
   color: #333;
-}
-
-/* =====================
-   CTA KATALOG
-===================== */
-.sidebar-box.cta {
-  text-align: center;
-  background-color: #b30000;
-}
-
-.sidebar-box.cta a {
-  display: block;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px;
-}
-
-/* =====================
-   FOOTER
-===================== */
-.blog-footer {
-  background-color: #222;
-  color: #ccc;
-  text-align: center;
-  padding: 15px;
-  margin-top: 40px;
   font-size: 14px;
 }
 
-/* =====================
-   RESPONSIVE
-===================== */
-@media (max-width: 768px) {
-  .blog-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .artikel-item {
-    flex-direction: column;
-  }
-
-  .artikel-item img {
-    width: 100%;
-    height: auto;
-  }
+.sidebar-box a:hover {
+  color: #c62828;
 }
