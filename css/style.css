@@ -308,3 +308,73 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+/* LAYANAN */
+.service-section {
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.service-box {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.service-box:hover {
+  transform: translateY(-6px);
+}
+
+.service-box h2 {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.service-box p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* CTA */
+.cta-section {
+  background: linear-gradient(135deg, #333, #555);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.cta-section .btn {
+  margin-top: 20px;
+  display: inline-block;
+}
+.form-section {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+}
+
+.form-section label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.form-section input,
+.form-section textarea,
+.form-section select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.form-section textarea {
+  min-height: 100px;
+}
