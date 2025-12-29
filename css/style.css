@@ -408,16 +408,3 @@ footer {
 .btn.secondary {
   background: #888;
 }
-.floating-wa {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  background: #25D366;
-  color: white;
-  padding: 15px 18px;
-  border-radius: 50%;
-  font-size: 24px;
-  text-decoration: none;
-  box-shadow: 0 5px 15px rgba(0,0,0,.3);
-  z-index: 999;
-}
