@@ -19,18 +19,17 @@
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const id = parseInt(params.get("id"));
+const id = params.get("1YJdYYGcSjIIHOM5xIAv6A-k7n9C9eueMScie9RIU4qU");
 
-fetch("data/blog.json")
-  .then(res => res.json())
-  .then(articles => {
-    const article = articles.find(a => a.id === id);
+fetch(sheetURL)
+  .then(res=>res.text())
+  .then(csv=>{
+    const articles = csvToJson(csv);
+    const article = articles.find(a => a['ID'] === id);
     if(article){
-      document.getElementById("title").innerText = article.title;
-      document.getElementById("image").src = article.image;
-      document.getElementById("content").innerText = article.desc;
-    } else {
-      document.getElementById("title").innerText = "Artikel tidak ditemukan";
+      document.getElementById("title").innerText = article['Title'];
+      document.getElementById("image").src = article['Image URL'];
+      document.getElementById("content").innerText = article['Description'];
     }
   });
 </script>
