@@ -262,4 +262,21 @@ footer {
 @media(max-width:768px){
   .hero-content h1 { font-size: 28px; }
 }
+.btn-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 2px solid #c62828;
+  color: #c62828;
+}
+
+.btn.outline:hover {
+  background: #c62828;
+  color: white;
+}
 
