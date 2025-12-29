@@ -46,6 +46,25 @@ a:hover {
   margin: 5px 0 0;
   color: #555;
 }
+/* HEADER FLEX */
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* SEARCH */
+.blog-search input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 220px;
+}
+
+.blog-search input:focus {
+  outline: none;
+  border-color: #b30000;
+}
 
 /* =====================
    LAYOUT
