@@ -1,9 +1,9 @@
 name: Auto Generate Blog
 
 on:
-  schedule:
-    - cron: "0 1 * * *" # setiap hari jam 08 pagi WIB
-  workflow_dispatch:
+ schedule:
+  - cron: "0 1 * * *"   # pagi
+  - cron: "0 10 * * *"  # sore
 
 jobs:
   build:
