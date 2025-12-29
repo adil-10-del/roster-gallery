@@ -166,6 +166,15 @@
 <footer style="text-align:center; padding:20px; background:#111; color:#fff;">
   <p>&copy; 2025 Roster Gallery. All rights reserved.</p>
 </footer>
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
 
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 4000);
+</script>
 </body>
 </html>
