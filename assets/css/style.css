@@ -1,368 +1,174 @@
-/* =====================
-   RESET & BASE
-===================== */
+/* ===============================
+   GLOBAL RESET
+================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --abu: #2f2f2f;
-  --krem: #f5f3ef;
-  --merah: #b22222;
-}
-
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--krem);
-  color: var(--abu);
+  font-family: "Arial", sans-serif;
+  background-color: #ffffff;
+  color: #333;
   line-height: 1.6;
 }
 
-/* =====================
-   CONTAINER
-===================== */
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* ===========================
-   HEADER + NAVBAR
-=========================== */
-
-/* Reset dasar */
-.header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* HEADER BASIK */
-.site-header {
-  position: relative;
-  width: 100%;
-  background: #111; /* Warna gelap agar nav putih kontras */
-  z-index: 999;
-  padding: 10px 0;
-}
-
-/* LOGO */
-.site-header .logo img {
-  display: block;
-  max-width: 160px;
-}
-
-/* NAV */
-.site-header .nav {
-  display: flex;
-  gap: 18px;
-}
-
-.site-header .nav a {
-  font-weight: 600;
-  color: #fff;
+a {
   text-decoration: none;
-  font-size: 15px;
-  transition: color 0.2s;
+  color: inherit;
 }
 
-.site-header .nav a:hover,
-.site-header .nav a:focus {
-  color: #ff4d4d; /* warna merah brand */
+ul {
+  list-style: none;
 }
 
-/* NAV MOBILE */
-@media (max-width: 768px) {
-  .site-header .nav {
-    flex-direction: column;
-    gap: 12px;
-  }
+/* ===============================
+   NAVBAR
+================================ */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
-/* ===========================
-   HEADER BACKGROUND GERAK
-=========================== */
 
-.hero-header {
-  background-image: url("../images/header-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  animation: headerMove 25s linear infinite;
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 15px 20px;
+}
+
+nav ul li a {
+  font-weight: 600;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #007bff;
+}
+
+/* ===============================
+   HERO / HEADER
+================================ */
+.hero {
   position: relative;
-  padding: 60px 0;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   color: #fff;
+  overflow: hidden;
 }
 
-@keyframes headerMove {
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(270deg, #1e3c72, #2a5298, #1e3c72);
+  background-size: 600% 600%;
+  animation: gradientMove 14s ease infinite;
+  z-index: 1;
+}
+
+@keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.hero-overlay {
-  background: rgba(0,0,0,0.45);
-  position: absolute;
-  inset: 0;
-}
-
-/* ================= HERO ================= */
-.hero {
-  background: url("../images/header-bg.jpg") center/cover no-repeat;
+.hero-content {
   position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
 }
 
-.hero-text {
-  position: relative;
-  color: #fff;
-  padding: 80px 0;
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.95;
 }
 
-.hero-text h1 {
-  color: #ff4d4d;
-}
-
-/* =====================
-   LOGO IMAGE
-===================== */
-.logo img {
-  max-height: 50px;
-  width: auto;
-  display: block;
-}
-
-/* =====================
+/* ===============================
    MAIN CONTENT
-===================== */
+================================ */
 main {
-  min-height: 60vh;
+  padding: 60px 8%;
 }
 
-/* =====================
-   FOOTER
-===================== */
-.site-footer {
-  background-color: #1f1f1f;
-  color: #dddddd;
-  margin-top: 40px;
+section {
+  margin-bottom: 60px;
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+section h2 {
+  margin-bottom: 15px;
+  font-size: 2rem;
+  color: #222;
 }
 
-.site-footer h4 {
-  color: #ffffff;
+section p {
   margin-bottom: 10px;
+  font-size: 1rem;
+  color: #444;
 }
 
-.site-footer p {
-  font-size: 14px;
-}
-
-.site-footer a {
-  color: #dddddd;
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  color: var(--merah);
-}
-
-/* =====================
-   WHATSAPP BUTTON
-===================== */
-.wa-btn {
+/* ===============================
+   BUTTON
+================================ */
+.btn-whatsapp {
   display: inline-block;
-  margin-top: 10px;
-  padding: 12px 18px;
-  background-color: var(--merah);
-  color: #ffffff !important;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 6px;
   font-weight: bold;
-  border-radius: 4px;
+  transition: 0.3s;
 }
 
-/* =====================
-   FOOTER BOTTOM
-===================== */
-.footer-bottom {
-  border-top: 1px solid #333;
-  margin-top: 20px;
-  padding: 15px;
-  text-align: center;
-  font-size: 14px;
-}
-
-/* =====================
-   RESPONSIVE
-===================== */
-@media (max-width: 768px) {
-  .header-flex {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .nav a {
-    margin: 0 10px;
-  }
-}
-@media (max-width: 768px) {
-  .logo img {
-    max-height: 42px;
-  }
-}
-/* ===============================
-   RESET & BASE
-================================ */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f7f5f2; /* krem */
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: inherit;
-}
-
-/* ===============================
-   CONTAINER
-================================ */
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 16px;
-}
-
-/* ===============================
-   HEADER
-================================ */
-.site-header {
-  background: #2e2e2e; /* abu gelap */
-  color: #fff;
-}
-
-.site-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 0;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-}
-
-.main-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 18px;
-  font-size: 14px;
-}
-
-.main-nav a:hover {
-  color: #f2c94c;
+.btn-whatsapp:hover {
+  opacity: 0.85;
 }
 
 /* ===============================
    FOOTER
 ================================ */
-.site-footer {
-  background: #2e2e2e;
-  color: #ccc;
-  margin-top: 50px;
-  padding: 20px 0;
-  text-align: center;
-  font-size: 13px;
-}
-
-/* ===============================
-   BUTTON (GLOBAL)
-================================ */
-.btn {
-  display: inline-block;
-  padding: 10px 16px;
-  background: #c62828; /* merah */
+footer {
+  background: #111;
   color: #fff;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.btn:hover {
-  background: #a81f1f;
-}
-
-/* ===============================
-   PAGE TITLE
-================================ */
-.page-title {
-  margin: 30px 0 20px;
-}
-
-.page-title h1 {
-  font-size: 28px;
-  margin-bottom: 6px;
-}
-
-.page-title p {
-  color: #666;
-  font-size: 14px;
-}
-
-/* ===============================
-   UTILITY
-================================ */
-.mt-20 {
-  margin-top: 20px;
-}
-
-.mb-20 {
-  margin-bottom: 20px;
-}
-
-.text-center {
   text-align: center;
+  padding: 20px;
+  font-size: 14px;
 }
 
 /* ===============================
-   RESPONSIVE NAV
+   RESPONSIVE
 ================================ */
 @media (max-width: 768px) {
-  .site-header .container {
+  nav ul {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
-  .main-nav a {
-    margin-left: 0;
-    margin-right: 12px;
+  .hero {
+    height: 55vh;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  main {
+    padding: 40px 20px;
   }
 }
-
