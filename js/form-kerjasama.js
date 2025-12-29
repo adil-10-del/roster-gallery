@@ -1,16 +1,19 @@
 document.getElementById("formKerjasama").addEventListener("submit", function(e) {
   e.preventDefault();
 
-  const perusahaan = document.getElementById("perusahaan").value;
-  const nama = document.getElementById("nama").value;
-  const jenis = document.getElementById("jenis").value;
-  const alamat = document.getElementById("alamat").value;
-  const produk = document.getElementById("produk").value;
-  const volume = document.getElementById("volume").value;
-  const catatan = document.getElementById("catatan").value;
+  const data = {
+    perusahaan: document.getElementById("perusahaan").value,
+    nama: document.getElementById("nama").value,
+    jenis: document.getElementById("jenis").value,
+    alamat: document.getElementById("alamat").value,
+    produk: document.getElementById("produk").value,
+    volume: document.getElementById("volume").value,
+    catatan: document.getElementById("catatan").value
+  };
 
-  const pesan = `
-SURAT PERMOHONAN KERJA SAMA
+  localStorage.setItem("dataKerjasama", JSON.stringify(data));
+  window.location.href = "preview-surat.html";
+});
 
 Kepada Yth:
 Roster Gallery
