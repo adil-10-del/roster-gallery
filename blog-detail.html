@@ -5,7 +5,6 @@
   <title>Detail Artikel</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <header class="header-small">
@@ -19,25 +18,21 @@
 </article>
 
 <script>
-const articles = {
-  1: {
-    title: "Keunggulan Roster Beton",
-    image: "assets/images/blog/roster.jpg",
-    content: "Roster beton memiliki fungsi ventilasi dan estetika..."
-  },
-  2: {
-    title: "Tips Memilih Paving Block",
-    image: "assets/images/blog/paving.jpg",
-    content: "Paving block harus kuat dan presisi..."
-  }
-};
-
 const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+const id = parseInt(params.get("id"));
 
-document.getElementById("title").innerText = articles[id].title;
-document.getElementById("image").src = articles[id].image;
-document.getElementById("content").innerText = articles[id].content;
+fetch("data/blog.json")
+  .then(res => res.json())
+  .then(articles => {
+    const article = articles.find(a => a.id === id);
+    if(article){
+      document.getElementById("title").innerText = article.title;
+      document.getElementById("image").src = article.image;
+      document.getElementById("content").innerText = article.desc;
+    } else {
+      document.getElementById("title").innerText = "Artikel tidak ditemukan";
+    }
+  });
 </script>
 
 </body>
