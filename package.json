@@ -5,6 +5,6 @@
   "scripts": {
     "generate": "node scripts/generate-article.js",
     "sitemap": "node scripts/generate-sitemap.js",
-    "update": "node scripts/update-index.js"
+    "update": "node scripts/generate-index.js"
   }
 }
