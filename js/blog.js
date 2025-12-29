@@ -42,16 +42,34 @@ const blogData = [
 ];
 
 const container = document.getElementById("blog-list");
+const select = document.getElementById("category");
 
-blogData.forEach(item => {
-  container.innerHTML += `
-    <div class="blog-card">
-      <img src="${item.image}">
-      <div class="blog-content">
-        <h3>${item.title}</h3>
-        <p>${item.desc}</p>
-        <a href="${item.link}">Baca Selengkapnya →</a>
+function renderBlog(data) {
+  container.innerHTML = "";
+  data.forEach(item => {
+    container.innerHTML += `
+      <div class="blog-card">
+        <img src="${item.image}">
+        <div class="blog-content">
+          <h3>${item.title}</h3>
+          <p>${item.desc}</p>
+          <a href="${item.link}">Baca Selengkapnya →</a>
+        </div>
       </div>
-    </div>
-  `;
+    `;
+  });
+}
+
+// render awal semua artikel
+renderBlog(blogData);
+
+// filter saat ganti kategori
+select.addEventListener("change", function() {
+  const category = this.value;
+  if(category === "All") {
+    renderBlog(blogData);
+  } else {
+    renderBlog(blogData.filter(item => item.category === category));
+  }
 });
+
