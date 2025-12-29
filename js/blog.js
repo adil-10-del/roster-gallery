@@ -1,39 +1,58 @@
 const container = document.getElementById("blog-list");
 const select = document.getElementById("category");
-
 let blogData = [];
 
-// load JSON
-fetch("data/blog.json")
-  .then(response => response.json())
-  .then(data => {
-    blogData = data;
+// URL Sheet CSV publik
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/.../pub?output=csv";
+
+// Convert CSV ke JSON
+function csvToJson(csv){
+  const lines = csv.split("\n");
+  const result = [];
+  const headers = lines[0].split(",");
+  for(let i=1;i<lines.length;i++){
+    if(!lines[i]) continue;
+    const obj = {};
+    const currentline = lines[i].split(",");
+    headers.forEach((h,index)=>{
+      obj[h.trim()] = currentline[index].trim();
+    });
+    result.push(obj);
+  }
+  return result;
+}
+
+// Fetch CSV
+fetch(sheetURL)
+  .then(res => res.text())
+  .then(csv => {
+    blogData = csvToJson(csv);
     renderBlog(blogData);
   })
-  .catch(err => console.error("Error load JSON:", err));
+  .catch(err => console.error(err));
 
-function renderBlog(data) {
+function renderBlog(data){
   container.innerHTML = "";
-  data.forEach(item => {
+  data.forEach(item=>{
     container.innerHTML += `
       <div class="blog-card">
-        <img src="${item.image}">
+        <img src="${item['Image URL']}">
         <div class="blog-content">
-          <h3>${item.title}</h3>
-          <p>${item.desc}</p>
-          <a href="blog-detail.html?id=${item.id}">Baca Selengkapnya →</a>
+          <h3>${item['Title']}</h3>
+          <p>${item['Description']}</p>
+          <a href="blog-detail.html?id=${item['ID']}">Baca Selengkapnya →</a>
         </div>
       </div>
     `;
   });
 }
 
-// filter berdasarkan kategori
-select.addEventListener("change", function() {
+// Filter kategori
+select.addEventListener("change", function(){
   const category = this.value;
-  if(category === "All") {
+  if(category === "All"){
     renderBlog(blogData);
   } else {
-    renderBlog(blogData.filter(item => item.category === category));
+    renderBlog(blogData.filter(item => item['Category'] === category));
   }
 });
