@@ -2,7 +2,7 @@ import fs from "fs";
 
 const postsDir = "./blog/posts";
 const files = fs.readdirSync(postsDir);
-
+const MAX_ARTICLE_PER_RUN = 2;
 const data = files.map(file => {
   return {
     title: file.replace(/-/g, " ").replace(".html", ""),
