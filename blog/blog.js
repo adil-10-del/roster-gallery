@@ -34,19 +34,29 @@ function shuffleArray(arr) {
 // ========================
 // ARTIKEL ACAK + RENDER
 // ========================
+const PER_PAGE = 10;
+let currentPage = 1;
+
+const params = new URLSearchParams(window.location.search);
+if (params.get("page")) {
+  currentPage = parseInt(params.get("page"));
+}
+
+const start = (currentPage - 1) * PER_PAGE;
+const end = start + PER_PAGE;
+const totalPage = Math.ceil(BLOG_DATA.artikel.length / PER_PAGE);
+
 const artikelWrap = document.getElementById("artikel-list");
-let artikelData = shuffleArray([...BLOG_DATA.artikel]);
 
 function renderArtikel(data) {
   artikelWrap.innerHTML = "";
-
   data.forEach(a => {
     artikelWrap.innerHTML += `
       <article class="artikel-item">
         <img src="${a.image}" alt="${a.title}">
         <div>
-          <h3><a href="${a.url}">${a.title}</a></h3>
-          <p class="meta">${a.kategori} • ${a.tanggal}</p>
+          <h2><a href="${a.url}">${a.title}</a></h2>
+          <p class="meta">${a.kategoriLabel} • ${a.tanggal}</p>
           <p>${a.ringkas}</p>
         </div>
       </article>
@@ -54,8 +64,8 @@ function renderArtikel(data) {
   });
 }
 
-// render pertama kali
-renderArtikel(artikelData);
+renderArtikel(BLOG_DATA.artikel.slice(start, end));
+
 
 // ========================
 // SEARCH FILTER
