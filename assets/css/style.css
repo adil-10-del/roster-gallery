@@ -29,85 +29,83 @@ body {
   padding: 20px;
 }
 
-/* =====================
-   HEADER
-===================== */
+/* ===========================
+   HEADER + NAVBAR
+=========================== */
+
+/* Reset dasar */
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* HEADER BASIK */
 .site-header {
-  background-color: #ffffff;
-  border-bottom: 3px solid var(--merah);
-}
-
-.header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo a {
-  font-size: 24px;
-  font-weight: bold;
-  text-decoration: none;
-  color: var(--abu);
-}
-
-.logo span {
-  color: var(--merah);
-}
-
-.nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: var(--abu);
-  font-weight: 500;
-}
-
-.nav a:hover {
-  color: var(--merah);
-}
-/* ================= TOP MOVING BACKGROUND ================= */
-.top-moving-bg {
-  height: 6px;
-  background: linear-gradient(
-    90deg,
-    #ff4d4d,
-    #ff9800,
-    #ffc107,
-    #4caf50,
-    #2196f3,
-    #9c27b0
-  );
-  background-size: 400% 400%;
-  animation: moveGradient 8s linear infinite;
-}
-
-@keyframes moveGradient {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-/* ================= NAV BAR ================= */
-.nav-bar {
-  background: #111;
-  position: sticky;
-  top: 0;
+  position: relative;
+  width: 100%;
+  background: #111; /* Warna gelap agar nav putih kontras */
   z-index: 999;
+  padding: 10px 0;
 }
 
-.header-flex {
+/* LOGO */
+.site-header .logo img {
+  display: block;
+  max-width: 160px;
+}
+
+/* NAV */
+.site-header .nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
+  gap: 18px;
 }
 
-.nav a {
-  color: #fff;
-  margin-left: 20px;
+.site-header .nav a {
   font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.2s;
 }
 
-.nav a:hover {
-  color: #ff4d4d;
+.site-header .nav a:hover,
+.site-header .nav a:focus {
+  color: #ff4d4d; /* warna merah brand */
+}
+
+/* NAV MOBILE */
+@media (max-width: 768px) {
+  .site-header .nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+/* ===========================
+   HEADER BACKGROUND GERAK
+=========================== */
+
+.hero-header {
+  background-image: url("../images/header-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  animation: headerMove 25s linear infinite;
+  position: relative;
+  padding: 60px 0;
+  color: #fff;
+}
+
+@keyframes headerMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-overlay {
+  background: rgba(0,0,0,0.45);
+  position: absolute;
+  inset: 0;
 }
 
 /* ================= HERO ================= */
