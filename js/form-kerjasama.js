@@ -41,3 +41,10 @@ ${nama}
   const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
   window.open(url, "_blank");
 });
+const fileInput = document.getElementById("dokumen");
+
+let uploadedFiles = [];
+
+fileInput.addEventListener("change", function () {
+  uploadedFiles = Array.from(this.files);
+});
