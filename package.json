@@ -1,10 +1,1 @@
-{
-  "name": "roster-gallery-blog",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "generate": "node scripts/generate-article.js",
-    "sitemap": "node scripts/generate-sitemap.js",
-    "index": "node scripts/generate-index.js"
-  }
-}
+
