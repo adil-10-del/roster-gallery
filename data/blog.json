@@ -1,1 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Keunggulan Roster Beton untuk Bangunan Modern",
+    "desc": "Roster beton memberikan sirkulasi udara dan estetika pada bangunan modern.",
+    "image": "assets/images/blog/roster.jpg",
+    "category": "Roster Beton"
+  },
+  {
+    "id": 2,
+    "title": "Tips Memilih Paving Block Berkualitas",
+    "desc": "Kenali jenis paving block terbaik untuk halaman rumah dan proyek besar.",
+    "image": "assets/images/blog/paving.jpg",
+    "category": "Paving Block"
+  },
+  {
+    "id": 3,
+    "title": "Perbedaan Bata Tempel dan Bata Ekspos",
+    "desc": "Mana yang lebih cocok untuk desain bangunan Anda?",
+    "image": "assets/images/blog/bata.jpg",
+    "category": "Bata"
+  },
+  {
+    "id": 4,
+    "title": "Genteng Beton vs Genteng Tanah Liat",
+    "desc": "Bandingkan kelebihan dan kekurangannya.",
+    "image": "assets/images/blog/genteng.jpg",
+    "category": "Genteng"
+  },
+  {
+    "id": 5,
+    "title": "Tips Memilih Material Bangunan Berkualitas",
+    "desc": "Panduan penting sebelum membeli bahan bangunan.",
+    "image": "assets/images/blog/material.jpg",
+    "category": "General"
+  }
+]
 
