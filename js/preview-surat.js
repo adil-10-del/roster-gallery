@@ -26,3 +26,34 @@ Terima kasih.
   const wa = "6283872793673";
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(pesan)}`, "_blank");
 }
+function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFont("Helvetica");
+  doc.setFontSize(12);
+
+  let y = 20;
+  doc.text("SURAT PERMOHONAN KERJA SAMA", 105, y, { align: "center" });
+
+  y += 15;
+  doc.text(`Nama Perusahaan : ${data.perusahaan}`, 20, y);
+  y += 8;
+  doc.text(`Penanggung Jawab : ${data.nama}`, 20, y);
+  y += 8;
+  doc.text(`Jenis Kerja Sama : ${data.jenis}`, 20, y);
+  y += 8;
+  doc.text(`Alamat : ${data.alamat}`, 20, y);
+  y += 8;
+  doc.text(`Produk : ${data.produk}`, 20, y);
+  y += 8;
+  doc.text(`Volume : ${data.volume}`, 20, y);
+
+  y += 15;
+  doc.text("Demikian surat permohonan ini kami sampaikan.", 20, y);
+  y += 15;
+  doc.text("Hormat Kami,", 20, y + 10);
+  doc.text(data.nama, 20, y + 20);
+
+  doc.save("Surat-Kerja-Sama.pdf");
+}
