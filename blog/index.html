@@ -1,92 +1,121 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Blog Konstruksi & Produk Beton | Roster Gallery</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- SEO -->
-  <meta name="description" content="Artikel roster beton, walpanel, genteng, paving, dan edukasi konstruksi dari Roster Gallery.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Roster Gallery | Artikel Produk Konstruksi</title>
+  <meta name="description" content="Artikel, tips, dan panduan produk konstruksi seperti roster beton, walpanel, genteng, bata tempel, dan paving dari Roster Gallery." />
 
-  <link rel="canonical" href="https://adil-10-del.github.io/roster-gallery/blog/">
-  <link rel="stylesheet" href="../assets/css/blog.css">
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/blog.css" />
+
+  <!-- BLOG SCHEMA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog Roster Gallery",
+    "url": "https://adil-10-del.github.io/roster-gallery/blog/",
+    "description": "Artikel dan edukasi produk konstruksi dari Roster Gallery."
+  }
+  </script>
 </head>
 
 <body>
 
-<header class="blog-header">
-  <div class="container header-flex">
-    <div>
-      <h1>Blog Roster Gallery</h1>
-      <p>Edukasi konstruksi & produk beton</p>
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo">Roster Gallery</a>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/katalog.html">Katalog</a>
+        <a href="/blog/">Blog</a>
+        <a href="/kontak.html">Kontak</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- SEARCH -->
-    <div class="blog-search">
-      <input type="text" id="searchInput" placeholder="Cari artikel...">
+  <!-- ===== MAIN ===== -->
+  <main class="container blog-layout">
+
+    <!-- KONTEN UTAMA -->
+    <section class="blog-main">
+
+      <!-- SEARCH -->
+      <div class="blog-search">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Cari artikel produk konstruksi..."
+          aria-label="Cari artikel"
+        />
+      </div>
+
+      <!-- TOPIK PILIHAN -->
+      <section class="topik-pilihan">
+        <h2>Topik Pilihan</h2>
+        <div id="topik-pilihan" class="topik-grid">
+          <!-- diisi JS -->
+        </div>
+      </section>
+
+      <!-- LIST ARTIKEL -->
+      <section class="artikel-section">
+        <h2>Artikel Terbaru</h2>
+        <div id="artikel-list" class="artikel-list">
+          <!-- diisi JS -->
+        </div>
+      </section>
+
+      <!-- PAGINATION (STATIC DULU) -->
+      <nav class="pagination">
+        <a href="?page=1" class="active">1</a>
+        <a href="?page=2">2</a>
+        <a href="?page=3">3</a>
+      </nav>
+
+    </section>
+
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar">
+
+      <!-- PALING DICARI -->
+      <section class="sidebar-box">
+        <h3>Paling Banyak Dicari</h3>
+        <ul id="paling-dicari">
+          <!-- diisi JS -->
+        </ul>
+      </section>
+
+      <!-- KATEGORI -->
+      <section class="sidebar-box">
+        <h3>Kategori</h3>
+        <ul id="kategori-list">
+          <!-- diisi JS -->
+        </ul>
+      </section>
+
+    </aside>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Roster Gallery. All rights reserved.</p>
     </div>
-  </div>
-</header>
+  </footer>
 
+  <!-- DATA & SCRIPT -->
+  <script src="/blog/blog-data.js"></script>
+  <script src="/blog/blog.js"></script>
 
-<main class="container blog-grid">
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
-  <!-- MAIN -->
-  <section class="blog-main">
-
-    <section>
-      <h2>Topik Pilihan</h2>
-      <div id="topik-pilihan" class="topik-grid"></div>
-    </section>
-
-    <section>
-      <h2>Artikel Terbaru</h2>
-      <div id="artikel-list"></div>
-    </section>
-
-  </section>
-
-  <!-- SIDEBAR -->
-  <aside class="blog-sidebar">
-
-    <section class="sidebar-box">
-      <h3>Paling Banyak Dicari</h3>
-      <ul id="paling-dicari"></ul>
-    </section>
-
-    <section class="sidebar-box">
-      <h3>Kategori Produk</h3>
-      <ul id="kategori-list"></ul>
-    </section>
-
-  </aside>
-
-</main>
-
-<footer class="blog-footer">
-  © 2025 Roster Gallery
-</footer>
-
-<!-- DATA & SCRIPT -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "Blog Roster Gallery",
-  "url": "https://adil-10-del.github.io/roster-gallery/blog/",
-  "description": "Artikel, tips, dan edukasi seputar produk konstruksi seperti roster beton, walpanel, genteng, dan paving."
-}
-</script>
-
-<script src="blog-data.js"></script>
-<script src="blog.js"></script>
-
-  <nav class="pagination">
-  <a href="?page=1">1</a>
-  <a href="?page=2">2</a>
-  <a href="?page=3">3</a>
-  <span>...</span>
-</nav>
 </body>
 </html>
-
