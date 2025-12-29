@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 
+const MAX_ARTICLE_PER_RUN = 5; // ganti 3–5 sesuai mau
+
 const products = JSON.parse(
   fs.readFileSync("./scripts/data/products.json")
 );
@@ -46,3 +48,6 @@ const finalPrompt = mainPrompt + "\n\n" + variantPrompt;
   );
 });
 
+for (let i = 0; i < MAX_ARTICLE_PER_RUN; i++) {
+  generateArticle();
+}
