@@ -1,0 +1,13 @@
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+
+body.dark header,
+body.dark section {
+  background: #1c1c1c;
+}
+
+body.dark a {
+  color: #f44336;
+}
