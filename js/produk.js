@@ -2,7 +2,7 @@ const produkData = [
   { nama: "Roster Beton", folder: "roster" },
   { nama: "Genteng", folder: "genteng" },
   { nama: "Bata", folder: "bata" },
-  { nama: "Wall Panel", folder: "wall-panel" },
+  { nama: "Walpanel", folder: "walpanel" },
   { nama: "List Pang", folder: "list-pang" },
   { nama: "Tiang", folder: "tiang" },
   { nama: "Paving", folder: "paving" }
