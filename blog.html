@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Blog | Roster Gallery</title>
-
-  <meta name="description" content="Artikel seputar material bangunan, roster beton, paving, genteng dan tips konstruksi.">
-  <meta name="keywords" content="blog material bangunan, roster beton, paving block">
-
+  <meta name="description" content="Artikel seputar material bangunan: roster beton, paving, bata, genteng dan tips konstruksi.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/blog.css">
 </head>
-
 <body>
 
 <header class="header-small">
@@ -29,26 +26,26 @@
   <h1>Artikel & Edukasi</h1>
   <p class="subtitle">Tips dan informasi seputar material bangunan terbaik</p>
 
-  <div id="blog-list" class="blog-grid">
-    <div class="blog-filter">
-  <label for="category">Filter Kategori:</label>
-  <select id="category">
-    <option value="All">Semua</option>
-    <option value="Bata">Bata</option>
-    <option value="Roster Beton">Roster Beton</option>
-    <option value="Genteng">Genteng</option>
-    <option value="Walpanel">Walpanel</option>
-    <option value="List Pang">List Pang</option>
-    <option value="Tiang">Tiang</option>
-    <option value="Paving Block">Paving Block</option>
-    <option value="General">Umum</option>
-  </select>
-</div>
-    <!-- Artikel auto muncul -->
+  <!-- Filter Kategori -->
+  <div class="blog-filter">
+    <label for="category">Filter Kategori:</label>
+    <select id="category">
+      <option value="All">Semua</option>
+      <option value="Bata">Bata</option>
+      <option value="Roster Beton">Roster Beton</option>
+      <option value="Genteng">Genteng</option>
+      <option value="Walpanel">Walpanel</option>
+      <option value="List Pang">List Pang</option>
+      <option value="Tiang">Tiang</option>
+      <option value="Paving Block">Paving Block</option>
+      <option value="General">Umum</option>
+    </select>
   </div>
+
+  <!-- List Artikel -->
+  <div id="blog-list" class="blog-grid"></div>
 </section>
 
 <script src="js/blog.js"></script>
 </body>
 </html>
-
