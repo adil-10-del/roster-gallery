@@ -41,4 +41,26 @@ const BLOG_DATA = {
     }
   ]
 };
+window.BLOG_DATA = {
+  artikel: [
+    {
+      title: "Roster Beton Minimalis untuk Rumah Tropis",
+      url: "/blog/posts/roster-beton-minimalis.html",
+      kategori: "roster-beton",
+      kategoriLabel: "Roster Beton",
+      tanggal: "2025-01-01",
+      image: "/assets/images/blog/roster.jpg",
+      ringkas: "Panduan memilih roster beton yang kuat dan estetis."
+    }
+  ],
+  kategori: [
+    { slug: "roster-beton", label: "Roster Beton" },
+    { slug: "walpanel", label: "Walpanel" },
+    { slug: "genteng", label: "Genteng" },
+    { slug: "bata-tempel", label: "Bata Tempel" },
+    { slug: "bata-ekspos", label: "Bata Ekspos" },
+     { slug: "list-pang", label: "List Pang" },
+    { slug: "paving", label: "Paving" }
+  ]
+};
 
