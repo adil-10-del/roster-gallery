@@ -1,1 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+:root {
+  --red: #e53935;
+  --dark: #111;
+  --light: #f6f6f6;
+}
+
+body { background:#fff; color:#333; }
+
+/* NAV */
+.navbar {
+  position: absolute;
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 99;
+}
+.logo { height: 45px; }
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+/* HERO */
+.hero-slider {
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: 1s;
+}
+
+.slide.active { opacity: 1; }
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-content h1 { font-size: 42px; }
+.hero-content p { margin: 10px 0 25px; }
+
+.btn {
+  padding: 12px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.primary { background: var(--red); color: white; }
+.secondary { border: 2px solid white; color: white; }
+
+/* SECTION */
+.section {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.gray { background: var(--light); }
+
+.grid-3, .grid-4 {
+  display: grid;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.grid-3 { grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); }
+
+.product, .box {
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,.08);
+  transition: .3s;
+}
+
+.product:hover, .box:hover {
+  transform: translateY(-8px);
+}
+
+.layanan-list {
+  list-style: none;
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+.layanan-list li {
+  padding: 8px;
+  font-size: 17px;
+}
+
+footer {
+  background: #111;
+  color: #aaa;
+  padding: 20px;
+  text-align: center;
+}
+
+@media(max-width:768px){
+  .hero-content h1 { font-size: 28px; }
+}
 
