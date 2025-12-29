@@ -378,3 +378,33 @@ footer {
 .form-section textarea {
   min-height: 100px;
 }
+.surat-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.surat-box {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+}
+
+.surat-box table {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.surat-box td {
+  padding: 6px 0;
+}
+
+.btn-group {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn.secondary {
+  background: #888;
+}
