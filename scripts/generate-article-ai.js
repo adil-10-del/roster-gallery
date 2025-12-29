@@ -22,19 +22,20 @@ products.forEach(product => {
   const slug = product.keyword.replace(/\s+/g, "-");
   const title = `${product.name} ${random(keywords)}`;
 
-  const content = `
-<h1>${title}</h1>
-<p>${product.name} adalah salah satu produk unggulan Roster Gallery yang banyak digunakan untuk kebutuhan konstruksi modern.</p>
+const mainPrompt = fs.readFileSync("./scripts/ai/prompt-main.txt", "utf8");
+const variants = [
+  "prompt-variasi-a.txt",
+  "prompt-variasi-b.txt",
+  "prompt-variasi-c.txt"
+];
 
-<h2>Kegunaan ${product.name}</h2>
-<p>Produk ini cocok digunakan untuk rumah tinggal, pagar, ventilasi, dan bangunan komersial.</p>
+const randomVariant =
+  variants[Math.floor(Math.random() * variants.length)];
 
-<h2>Keunggulan</h2>
-<ul>
-  <li>Kuat dan tahan lama</li>
-  <li>Desain estetis</li>
-  <li>Mudah diaplikasikan</li>
-</ul>
+const variantPrompt = fs.readFileSync(`./scripts/ai/${randomVariant}`, "utf8");
+
+const finalPrompt = mainPrompt + "\n\n" + variantPrompt;
+
 
 <p>Hubungi Roster Gallery untuk pemesanan ${product.keyword}.</p>
 `;
