@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Detail Artikel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,22 +18,6 @@
   <p id="content"></p>
 </article>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const id = params.get("1YJdYYGcSjIIHOM5xIAv6A-k7n9C9eueMScie9RIU4qU");
-
-fetch(sheetURL)
-  .then(res=>res.text())
-  .then(csv=>{
-    const articles = csvToJson(csv);
-    const article = articles.find(a => a['ID'] === id);
-    if(article){
-      document.getElementById("title").innerText = article['Title'];
-      document.getElementById("image").src = article['Image URL'];
-      document.getElementById("content").innerText = article['Description'];
-    }
-  });
-</script>
-
+<script src="js/blog.js"></script>
 </body>
 </html>
