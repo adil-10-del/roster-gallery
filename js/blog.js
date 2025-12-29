@@ -3,7 +3,7 @@ const select = document.getElementById("category");
 let blogData = [];
 
 // URL Sheet CSV publik
-const sheetURL = "https://docs.google.com/spreadsheets/d/e/.../pub?output=csv";
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMR0ZJvrpE3aNT0noFxXH-vQLJ9COlJZRijhJdQ6um_a0pNtCas3hoQsZcEE25gLx2fOhX0JEX5hLx/pub?gid=0&single=true&output=csv";
 
 // Convert CSV ke JSON
 function csvToJson(csv){
