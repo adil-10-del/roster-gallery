@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Artikel</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header-small">
+  <a href="blog.html">← Kembali ke Blog</a>
+</header>
+
+<article class="article">
+  <h1 id="title"></h1>
+  <img id="image" />
+  <p id="content"></p>
+</article>
+
+<script>
+const articles = {
+  1: {
+    title: "Keunggulan Roster Beton",
+    image: "assets/images/blog/roster.jpg",
+    content: "Roster beton memiliki fungsi ventilasi dan estetika..."
+  },
+  2: {
+    title: "Tips Memilih Paving Block",
+    image: "assets/images/blog/paving.jpg",
+    content: "Paving block harus kuat dan presisi..."
+  }
+};
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+document.getElementById("title").innerText = articles[id].title;
+document.getElementById("image").src = articles[id].image;
+document.getElementById("content").innerText = articles[id].content;
+</script>
+
+</body>
+</html>
