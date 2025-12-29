@@ -76,3 +76,4 @@ document.getElementById("formKerjasama").addEventListener("submit", function(e) 
 
   window.location.href = "preview-surat.html";
 });
+email: document.getElementById("email").value,
