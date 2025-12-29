@@ -48,3 +48,4 @@ let uploadedFiles = [];
 fileInput.addEventListener("change", function () {
   uploadedFiles = Array.from(this.files);
 });
++ "\n\n*Catatan:* File pendukung (RAB / gambar) akan dikirim setelah chat terbuka."
