@@ -10,26 +10,29 @@ const produkData = [
 
 const container = document.getElementById("product-container");
 
-produkData.forEach(kategori => {
+produkData.forEach(item => {
   const section = document.createElement("section");
-  section.innerHTML = `<h2 class="category-title">${kategori.nama}</h2>
-                       <div class="product-grid"></div>`;
-  const grid = section.querySelector(".product-grid");
 
-  for (let i = 1; i <= 10; i++) {
-    const img = new Image();
-    img.src = `assets/produk/${kategori.folder}/${i}.jpg`;
+  section.innerHTML = `
+    <h2 class="category-title">${item.nama}</h2>
 
-    img.onload = () => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
-        <img src="${img.src}" alt="${kategori.nama} ${i}">
-        <h3>${kategori.nama} ${i}</h3>
-        <a href="https://wa.me/6283872793673" class="btn">Tanya Harga</a>
-      `;
-      grid.appendChild(card);
-    };
+    <div class="product-grid">
+      ${Array.from({ length: 10 }, (_, i) => `
+        <div class="product-card">
+          <img src="assets/produk/${item.folder}/${i + 1}.jpg" alt="${item.nama} ${i + 1}">
+          <h3>${item.nama} ${i + 1}</h3>
+
+          <div class="btn-group">
+            <a href="https://wa.me/6283872793673" class="btn">Tanya Harga</a>
+            <a href="${item.blog}" class="btn outline">Lihat Artikel</a>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+
+  container.appendChild(section);
+});
   }
 
   container.appendChild(section);
