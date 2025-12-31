@@ -7,16 +7,25 @@ const sitemapPath = path.join(ROOT, "sitemap.xml");
 
 const SITE_URL = "https://adil-10-del.github.io/roster-gallery";
 
-let urls = [
-  `${SITE_URL}/`,
-  `${SITE_URL}/blog.html`,
-  `${SITE_URL}/katalog.html`,
-  `${SITE_URL}/kontak.html`
+/**
+ * HALAMAN STATIS WEBSITE
+ * (WAJIB SESUAI STRUKTUR ASLI)
+ */
+const staticPages = [
+  "/",
+  "/index.html",
+  "/blog.html",
+  "/katalog.html",
+  "/layanan.html",
+  "/form-kerjasama.html",
+  "/priview-surat.html",
+  "/kontak.html"
 ];
+
+let urls = staticPages.map(p => `${SITE_URL}${p}`);
 
 if (fs.existsSync(blogDataPath)) {
   const blogData = JSON.parse(fs.readFileSync(blogDataPath, "utf8"));
-
   blogData.posts.forEach(post => {
     urls.push(`${SITE_URL}/blog/${post.slug}.html`);
   });
@@ -34,5 +43,4 @@ ${urls.map(url => `
 `;
 
 fs.writeFileSync(sitemapPath, xml.trim());
-console.log("Sitemap berhasil dibuat");
-
+console.log("Sitemap lengkap berhasil dibuat");
