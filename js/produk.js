@@ -33,35 +33,37 @@ document.addEventListener("DOMContentLoaded", () => {
 ========================= */
 function loadImagesAuto(item, grid) {
   let index = 1;
+  const maxTry = 50; // batas maksimal supaya aman
 
-  const tryLoad = () => {
-    const img = new Image();
-    img.src = `assets/produk/${item.folder}/${index}.jpg`;
-    img.loading = "lazy";
-    img.decoding = "async";
+  const loadNext = async () => {
+    if (index > maxTry) return;
 
-    img.onload = () => {
+    const imgPath = `assets/produk/${item.folder}/${index}.jpg`;
+
+    try {
+      const res = await fetch(imgPath, { method: "HEAD" });
+
+      if (!res.ok) return; // STOP kalau gambar tidak ada
+
       const card = document.createElement("div");
       card.className = "product-card";
       card.innerHTML = `
-        <img src="${img.src}" alt="${item.nama} ${index}">
+        <img src="${imgPath}" loading="lazy" alt="${item.nama} ${index}">
         <h3>${item.nama} ${index}</h3>
         <div class="btn-group">
           <a href="https://wa.me/6283872793673" class="btn">Tanya Harga</a>
           <a href="blog.html" class="btn outline">Lihat Artikel</a>
         </div>
       `;
+
       grid.appendChild(card);
-
       index++;
-      tryLoad(); // 🔥 lanjut ke gambar berikutnya
-    };
+      loadNext(); // lanjut cek gambar berikutnya
 
-    img.onerror = () => {
-      // ❌ STOP kalau gambar tidak ada
-      return;
-    };
+    } catch (err) {
+      console.log("Stop loading", item.nama);
+    }
   };
 
-  tryLoad();
+  loadNext();
 }
