@@ -1,6 +1,5 @@
 /**
- * AUTO BLOG GENERATOR
- * Roster Gallery
+ * AUTO BLOG GENERATOR – ROSTER GALLERY
  */
 
 const fs = require("fs");
@@ -15,13 +14,13 @@ const queuePath = path.join(DATA_DIR, "queue.json");
 const blogIndexPath = path.join(DATA_DIR, "blog.json");
 
 if (!fs.existsSync(queuePath)) {
-  console.log("Queue kosong. Tidak ada artikel dipublish.");
+  console.log("Queue kosong.");
   process.exit(0);
 }
 
 const queueData = JSON.parse(fs.readFileSync(queuePath, "utf8"));
 if (!queueData.queue.length) {
-  console.log("Queue habis.");
+  console.log("Tidak ada artikel untuk dipublish.");
   process.exit(0);
 }
 
@@ -31,42 +30,32 @@ const today = new Date().toISOString().split("T")[0];
 const title = item.topic;
 const slug = item.slug;
 const imageName = `${slug}.jpg`;
-const imageUrl = `https://source.unsplash.com/1200x800/?${encodeURIComponent(item.topic)}`;
 
-// === ARTIKEL OTOMATIS (900+ HURUF TEMPLATE AMAN SEO)
+/* ========================
+   ARTIKEL CONTENT (900+)
+======================== */
 const content = `
 <p>${item.topic} merupakan salah satu topik penting dalam dunia material bangunan modern. 
-Penggunaan material yang tepat tidak hanya berpengaruh pada kekuatan bangunan, 
-tetapi juga estetika dan kenyamanan jangka panjang.</p>
+Material ini banyak digunakan karena kekuatan, daya tahan, serta tampilannya yang fleksibel.</p>
 
-<p>Dalam praktik konstruksi, pemilihan ${item.category.toLowerCase()} harus mempertimbangkan 
-fungsi, lingkungan sekitar, serta kebutuhan desain. Banyak proyek hunian dan komersial 
-memanfaatkan material ini karena daya tahannya yang baik serta perawatannya yang relatif mudah.</p>
+<p>Dalam penerapannya, ${item.category.toLowerCase()} sering digunakan pada bangunan hunian,
+komersial, hingga proyek berskala besar. Penggunaan yang tepat dapat meningkatkan nilai estetika
+dan fungsi bangunan secara keseluruhan.</p>
 
-<p>Salah satu keunggulan utama adalah fleksibilitas penerapannya. Material ini dapat digunakan 
-pada berbagai bagian bangunan seperti dinding, fasad, pagar, maupun area eksterior lainnya. 
-Selain itu, tampilannya juga dapat disesuaikan dengan konsep arsitektur modern maupun klasik.</p>
+<p>Keunggulan lainnya adalah kemudahan perawatan serta umur pakai yang panjang. 
+Hal ini menjadikan material ini sebagai solusi jangka panjang bagi pemilik bangunan.</p>
 
-<p>Dari sisi teknis, pemasangan yang benar akan memberikan hasil maksimal. 
-Pastikan proses instalasi dilakukan oleh tenaga berpengalaman serta menggunakan 
-bahan pendukung yang berkualitas agar struktur tetap kokoh dan awet.</p>
+<p>Selain itu, pemilihan material yang sesuai juga membantu efisiensi biaya pembangunan 
+tanpa mengurangi kualitas dan kekuatan struktur.</p>
 
-<p>Dengan perencanaan yang matang, penggunaan ${item.topic.toLowerCase()} dapat meningkatkan 
-nilai estetika sekaligus fungsionalitas bangunan. Hal ini menjadikannya pilihan 
-yang tepat untuk berbagai kebutuhan konstruksi saat ini.</p>
+<p>Dengan perencanaan yang matang dan pemasangan profesional, 
+${item.topic.toLowerCase()} dapat menjadi investasi jangka panjang untuk properti Anda.</p>
 `;
 
-// === HTML SLUG
-const html = `
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>${title} | Roster Gallery</title>
-  <meta name="description" content="${title} untuk kebutuhan konstruksi dan hunian modern.">
-  ${schema}
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  const schema = `
+/* ========================
+   SCHEMA SEO
+======================== */
+const schema = `
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -86,19 +75,30 @@ const html = `
       "@type": "ImageObject",
       "url": "https://adil-10-del.github.io/roster-gallery/assets/images/logo.jpg"
     }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://adil-10-del.github.io/roster-gallery/blog/${slug}.html"
   }
 }
 </script>
 `;
 
+/* ========================
+   HTML TEMPLATE
+======================== */
+const html = `
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>${title} | Roster Gallery</title>
+  <meta name="description" content="${title} untuk kebutuhan bangunan dan konstruksi.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="canonical" href="https://adil-10-del.github.io/roster-gallery/blog/${slug}.html">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/blog.css">
+
+  ${schema}
 </head>
+
 <body>
 
 <header class="header-small">
@@ -119,59 +119,52 @@ const html = `
 
 <article class="article-container">
   <h1>${title}</h1>
+
   <div class="article-meta">
     <span>📅 ${today}</span>
     <span>🏷️ ${item.category}</span>
   </div>
+
   <div class="article-content">
     ${content}
   </div>
+
   <div class="article-nav">
     <a href="../blog.html">← Kembali ke Blog</a>
   </div>
 </article>
 
-<footer class="footer">
-  © 2025 Roster Gallery. Hak Cipta Dilindungi.
+<footer class="footer footer-small">
+  <div class="footer-inner">
+    <div>
+      <strong>Roster Gallery</strong><br>
+      Material Beton & Ornamen Bangunan
+    </div>
+    <div>
+      📍 Purwakarta, Jawa Barat<br>
+      📞 <a href="https://wa.me/6283872793673">WhatsApp</a>
+    </div>
+  </div>
+  <p class="copyright">
+    © 2025 Roster Gallery. All Rights Reserved.
+  </p>
 </footer>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://adil-10-del.github.io/roster-gallery/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://adil-10-del.github.io/roster-gallery/blog.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "${title}",
-      "item": "https://adil-10-del.github.io/roster-gallery/blog/${slug}.html"
-    }
-  ]
-}
-</script>
+
 </body>
 </html>
 `;
 
-// === SIMPAN FILE
+/* ========================
+   SAVE FILE
+======================== */
+if (!fs.existsSync(BLOG_DIR)) fs.mkdirSync(BLOG_DIR, { recursive: true });
+if (!fs.existsSync(ASSET_DIR)) fs.mkdirSync(ASSET_DIR, { recursive: true });
+
 fs.writeFileSync(path.join(BLOG_DIR, `${slug}.html`), html);
 
-// === SIMPAN GAMBAR (HANYA LINK, TIDAK DOWNLOAD)
-if (!fs.existsSync(ASSET_DIR)) fs.mkdirSync(ASSET_DIR, { recursive: true });
+// placeholder image
 fs.writeFileSync(path.join(ASSET_DIR, imageName), "");
 
-// === UPDATE blog.json
 let blogIndex = { posts: [] };
 if (fs.existsSync(blogIndexPath)) {
   blogIndex = JSON.parse(fs.readFileSync(blogIndexPath, "utf8"));
@@ -180,16 +173,12 @@ if (fs.existsSync(blogIndexPath)) {
 blogIndex.posts.unshift({
   slug,
   title,
-  excerpt: title,
   image: `assets/blog/${imageName}`,
   date: today,
   tags: item.tags
 });
 
 fs.writeFileSync(blogIndexPath, JSON.stringify(blogIndex, null, 2));
-
-// === UPDATE QUEUE
 fs.writeFileSync(queuePath, JSON.stringify(queueData, null, 2));
 
-console.log("Artikel dipublish:", slug);
-
+console.log("✅ Artikel berhasil dipublish:", slug);
