@@ -32,7 +32,10 @@
 }
 
 .blog-bg-overlay {
-  background: rgba(255,255,255,0.75);
+  background: linear-gradient(
+  rgba(255,255,255,0.85),
+  rgba(255,255,255,0.85)
+);
   padding: 50px 30px;
   max-width: 1200px;
   margin: auto;
