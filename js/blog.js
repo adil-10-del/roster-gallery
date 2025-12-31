@@ -13,9 +13,7 @@ fetch("data/blog.json")
         list.innerHTML += `
           <article class="blog-card">
             <img src="${p.image}" alt="${p.title}">
-            <h2>
-              <a href="blog/${p.slug}.html">${p.title}</a>
-            </h2>
+            <h2><a href="blog/${p.slug}.html">${p.title}</a></h2>
             <p>${p.excerpt}</p>
             <small>${p.date}</small>
           </article>
