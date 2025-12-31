@@ -19,51 +19,44 @@ document.addEventListener("DOMContentLoaded", () => {
       <h2 class="category-title">${item.nama}</h2>
       <div class="product-grid"></div>
     `;
-
-    const grid = section.querySelector(".product-grid");
     container.appendChild(section);
 
-    loadImagesAuto(item, grid);
+    loadImages(item, section.querySelector(".product-grid"));
   });
 
 });
 
-/* =========================
-   AUTO DETECT JUMLAH FOTO
-========================= */
-function loadImagesAuto(item, grid) {
+function loadImages(item, grid) {
   let index = 1;
-  const maxTry = 50; // batas maksimal supaya aman
+  const MAX_IMAGE = 20; // Batas aman
 
-  const loadNext = async () => {
-    if (index > maxTry) return;
+  function tryLoad() {
+    if (index > MAX_IMAGE) return;
 
-    const imgPath = `assets/produk/${item.folder}/${index}.jpg`;
+    const img = new Image();
+    img.src = `assets/produk/${item.folder}/${index}.jpg`;
 
-    try {
-      const res = await fetch(imgPath, { method: "HEAD" });
-
-      if (!res.ok) return; // STOP kalau gambar tidak ada
-
+    img.onload = () => {
       const card = document.createElement("div");
       card.className = "product-card";
       card.innerHTML = `
-        <img src="${imgPath}" loading="lazy" alt="${item.nama} ${index}">
+        <img src="${img.src}" loading="lazy" alt="${item.nama} ${index}">
         <h3>${item.nama} ${index}</h3>
         <div class="btn-group">
           <a href="https://wa.me/6283872793673" class="btn">Tanya Harga</a>
           <a href="blog.html" class="btn outline">Lihat Artikel</a>
         </div>
       `;
-
       grid.appendChild(card);
       index++;
-      loadNext(); // lanjut cek gambar berikutnya
+      tryLoad();
+    };
 
-    } catch (err) {
-      console.log("Stop loading", item.nama);
-    }
-  };
+    img.onerror = () => {
+      // STOP total kalau file tidak ada
+      return;
+    };
+  }
 
-  loadNext();
+  tryLoad();
 }
