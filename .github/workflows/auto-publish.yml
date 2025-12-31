@@ -1,1 +1,32 @@
+name: Auto Publish Blog
 
+on:
+  schedule:
+    - cron: "0 1 * * *"   # 08.00 WIB
+    - cron: "0 5 * * *"   # 12.00 WIB
+    - cron: "0 11 * * *"  # 18.00 WIB
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Run auto publish engine
+        run: node scripts/generate-blog.js
+
+      - name: Commit & push changes
+        run: |
+          git config --global user.name "auto-publisher"
+          git config --global user.email "auto@publisher.com"
+          git add .
+          git commit -m "auto publish blog" || echo "no changes"
+          git push
