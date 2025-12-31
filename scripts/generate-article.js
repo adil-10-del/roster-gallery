@@ -64,7 +64,37 @@ const html = `
   <meta charset="UTF-8">
   <title>${title} | Roster Gallery</title>
   <meta name="description" content="${title} untuk kebutuhan konstruksi dan hunian modern.">
+  ${schema}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  const schema = `
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "${title}",
+  "image": "https://adil-10-del.github.io/roster-gallery/assets/blog/${imageName}",
+  "datePublished": "${today}",
+  "dateModified": "${today}",
+  "author": {
+    "@type": "Organization",
+    "name": "Roster Gallery"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Roster Gallery",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://adil-10-del.github.io/roster-gallery/assets/images/logo.jpg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://adil-10-del.github.io/roster-gallery/blog/${slug}.html"
+  }
+}
+</script>
+`;
+
   <link rel="canonical" href="https://adil-10-del.github.io/roster-gallery/blog/${slug}.html">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/blog.css">
@@ -104,7 +134,32 @@ const html = `
 <footer class="footer">
   © 2025 Roster Gallery. Hak Cipta Dilindungi.
 </footer>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://adil-10-del.github.io/roster-gallery/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://adil-10-del.github.io/roster-gallery/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "${title}",
+      "item": "https://adil-10-del.github.io/roster-gallery/blog/${slug}.html"
+    }
+  ]
+}
+</script>
 </body>
 </html>
 `;
