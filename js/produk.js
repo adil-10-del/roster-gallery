@@ -14,7 +14,7 @@ produkData.forEach(item => {
   const section = document.createElement("section");
 
   let cards = "";
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 10; i++) {
     cards += `
       <div class="product-card">
         <img 
