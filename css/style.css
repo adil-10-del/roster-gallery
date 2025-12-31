@@ -544,3 +544,71 @@ footer {
 .btn.secondary {
   background: #888;
 }
+/* =============================
+   GLOBAL CONTAINER FIX
+============================= */
+.section,
+.hero-content,
+.navbar,
+.contact-section {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =============================
+   BLOG PREVIEW RAPi
+============================= */
+#blog-preview {
+  text-align: center;
+}
+
+#blog-preview .grid-3 {
+  margin-top: 30px;
+}
+
+/* =============================
+   PRODUK GRID RAPi
+============================= */
+.grid-4 {
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.product {
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* =============================
+   TOMBOL TENGAH
+============================= */
+.section .btn {
+  display: block;
+  margin: 30px auto 0;
+  width: fit-content;
+}
+
+/* =============================
+   FOOTER RAPi
+============================= */
+footer {
+  margin-top: 80px;
+}
+
+/* =============================
+   MOBILE FIX
+============================= */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 26px;
+  }
+
+  .grid-4,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
