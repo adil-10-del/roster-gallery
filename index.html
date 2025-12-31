@@ -80,7 +80,55 @@
 </section>
 
 <footer>
-  <p>© 2025 Roster Gallery - Purwakarta, Jawa Barat</p>
+   <div class="hero-text">
+    <h1>Hubungi Kami</h1>
+    <p>Kami siap membantu kebutuhan material bangunan Anda</p>
+  </div>
+</header>
+
+<!-- KONTAK -->
+<section class="contact-section">
+
+  <div class="contact-grid">
+
+    <!-- INFO -->
+    <div class="contact-info">
+      <h2>Informasi Kontak</h2>
+      <p><strong>📍 Alamat:</strong> Purwakarta, Jawa Barat</p>
+      <p><strong>📞 WhatsApp:</strong> 6283872793673</p>
+      <p><strong>🕘 Jam Operasional:</strong><br>
+        Senin - Sabtu: 08.00 - 17.00<br>
+        Minggu: Libur
+      </p>
+
+      <a href="https://wa.me/6283872793673" class="btn" target="_blank">
+        Chat WhatsApp Sekarang
+      </a>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form">
+      <h2>Form Konsultasi / Pemesanan</h2>
+
+      <form id="formKontak">
+        <input type="text" id="nama" placeholder="Nama Lengkap" required>
+        <input type="text" id="telepon" placeholder="Nomor WhatsApp" required>
+        <select id="kategori" required>
+          <option value="">Pilih Kategori Produk</option>
+          <option value="Bata">Bata</option>
+          <option value="Roster Beton">Roster Beton</option>
+          <option value="Genteng">Genteng</option>
+          <option value="WalPanel">WalPanel</option>
+          <option value="List Pang">List Pang</option>
+          <option value="Tiang">Tiang</option>
+          <option value="Paving Block">Paving Block</option>
+        </select>
+
+        <textarea id="pesan" rows="4" placeholder="Tulis kebutuhan Anda..."></textarea>
+
+        <button type="submit" class="btn">Kirim via WhatsApp</button>
+      </form>
+    </div>
 </footer>
 
 <script src="js/main.js"></script>
