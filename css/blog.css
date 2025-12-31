@@ -27,7 +27,7 @@
 
 /* SECTION DENGAN BACKGROUND FOTO */
 .blog-container {
-  background: url("/roster-gallery/assets/images/blog-bg-material.jpg") center / cover no-repeat;
+  background: url("/roster-gallery/assets/images/blog-hero-material.jpg") center / cover no-repeat;
   padding: 80px 20px;
 }
 
