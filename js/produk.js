@@ -1,41 +1,67 @@
-const produkData = [
-  { nama: "Roster Beton", folder: "roster" },
-  { nama: "Genteng", folder: "genteng" },
-  { nama: "Bata", folder: "bata" },
-  { nama: "Walpanel", folder: "walpanel" },
-  { nama: "List Pang", folder: "list-pang" },
-  { nama: "Tiang", folder: "tiang" },
-  { nama: "Paving", folder: "paving" }
-];
+document.addEventListener("DOMContentLoaded", () => {
 
-const container = document.getElementById("product-container");
+  const produkData = [
+    { nama: "Roster Beton", folder: "roster" },
+    { nama: "Genteng", folder: "genteng" },
+    { nama: "Bata", folder: "bata" },
+    { nama: "Walpanel", folder: "walpanel" },
+    { nama: "List Pang", folder: "list-pang" },
+    { nama: "Tiang", folder: "tiang" },
+    { nama: "Paving", folder: "paving" }
+  ];
 
-produkData.forEach(item => {
-  const section = document.createElement("section");
+  const container = document.getElementById("product-container");
+  if (!container) return;
 
-  let cards = "";
-  for (let i = 1; i <= 10; i++) {
-    cards += `
-      <div class="product-card">
-        <img 
-          src="assets/produk/${item.folder}/${i}.jpg"
-          alt="${item.nama} ${i}"
-          loading="lazy"
-          decoding="async"
-        >
-        <h3>${item.nama} ${i}</h3>
+  produkData.forEach(item => {
+    const section = document.createElement("section");
+    section.innerHTML = `
+      <h2 class="category-title">${item.nama}</h2>
+      <div class="product-grid"></div>
+    `;
+
+    const grid = section.querySelector(".product-grid");
+    container.appendChild(section);
+
+    loadImagesAuto(item, grid);
+  });
+
+});
+
+/* =========================
+   AUTO DETECT JUMLAH FOTO
+========================= */
+function loadImagesAuto(item, grid) {
+  let index = 1;
+
+  const tryLoad = () => {
+    const img = new Image();
+    img.src = `assets/produk/${item.folder}/${index}.jpg`;
+    img.loading = "lazy";
+    img.decoding = "async";
+
+    img.onload = () => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <img src="${img.src}" alt="${item.nama} ${index}">
+        <h3>${item.nama} ${index}</h3>
         <div class="btn-group">
           <a href="https://wa.me/6283872793673" class="btn">Tanya Harga</a>
           <a href="blog.html" class="btn outline">Lihat Artikel</a>
         </div>
-      </div>
-    `;
-  }
+      `;
+      grid.appendChild(card);
 
-  section.innerHTML = `
-    <h2 class="category-title">${item.nama}</h2>
-    <div class="product-grid">${cards}</div>
-  `;
+      index++;
+      tryLoad(); // 🔥 lanjut ke gambar berikutnya
+    };
 
-  container.appendChild(section);
-});
+    img.onerror = () => {
+      // ❌ STOP kalau gambar tidak ada
+      return;
+    };
+  };
+
+  tryLoad();
+}
