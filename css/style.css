@@ -49,7 +49,8 @@ img {
   color: #333;
 }
 
-.navbar nav a:hover {
+.navbar nav a:hover,
+.navbar nav a.active {
   color: #c62828;
 }
 
@@ -77,14 +78,13 @@ img {
 
 .hero-content {
   position: absolute;
-  z-index: 2;
   inset: 0;
+  background: rgba(0,0,0,.45);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: rgba(0,0,0,.45);
   color: #fff;
   padding: 20px;
 }
@@ -99,20 +99,16 @@ img {
   margin-bottom: 25px;
 }
 
-.hero-btn .btn {
-  margin: 0 8px;
-}
-
 /* ===============================
    BUTTON
 ================================ */
 .btn {
   padding: 12px 26px;
-  border-radius: 5px;
+  border-radius: 6px;
   background: #c62828;
   color: #fff;
   font-weight: 600;
-  transition: .3s;
+  transition: 0.3s;
   display: inline-block;
 }
 
@@ -120,14 +116,15 @@ img {
   background: #a61d1d;
 }
 
-.btn.secondary {
+.btn.outline {
   background: transparent;
-  border: 2px solid #fff;
+  border: 2px solid #c62828;
+  color: #c62828;
 }
 
-.btn.secondary:hover {
-  background: #fff;
-  color: #000;
+.btn.outline:hover {
+  background: #c62828;
+  color: #fff;
 }
 
 /* ===============================
@@ -156,7 +153,8 @@ img {
 /* ===============================
    GRID
 ================================ */
-.grid-3, .grid-4 {
+.grid-3,
+.grid-4 {
   display: grid;
   gap: 25px;
 }
@@ -178,26 +176,11 @@ img {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 5px 20px rgba(0,0,0,.08);
-  font-weight: 600;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .product:hover {
-  transform: translateY(-5px);
-}
-
-/* ===============================
-   LAYANAN
-================================ */
-.layanan-list {
-  max-width: 600px;
-  margin: 30px auto;
-  list-style: none;
-}
-
-.layanan-list li {
-  font-size: 18px;
-  padding: 10px 0;
+  transform: translateY(-6px);
 }
 
 /* ===============================
@@ -215,345 +198,14 @@ img {
   gap: 40px;
 }
 
-.contact-info p {
-  margin: 10px 0;
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: none;
-}
-
-.contact-form button {
-  width: 100%;
-}
-
 /* ===============================
    FOOTER
 ================================ */
-footer {
-  background: #000;
-  color: #ccc;
-  text-align: center;
-  padding: 25px 10px;
-  font-size: 14px;
-}
-
-/* ===============================
-   RESPONSIVE
-================================ */
-@media(max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-  }
-
-  .hero-content h1 {
-    font-size: 30px;
-  }
-
-  .section {
-    padding: 50px 25px;
-  }
-}
-
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  background: #f5f5f5;
-}
-
-.header-small {
-  background: #111;
-  color: #fff;
-  padding-bottom: 40px;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-}
-
-.logo {
-  height: 45px;
-}
-
-nav a {
-  color: #fff;
-  margin-left: 20px;
-  text-decoration: none;
-}
-
-nav a.active {
-  border-bottom: 2px solid #c62828;
-}
-
-.hero-text {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.product-wrapper {
-  padding: 50px 40px;
-}
-
-.category-title {
-  font-size: 26px;
-  margin: 60px 0 20px;
-  border-left: 5px solid #c62828;
-  padding-left: 15px;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 25px;
-}
-
-.product-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform .3s;
-}
-
-.product-card:hover {
-  transform: translateY(-6px);
-}
-
-.product-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  background: #eee;
-}
-
-.product-card h3 {
-  padding: 15px;
-  text-align: center;
-}
-
-.btn-group {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding-bottom: 15px;
-}
-
-.btn {
-  padding: 8px 18px;
-  background: #c62828;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.btn.outline {
-  background: transparent;
-  border: 2px solid #c62828;
-  color: #c62828;
-}
-
-footer {
-  background: #111;
-  color: #fff;
-  text-align: center;
-  padding: 25px;
-  margin-top: 60px;
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .hero-text h1 {
-    font-size: 26px;
-  }
-}
-
-@media(max-width:768px){
-  .hero-content h1 { font-size: 28px; }
-}
-.btn-group {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-
-.btn.outline {
-  background: transparent;
-  border: 2px solid #c62828;
-  color: #c62828;
-}
-
-.btn.outline:hover {
-  background: #c62828;
-  color: white;
-}
-.contact-section {
-  padding: 50px 40px;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
-
-.contact-info p {
-  margin: 10px 0;
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-@media (max-width: 768px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* LAYANAN */
-.service-section {
-  padding: 60px 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-}
-
-.service-box {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: 0.3s;
-}
-
-.service-box:hover {
-  transform: translateY(-6px);
-}
-
-.service-box h2 {
-  margin-bottom: 10px;
-  color: #444;
-}
-
-.service-box p {
-  color: #666;
-  line-height: 1.6;
-}
-
-/* CTA */
-.cta-section {
-  background: linear-gradient(135deg, #333, #555);
-  color: white;
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.cta-section .btn {
-  margin-top: 20px;
-  display: inline-block;
-}
-.form-section {
-  max-width: 700px;
-  margin: 60px auto;
-  padding: 30px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.1);
-}
-
-.form-section label {
-  display: block;
-  margin-top: 15px;
-  font-weight: 600;
-}
-
-.form-section input,
-.form-section textarea,
-.form-section select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.form-section textarea {
-  min-height: 100px;
-}
-.surat-container {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-}
-
-.surat-box {
-  background: white;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.1);
-}
-
-.surat-box table {
-  width: 100%;
-  margin: 20px 0;
-}
-
-.surat-box td {
-  padding: 6px 0;
-}
-
-.btn-group {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.btn.secondary {
-  background: #888;
-}
-
-/* =========================
-   FOOTER GLOBAL
-========================= */
 .footer-main {
   background: #111;
   color: #ddd;
   padding: 50px 20px 20px;
   margin-top: 80px;
-  font-size: 14px;
 }
 
 .footer-container {
@@ -575,25 +227,10 @@ footer {
   color: #bbb;
   font-size: 14px;
   line-height: 1.7;
-  text-decoration: none;
 }
 
 .footer-col a:hover {
   color: #fff;
-}
-
-.btn-wa {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 18px;
-  background: #c62828;
-  color: #fff !important;
-  border-radius: 5px;
-  font-weight: 600;
-}
-
-.btn-wa:hover {
-  background: #a61d1d;
 }
 
 .footer-bottom {
@@ -601,12 +238,27 @@ footer {
   border-top: 1px solid #333;
   margin-top: 30px;
   padding-top: 15px;
-  color: #888;
   font-size: 13px;
+  color: #888;
 }
 
-/* RESPONSIVE */
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .section {
+    padding: 50px 25px;
+  }
+
   .footer-container {
     text-align: center;
   }
