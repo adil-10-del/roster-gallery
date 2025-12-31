@@ -369,3 +369,13 @@ img {
   z-index: 999;
   box-shadow: 0 8px 20px rgba(0,0,0,.3);
 }
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
