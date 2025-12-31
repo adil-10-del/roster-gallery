@@ -29,13 +29,14 @@
 .blog-container {
   background: url("/roster-gallery/assets/images/blog-hero-material.jpg") center / cover no-repeat;
   padding: 80px 20px;
+  min-height: 100vh;
 }
 
 .blog-bg-overlay {
   background: linear-gradient(
-  rgba(255,255,255,0.85),
-  rgba(255,255,255,0.85)
-);
+    rgba(255,255,255,0.75),
+    rgba(255,255,255,0.9)
+  );
   padding: 50px 30px;
   max-width: 1200px;
   margin: auto;
