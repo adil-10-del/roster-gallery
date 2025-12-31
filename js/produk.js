@@ -1,11 +1,11 @@
 const produkData = [
-  { nama: "Roster Beton", folder: "roster", blog: "blog.html" },
-  { nama: "Genteng", folder: "genteng", blog: "blog.html" },
-  { nama: "Bata", folder: "bata", blog: "blog.html" },
-  { nama: "Walpanel", folder: "walpanel", blog: "blog.html" },
-  { nama: "List Pang", folder: "list-pang", blog: "blog.html" },
-  { nama: "Tiang", folder: "tiang", blog: "blog.html" },
-  { nama: "Paving", folder: "paving", blog: "blog.html" }
+  { nama: "Roster Beton", folder: "roster" },
+  { nama: "Genteng", folder: "genteng" },
+  { nama: "Bata", folder: "bata" },
+  { nama: "Walpanel", folder: "walpanel" },
+  { nama: "List Pang", folder: "list-pang" },
+  { nama: "Tiang", folder: "tiang" },
+  { nama: "Paving", folder: "paving" }
 ];
 
 const container = document.getElementById("product-container");
@@ -13,27 +13,28 @@ const container = document.getElementById("product-container");
 produkData.forEach(item => {
   const section = document.createElement("section");
 
+  let cards = "";
+  for (let i = 1; i <= 6; i++) {
+    cards += `
+      <div class="product-card">
+        <img 
+          src="assets/produk/${item.folder}/${i}.jpg"
+          alt="${item.nama} ${i}"
+          loading="lazy"
+          decoding="async"
+        >
+        <h3>${item.nama} ${i}</h3>
+        <div class="btn-group">
+          <a href="https://wa.me/6283872793673" class="btn">Tanya Harga</a>
+          <a href="blog.html" class="btn outline">Lihat Artikel</a>
+        </div>
+      </div>
+    `;
+  }
+
   section.innerHTML = `
     <h2 class="category-title">${item.nama}</h2>
-
-    <div class="product-grid">
-      ${Array.from({ length: 10 }, (_, i) => `
-        <div class="product-card">
-          <img 
-            src="assets/produk/${item.folder}/${i + 1}.jpg"
-            alt="${item.nama} ${i + 1}"
-            loading="lazy"
-            onerror="this.src='assets/images/no-image.jpg'"
-          >
-          <h3>${item.nama} ${i + 1}</h3>
-
-          <div class="btn-group">
-            <a href="https://wa.me/6283872793673" class="btn">Tanya Harga</a>
-            <a href="${item.blog}" class="btn outline">Lihat Artikel</a>
-          </div>
-        </div>
-      `).join("")}
-    </div>
+    <div class="product-grid">${cards}</div>
   `;
 
   container.appendChild(section);
