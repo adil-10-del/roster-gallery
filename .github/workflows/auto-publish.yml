@@ -26,7 +26,9 @@ jobs:
         - name: Generate Sitemap
         run: node scripts/generate-sitemap.js
 
-
+        - name: Generate RSS
+        run: node scripts/generate-rss.js
+        
       - name: Commit & push changes
         run: |
           git config --global user.name "auto-publisher"
