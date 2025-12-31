@@ -1,8 +1,11 @@
-/* HERO TANPA BACKGROUND */
+/* ===============================
+   BLOG HERO
+================================ */
 .blog-hero {
-  padding: 70px 20px 50px;
+  padding: 80px 20px 60px;
   text-align: center;
   background: #fff;
+  border-bottom: 1px solid #eee;
 }
 
 .blog-hero h1 {
@@ -14,6 +17,7 @@
   font-size: 16px;
   max-width: 720px;
   margin: 0 auto 25px;
+  color: #555;
 }
 
 .blog-search input {
@@ -25,42 +29,49 @@
   font-size: 15px;
 }
 
-/* SECTION DENGAN BACKGROUND FOTO */
+/* ===============================
+   BLOG BACKGROUND SECTION
+================================ */
 .blog-container {
-  background: url(".../assets/images/blog-hero-material.jpg") center / cover no-repeat;
+  background: url("../assets/images/blog-hero-material.jpg") center / cover no-repeat;
   padding: 80px 20px;
-  min-height: 100vh;
 }
 
 .blog-bg-overlay {
-  background: linear-gradient(
-    rgba(255,255,255,0.75),
-    rgba(255,255,255,0.9)
-  );
+  background: rgba(255,255,255,0.9);
   padding: 50px 30px;
   max-width: 1200px;
   margin: auto;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
-/* GRID ARTIKEL */
+/* ===============================
+   BLOG GRID
+================================ */
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
 }
 
-/* CARD ARTIKEL */
+/* ===============================
+   BLOG CARD
+================================ */
 .blog-card {
   background: #fff;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  transition: .3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
 }
 
 .blog-card img {
   width: 100%;
-  height: 180px;
+  height: 190px;
   object-fit: cover;
 }
 
@@ -78,26 +89,21 @@
 .blog-card small {
   display: block;
   margin: 0 15px 15px;
-  color: #999;
+  color: #888;
 }
 
-/* EMPTY */
+/* ===============================
+   EMPTY STATE
+================================ */
 .no-result {
   text-align: center;
   color: #666;
   margin-top: 40px;
 }
 
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 25px 10px;
-  background: #111;
-  color: #fff;
-  font-size: 14px;
-}
-
-/* WHATSAPP FLOAT */
+/* ===============================
+   FLOATING WHATSAPP
+================================ */
 .wa-float {
   position: fixed;
   bottom: 25px;
@@ -116,4 +122,17 @@
 .wa-float img {
   width: 28px;
   height: 28px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .blog-hero h1 {
+    font-size: 28px;
+  }
+
+  .blog-container {
+    padding: 50px 15px;
+  }
 }
