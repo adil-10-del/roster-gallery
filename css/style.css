@@ -1,6 +1,6 @@
-/* ===============================
+/* =========================================
    RESET & GLOBAL
-================================ */
+========================================= */
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +12,7 @@ body {
   background: #fff;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a {
@@ -24,19 +25,26 @@ img {
   display: block;
 }
 
-/* ===============================
+/* =========================================
    NAVBAR
-================================ */
+========================================= */
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 60px;
-  background: #fff;
+  padding: 18px 70px;
+  transition: all 0.3s ease;
   box-shadow: 0 2px 10px rgba(0,0,0,.08);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+}
+
+.navbar.shrink {
+  padding: 10px 60px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.15);
 }
 
 .logo {
@@ -44,19 +52,35 @@ img {
 }
 
 .navbar nav a {
-  margin-left: 25px;
-  font-weight: 500;
+  margin-left: 28px;
+  font-weight: 600;
   color: #333;
+  position: relative;
 }
 
-.navbar nav a:hover,
-.navbar nav a.active {
+.navbar nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #c62828;
+  left: 0;
+  bottom: -6px;
+  transition: 0.3s;
+}
+
+.navbar nav a:hover::after,
+.navbar nav a.active::after {
+  width: 100%;
+}
+
+.navbar nav a:hover {
   color: #c62828;
 }
 
-/* ===============================
-   HERO
-================================ */
+/* =========================================
+   HERO SECTION
+========================================= */
 .hero-slider {
   position: relative;
   height: 85vh;
@@ -69,7 +93,7 @@ img {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: 1s ease;
+  transition: opacity 1s ease;
 }
 
 .slide.active {
@@ -79,84 +103,110 @@ img {
 .hero-content {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,.45);
+  background: linear-gradient(
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.65)
+  );
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #fff;
   padding: 20px;
+  color: #fff;
 }
 
 .hero-content h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+  font-size: 46px;
+  margin-bottom: 15px;
+  animation: fadeUp .8s ease;
 }
 
 .hero-content p {
   font-size: 18px;
-  margin-bottom: 25px;
+  max-width: 650px;
+  margin-bottom: 30px;
+  animation: fadeUp 1s ease;
 }
 
-/* ===============================
-   BUTTON
-================================ */
-.btn {
-  padding: 12px 26px;
+/* =========================================
+   BUTTONS
+========================================= */
+.btn,
+.btn-outline,
+.btn-cta {
+  padding: 13px 30px;
   border-radius: 6px;
-  background: #c62828;
-  color: #fff;
   font-weight: 600;
   transition: 0.3s;
   display: inline-block;
 }
 
-.btn:hover {
-  background: #a61d1d;
-}
-
-.btn.outline {
-  background: transparent;
-  border: 2px solid #c62828;
-  color: #c62828;
-}
-
-.btn.outline:hover {
+.btn {
   background: #c62828;
   color: #fff;
 }
 
-/* ===============================
+.btn:hover {
+  background: #a61d1d;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 2px solid #c62828;
+  color: #c62828;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: #c62828;
+  color: #fff;
+}
+
+.btn-cta {
+  background: #111;
+  color: #fff;
+}
+
+.btn-cta:hover {
+  background: #000;
+}
+
+/* =========================================
    SECTION
-================================ */
+========================================= */
 .section {
-  padding: 70px 60px;
+  padding: 80px 70px;
 }
 
 .section.gray {
-  background: #f7f7f7;
+  background: #f6f6f6;
 }
 
 .section h2 {
   text-align: center;
-  font-size: 32px;
+  font-size: 34px;
   margin-bottom: 10px;
 }
 
 .subtext {
   text-align: center;
   color: #777;
-  margin-bottom: 40px;
+  margin-bottom: 45px;
 }
 
-/* ===============================
-   GRID
-================================ */
+.center-btn {
+  text-align: center;
+  margin-top: 35px;
+}
+
+/* =========================================
+   GRID & CARD
+========================================= */
 .grid-3,
 .grid-4 {
   display: grid;
-  gap: 25px;
+  gap: 30px;
 }
 
 .grid-3 {
@@ -167,66 +217,69 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
-/* ===============================
-   PRODUCT
-================================ */
 .product {
   background: #fff;
-  padding: 40px 20px;
-  border-radius: 10px;
+  padding: 40px 25px;
   text-align: center;
-  box-shadow: 0 5px 20px rgba(0,0,0,.08);
-  transition: 0.3s;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  transition: 0.35s;
 }
 
 .product:hover {
-  transform: translateY(-6px);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.15);
 }
 
-/* ===============================
-   CONTACT
-================================ */
-.contact-section {
-  padding: 70px 60px;
-  background: #111;
-  color: #fff;
+/* =========================================
+   LAYANAN
+========================================= */
+.layanan-list {
+  list-style: none;
+  max-width: 700px;
+  margin: auto;
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
+.layanan-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  font-size: 17px;
 }
 
-/* ===============================
+.layanan-list i {
+  color: #c62828;
+  font-size: 22px;
+}
+
+/* =========================================
    FOOTER
-================================ */
+========================================= */
 .footer-main {
   background: #111;
-  color: #ddd;
-  padding: 50px 20px 20px;
-  margin-top: 80px;
+  color: #ccc;
+  padding: 60px 20px 25px;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: auto;
   display: grid;
+  gap: 35px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
 }
 
 .footer-col h3,
 .footer-col h4 {
   color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.footer-col p,
 .footer-col a {
+  display: block;
   color: #bbb;
-  font-size: 14px;
-  line-height: 1.7;
+  margin-bottom: 8px;
 }
 
 .footer-col a:hover {
@@ -235,147 +288,63 @@ img {
 
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid #333;
   margin-top: 30px;
   padding-top: 15px;
+  border-top: 1px solid #333;
   font-size: 13px;
   color: #888;
 }
 
-/* ===============================
-   RESPONSIVE
-================================ */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .hero-content h1 {
-    font-size: 28px;
-  }
-
-  .section {
-    padding: 50px 25px;
-  }
-
-  .footer-container {
-    text-align: center;
-  }
-:root {
-  --primary: #c62828;
-  --dark: #1e1e1e;
-  --gray: #f2f2f2;
-  --cream: #faf7f2;
-}
-.navbar {
-  transition: all 0.3s ease;
-}
-
-.navbar.scrolled {
-  padding: 8px 60px;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 5px 20px rgba(0,0,0,.15);
-}
-.hero-content {
-  background: linear-gradient(
-    rgba(0,0,0,0.6),
-    rgba(0,0,0,0.5)
-  );
-}
-
-.hero-content h1 {
-  font-size: 46px;
-  letter-spacing: 1px;
-}
-
-.hero-content p {
-  max-width: 700px;
-}
-.btn {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #c62828, #a11e1e);
-}
-
-.btn:hover {
-  box-shadow: 0 0 15px rgba(198,40,40,.6);
-  transform: translateY(-2px);
-}
-.product {
-  border-radius: 14px;
-  transition: .3s ease;
-  background: #fff;
-}
-
-.product:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(0,0,0,.15);
-}
-.layanan-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 25px;
-  margin-top: 40px;
-}
-
-.layanan-list li {
-  list-style: none;
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: 600;
-  box-shadow: 0 8px 20px rgba(0,0,0,.1);
-}
-
-.layanan-list i {
-  font-size: 32px;
-  color: var(--primary);
-  margin-bottom: 10px;
-  display: block;
-}
-.center-btn {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.btn-outline {
-  padding: 14px 32px;
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  font-weight: 600;
-  border-radius: 8px;
-}
-
-.btn-outline:hover {
-  background: var(--primary);
-  color: #fff;
-}
+/* =========================================
+   FLOATING WHATSAPP
+========================================= */
 .wa-float {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  width: 55px;
-  height: 55px;
-  background: #25d366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
+  background: #25D366;
   color: #fff;
+  font-size: 26px;
+  padding: 14px 16px;
+  border-radius: 50%;
   z-index: 999;
-  box-shadow: 0 8px 20px rgba(0,0,0,.3);
-}
-.fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+  transition: 0.3s;
 }
 
-.fade-up.show {
-  opacity: 1;
-  transform: translateY(0);
+.wa-float:hover {
+  transform: scale(1.1);
+}
+
+/* =========================================
+   ANIMATION
+========================================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 25px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .section {
+    padding: 60px 25px;
+  }
 }
