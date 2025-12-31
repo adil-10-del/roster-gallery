@@ -23,6 +23,10 @@ jobs:
       - name: Run auto publish engine
         run: node scripts/generate-blog.js
 
+        - name: Generate Sitemap
+        run: node scripts/generate-sitemap.js
+
+
       - name: Commit & push changes
         run: |
           git config --global user.name "auto-publisher"
