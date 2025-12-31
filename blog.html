@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Blog | Roster Gallery</title>
-  <meta name="description" content="Artikel seputar material bangunan: roster beton, paving, bata, genteng dan tips konstruksi.">
+
+  <meta name="description" content="Artikel seputar material bangunan seperti roster beton, paving block, bata, genteng, walpanel, dan tips konstruksi.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/blog.css">
 </head>
@@ -12,7 +15,7 @@
 
 <header class="header-small">
   <div class="navbar">
-    <img src="assets/images/logo.jpg" class="logo">
+    <img src="assets/images/logo.jpg" class="logo" alt="Roster Gallery">
     <nav>
       <a href="index.html">Home</a>
       <a href="katalog.html">Katalog</a>
@@ -22,28 +25,31 @@
   </div>
 </header>
 
-<section class="blog-container">
-  <h1>Artikel & Edukasi</h1>
-  <p class="subtitle">Tips dan informasi seputar material bangunan terbaik</p>
+<!-- HERO BLOG -->
+<section class="blog-hero">
+  <div class="blog-hero-overlay">
+    <h1>Artikel & Edukasi</h1>
+    <p>Tips, inspirasi, dan informasi seputar material bangunan untuk hunian dan proyek Anda</p>
 
-  <!-- Filter Kategori -->
-  <div class="blog-filter">
-    <label for="category">Filter Kategori:</label>
-    <select id="category">
-      <option value="All">Semua</option>
-      <option value="Bata">Bata</option>
-      <option value="Roster Beton">Roster Beton</option>
-      <option value="Genteng">Genteng</option>
-      <option value="Walpanel">Walpanel</option>
-      <option value="List Pang">List Pang</option>
-      <option value="Tiang">Tiang</option>
-      <option value="Paving Block">Paving Block</option>
-      <option value="General">Umum</option>
-    </select>
+    <!-- SEARCH -->
+    <div class="blog-search">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari artikel… (contoh: roster beton, paving block)"
+        aria-label="Cari artikel blog"
+      >
+    </div>
   </div>
+</section>
 
-  <!-- List Artikel -->
+<!-- LIST ARTIKEL -->
+<section class="blog-container">
   <div id="blog-list" class="blog-grid"></div>
+
+  <p id="no-result" class="no-result" style="display:none;">
+    Artikel tidak ditemukan.
+  </p>
 </section>
 
 <script src="js/blog.js"></script>
