@@ -251,30 +251,71 @@ img {
 /* ===============================
    LAYANAN
 ================================ */
-.layanan-list {
-  max-width: 900px;
-  margin: auto;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
+/* SECTION LAYANAN */
+.layanan {
+  text-align: center;
+  padding: 60px 20px;
 }
 
+/* LIST */
+.layanan-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+}
+
+/* ITEM */
 .layanan-list li {
-  background: #fff;
-  padding: 25px;
+  background: #f7f7f7;
+  padding: 18px 20px;
   border-radius: 12px;
+  font-size: 17px;
+  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 15px;
-  font-weight: 600;
-  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  justify-content: center;
+  gap: 12px;
+  transition: 0.3s ease;
 }
 
+/* ICON */
 .layanan-list i {
-  font-size: 28px;
-  color: var(--primary);
+  font-size: 22px;
+  color: #b71c1c;
 }
+
+/* HOVER */
+.layanan-list li:hover {
+  transform: translateY(-5px);
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+}
+
+/* CTA CENTER */
+.cta-center {
+  text-align: center;
+}
+
+.btn-cta {
+  display: inline-block;
+  background: #b71c1c;
+  color: #fff;
+  padding: 14px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-cta:hover {
+  background: #8e1414;
+  transform: scale(1.05);
+}
+
 
 /* ===============================
    FOOTER
