@@ -212,40 +212,74 @@ img {
   margin-top: 40px;
 }
 
-/* ===============================
-   GRID
-================================ */
-.grid-3 {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+/* ===========================
+   KATALOG PRODUK
+=========================== */
+
+.product-wrapper {
+  padding: 70px 5%;
+  background: #f7f7f7;
 }
 
-.grid-4 {
-  max-width: 1200px;
-  margin: auto;
+/* GRID */
+.product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px;
 }
 
-/* ===============================
-   PRODUCT
-================================ */
-.product {
+/* CARD */
+.product-card {
   background: #fff;
-  border-radius: 12px;
-  padding: 40px 20px;
-  text-align: center;
+  border-radius: 14px;
+  overflow: hidden;
   box-shadow: 0 10px 25px rgba(0,0,0,.08);
-  transition: .3s;
+  transition: .35s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.product:hover {
+.product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,.12);
+  box-shadow: 0 15px 40px rgba(0,0,0,.15);
+}
+
+/* IMAGE */
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* BODY */
+.product-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-body h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.product-body p {
+  font-size: 14px;
+  color: #666;
+  flex-grow: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .product-wrapper {
+    padding: 40px 20px;
+  }
+
+  .product-card img {
+    height: 200px;
+  }
 }
 
 /* ===============================
