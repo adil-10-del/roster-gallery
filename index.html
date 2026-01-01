@@ -19,43 +19,44 @@
 
 <body>
 
-<!-- ================= HEADER ================= -->
-<header>
+<!-- ================= NAVBAR ================= -->
+<header class="header">
   <div class="navbar">
-    <img src="assets/images/logo.jpg" class="logo">
+    <img src="assets/images/logo.jpg" class="logo" alt="Roster Gallery">
+
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="katalog.html">Katalog</a>
       <a href="layanan.html">Layanan</a>
       <a href="blog.html">Blog</a>
       <a href="kontak.html">Kontak</a>
     </nav>
   </div>
-
-  <div class="hero-slider">
-    <div class="slide active" style="background-image:url('assets/images/hero1.jpg')"></div>
-    <div class="slide" style="background-image:url('assets/images/hero2.jpg')"></div>
-    <div class="slide" style="background-image:url('assets/images/hero3.jpg')"></div>
-
-    <div class="hero-content">
-      <h1>Produsen Material Beton Berkualitas</h1>
-      <p>Solusi material bangunan terpercaya di Purwakarta</p>
-      <div class="hero-btn">
-        <a href="katalog.html" class="btn primary">Lihat Katalog</a>
-        <a href="https://wa.me/6283872793673" class="btn secondary">WhatsApp</a>
-      </div>
-    </div>
-  </div>
 </header>
 
+<!-- ================= HERO ================= -->
+<section class="hero-slider">
+  <div class="slide active" style="background-image:url('assets/images/hero1.jpg')"></div>
+  <div class="slide" style="background-image:url('assets/images/hero2.jpg')"></div>
+  <div class="slide" style="background-image:url('assets/images/hero3.jpg')"></div>
+
+  <div class="hero-content">
+    <h1>Produsen Material Beton Berkualitas</h1>
+    <p>Solusi material bangunan terpercaya di Purwakarta</p>
+
+    <div class="hero-btn">
+      <a href="katalog.html" class="btn primary">Lihat Katalog</a>
+      <a href="https://wa.me/6283872793673" class="btn secondary">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= BLOG PREVIEW ================= -->
-<section class="section gray" id="blog-preview">
+<section class="section gray">
   <h2>Artikel Terbaru</h2>
   <p class="subtext">Tips & informasi seputar material bangunan</p>
 
-  <div class="grid-3" id="blog-container">
-    <!-- Artikel otomatis via JS -->
-  </div>
+  <div class="grid-3" id="blog-container"></div>
 
   <div class="center-btn">
     <a href="blog.html" class="btn-outline">Lihat Semua Artikel</a>
@@ -66,13 +67,13 @@
 <section class="section">
   <h2>Produk Unggulan</h2>
 
-  <div class="product fade-up">
+  <div class="grid-4">
     <div class="product">Roster Beton</div>
     <div class="product">Genteng</div>
     <div class="product">Bata Tempel</div>
     <div class="product">Bata Ekspos</div>
     <div class="product">Wall Panel</div>
-    <div class="product">List / Lisplang</div>
+    <div class="product">Lis / Lisplang</div>
     <div class="product">Profilan</div>
     <div class="product">Tiang</div>
     <div class="product">Paving Block</div>
@@ -107,7 +108,7 @@
 
     <div class="footer-col">
       <h3>Roster Gallery</h3>
-      <p>Produsen material beton berkualitas untuk kebutuhan konstruksi dan desain bangunan di Purwakarta dan sekitarnya.</p>
+      <p>Produsen material beton berkualitas untuk kebutuhan konstruksi dan desain bangunan di Purwakarta.</p>
     </div>
 
     <div class="footer-col">
@@ -140,10 +141,11 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
-  <a href="https://wa.me/6283872793673" class="wa-float">
+<!-- FLOATING WA -->
+<a href="https://wa.me/6283872793673" class="wa-float">
   <i class="fab fa-whatsapp"></i>
 </a>
 
+<script src="js/main.js"></script>
 </body>
 </html>
