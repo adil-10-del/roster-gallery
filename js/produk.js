@@ -1,30 +1,69 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const katalog = [
-    { nama: "Bata", folder: "bata", total: 8 },
-    { nama: "Roster Beton", folder: "roster", total: 10 },
-    { nama: "Genteng", folder: "genteng", total: 8 },
-    { nama: "Paving", folder: "paving", total: 6 },
-    { nama: "Tiang", folder: "tiang", total: 10 },
-    { nama: "WalPanel", folder: "walpanel", total: 10 },
-    { nama: "List Pang", folder: "list-pang", total: 10 }
+
+  const produkData = [
+    { nama: "Roster Beton", folder: "roster" },
+    { nama: "Genteng", folder: "genteng" },
+    { nama: "Bata", folder: "bata" },
+    { nama: "Walpanel", folder: "walpanel" },
+    { nama: "List Pang", folder: "list-pang" },
+    { nama: "Tiang", folder: "tiang" },
+    { nama: "Paving", folder: "paving" }
   ];
 
-  const container = document.getElementById("productList");
+  const container = document.getElementById("product-container");
   if (!container) return;
 
-  katalog.forEach(kategori => {
-    for (let i = 1; i <= kategori.total; i++) {
-      const imgPath = `assets/produk/${kategori.folder}/${i}.jpg`;
+  produkData.forEach(item => {
+    const section = document.createElement("section");
+    section.innerHTML = `
+      <h2 class="category-title">${item.nama}</h2>
+      <div class="product-grid"></div>
+    `;
 
-      container.innerHTML += `
-        <div class="product-card">
-          <img src="${imgPath}" alt="${kategori.nama} ${i}" loading="lazy">
-          <div class="product-body">
-            <h3>${kategori.nama}</h3>
-          </div>
+    const grid = section.querySelector(".product-grid");
+    container.appendChild(section);
+
+    loadImagesAuto(item, grid);
+  });
+
+});
+
+/* =========================
+   AUTO DETECT JUMLAH FOTO
+========================= */
+function loadImagesAuto(item, grid) {
+  let index = 1;
+
+  const tryLoad = () => {
+    const img = new Image();
+    img.src = `assets/produk/${item.folder}/${index}.jpg`;
+    img.loading = "lazy";
+    img.decoding = "async";
+
+    img.onload = () => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <img src="${img.src}" alt="${item.nama} ${index}">
+        <h3>${item.nama} ${index}</h3>
+        <div class="btn-group">
+          <a href="https://wa.me/6283872793673" class="btn">Tanya Harga</a>
+          <a href="blog.html" class="btn outline">Lihat Artikel</a>
         </div>
       `;
-    }
-  });
-});
+      grid.appendChild(card);
+
+      index++;
+      tryLoad(); // 🔥 lanjut ke gambar berikutnya
+    };
+
+    img.onerror = () => {
+      // ❌ STOP kalau gambar tidak ada
+      return;
+    };
+  };
+
+  tryLoad();
+}
+
 
