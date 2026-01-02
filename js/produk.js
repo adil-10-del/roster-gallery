@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  const WA_NUMBER = "6283872793673";
+  const WA_NUMBER = "6283872793673"; // ganti nomor WA bisnismu
 
   const produkData = [
     { nama: "Roster Beton", folder: "roster", slug: "roster-beton" },
@@ -27,12 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadImagesAuto(item, grid, WA_NUMBER);
   });
-
 });
 
-/* ===============================
-   AUTO DETECT JUMLAH FOTO
-================================ */
 function loadImagesAuto(item, grid, WA_NUMBER) {
   let index = 1;
 
@@ -43,7 +38,7 @@ function loadImagesAuto(item, grid, WA_NUMBER) {
     img.onload = () => {
       const productName = `${item.nama} ${index}`;
       const waText = encodeURIComponent(
-        `Halo Roster Gallery, saya ingin bertanya harga ${productName}`
+        `Halo Roster Gallery, saya ingin menanyakan harga ${productName}`
       );
 
       const card = document.createElement("div");
@@ -67,7 +62,7 @@ function loadImagesAuto(item, grid, WA_NUMBER) {
     };
 
     img.onerror = () => {
-      return; // stop kalau foto tidak ada
+      return;
     };
   };
 
