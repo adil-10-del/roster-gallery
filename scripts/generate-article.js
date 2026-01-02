@@ -1,21 +1,28 @@
 const fs = require("fs");
 const path = require("path");
 
+const queuePath = "data/queue.json";
+const blogIndexPath = "data/blog.json";
 const BLOG_DIR = "blog";
-const DATA_DIR = "data";
 const ASSET_DIR = "assets/blog";
 
-const queuePath = path.join(DATA_DIR, "queue.json");
-const blogIndexPath = path.join(DATA_DIR, "blog.json");
-
-const queueData = JSON.parse(fs.readFileSync(queuePath));
-if (!queueData.queue.length) {
-  console.log("Tidak ada artikel.");
-  process.exit(0);
-}
-
-const item = queueData.queue.shift();
+const MAX_PER_RUN = 2;
 const today = new Date().toISOString().split("T")[0];
+
+let queue = JSON.parse(fs.readFileSync(queuePath));
+let blogIndex = fs.existsSync(blogIndexPath)
+  ? JSON.parse(fs.readFileSync(blogIndexPath))
+  : { posts: [] };
+
+if (!queue.queue.length) process.exit(0);
+
+if (!fs.existsSync(BLOG_DIR)) fs.mkdirSync(BLOG_DIR, { recursive: true });
+if (!fs.existsSync(ASSET_DIR)) fs.mkdirSync(ASSET_DIR, { recursive: true });
+
+const publishItems = queue.queue.splice(0, MAX_PER_RUN);
+
+publishItems.forEach(item => {
+  const image = `${item.slug}.jpg`;
 
 const content = `
 <p>${item.topic} merupakan salah satu solusi material bangunan yang banyak digunakan pada proyek modern.</p>
