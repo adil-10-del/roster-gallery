@@ -1,16 +1,13 @@
 const fs = require("fs");
-const path = require("path");
 
-const queuePath = path.join("data", "queue.json");
+const queuePath = "data/queue.json";
 
 const TOPICS = [
   { topic: "Roster Beton Minimalis untuk Rumah Modern", category: "Roster Beton" },
-  { topic: "Keunggulan Paving Block untuk Area Parkir", category: "Paving" },
-  { topic: "Genteng Beton Kuat dan Tahan Lama", category: "Genteng" },
-  { topic: "Bata Merah Berkualitas untuk Konstruksi", category: "Bata" },
-  { topic: "Walpanel Beton untuk Dinding Modern", category: "Walpanel" },
-  { topic: "List Pang Beton untuk Finishing Bangunan", category: "List Pang" },
-  { topic: "Tiang Beton Kokoh untuk Bangunan", category: "Tiang" }
+  { topic: "Harga Roster Beton per Meter Terbaru", category: "Roster Beton" },
+  { topic: "Paving Block Kuat untuk Area Parkir", category: "Paving" },
+  { topic: "Bata Merah Berkualitas untuk Bangunan", category: "Bata" },
+  { topic: "Genteng Beton Tahan Lama untuk Rumah", category: "Genteng" }
 ];
 
 let queue = { queue: [] };
@@ -18,17 +15,10 @@ if (fs.existsSync(queuePath)) {
   queue = JSON.parse(fs.readFileSync(queuePath));
 }
 
-if (queue.queue.length >= 5) {
-  console.log("Queue masih cukup.");
-  process.exit(0);
-}
+if (queue.queue.length >= 10) process.exit(0);
 
 TOPICS.forEach(item => {
-  const slug = item.topic
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-
+  const slug = item.topic.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   queue.queue.push({
     topic: item.topic,
     slug,
@@ -38,4 +28,4 @@ TOPICS.forEach(item => {
 });
 
 fs.writeFileSync(queuePath, JSON.stringify(queue, null, 2));
-console.log("✅ Queue diisi otomatis");
+console.log("✅ Queue terisi");
