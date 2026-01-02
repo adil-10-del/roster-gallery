@@ -98,3 +98,25 @@ ${schema}
 fs.writeFileSync(blogIndexPath, JSON.stringify(blogIndex, null, 2));
 fs.writeFileSync(queuePath, JSON.stringify(queue, null, 2));
 
+function getRandomImage(folder) {
+  const dir = `assets/image-source/${folder}`;
+  if (!fs.existsSync(dir)) return "default/1.jpg";
+  const files = fs.readdirSync(dir).filter(f => f.endsWith(".jpg"));
+  return `${folder}/${files[Math.floor(Math.random() * files.length)]}`;
+}
+
+const MAP = {
+  "Roster Beton": "roster",
+  "Paving": "paving",
+  "Bata": "bata",
+  "Genteng": "genteng"
+  "Walpanel": "walpanel"
+  "List Pang": "List"
+  "Tiang": "tiang"
+};
+const folder = MAP[item.category] || "default";
+const source = getRandomImage(folder);
+fs.copyFileSync(
+  `assets/image-source/${source}`,
+  `assets/blog/${item.slug}.jpg`
+);
