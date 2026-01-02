@@ -136,20 +136,20 @@
     padding: 50px 15px;
   }
 }
-.cta-wa{
-  margin:40px 0;
-  padding:30px;
-  background:#0f5132;
+.cta-wa {
+  background:#0a7cff;
   color:#fff;
-  border-radius:12px;
+  padding:30px;
+  margin:40px 0;
   text-align:center;
+  border-radius:10px;
 }
-.cta-wa a{
+.cta-wa a {
+  background:#25d366;
+  color:#fff;
+  padding:12px 24px;
   display:inline-block;
   margin-top:15px;
-  padding:12px 25px;
-  background:#25D366;
-  color:#fff;
-  border-radius:30px;
+  border-radius:6px;
   font-weight:bold;
 }
