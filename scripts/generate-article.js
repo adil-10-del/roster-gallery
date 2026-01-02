@@ -134,21 +134,52 @@ const html = `
   </div>
 </article>
 
-<footer class="footer footer-small">
-  <div class="footer-inner">
-    <div>
-      <strong>Roster Gallery</strong><br>
-      Material Beton & Ornamen Bangunan
+<footer class="footer-main">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3>Roster Gallery</h3>
+      <p>Produsen material beton berkualitas untuk kebutuhan konstruksi dan desain bangunan di Purwakarta.</p>
     </div>
-    <div>
-      📍 Purwakarta, Jawa Barat<br>
-      📞 <a href="https://wa.me/6283872793673">WhatsApp</a>
+
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <p>📍 Purwakarta, Jawa Barat</p>
+      <p>📞 0838-7279-3673</p>
+      <p>🕘 Senin – Sabtu, 08.00 – 17.00</p>
     </div>
+
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <a href="index.html">Home</a>
+      <a href="katalog.html">Katalog</a>
+      <a href="layanan.html">Layanan</a>
+      <a href="blog.html">Blog</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Hubungi Kami</h4>
+      <a class="btn-wa" href="https://wa.me/6283872793673" target="_blank">
+        Chat WhatsApp
+      </a>
+    </div>
+
   </div>
-  <p class="copyright">
-    © 2025 Roster Gallery. All Rights Reserved.
-  </p>
+
+  <div class="footer-bottom">
+    © 2025 Roster Gallery — All Rights Reserved.
+  </div>
 </footer>
+
+<a
+  href="https://wa.me/6283872793673"
+  class="wa-float"
+  target="_blank"
+  aria-label="Chat WhatsApp"
+>
+  <img src="assets/images/whatsapp.jpg" alt="WhatsApp">
+</a>
 
 </body>
 </html>
