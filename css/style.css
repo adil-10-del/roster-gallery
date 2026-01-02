@@ -141,62 +141,75 @@ img {
   }
 }
 
-/* =============================
-   PRODUK UNGGULAN
-============================= */
+/* ===== PRODUK UNGGULAN — UKURAN KECIL & RAPI ===== */
+
 .featured-products {
-  padding: 70px 20px;
-  background: #f7f7f7;
+  padding: 50px 20px;
+  background: #f8f8f8;
 }
 
-.section-title {
+.featured-products .container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.featured-products .section-title {
   text-align: center;
-  font-size: 30px;
-  margin-bottom: 45px;
+  font-size: 28px;
+  margin-bottom: 35px;
   color: #222;
 }
 
+/* grid kecil & padat */
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  align-items: start;
 }
 
-/* CARD */
+/* card kompak */
 .featured-card {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform .25s ease;
+  padding-bottom: 12px;
 }
 
+/* hover lembut */
 .featured-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
 }
 
+/* gambar lebih kecil */
 .featured-card img {
   width: 100%;
-  height: 200px;
+  height: 140px;
   object-fit: cover;
+  background: #eee;
 }
 
+/* judul kecil & rapi */
 .featured-card h3 {
-  font-size: 18px;
-  margin: 18px 0 10px;
+  font-size: 16px;
+  margin: 10px 8px;
   color: #222;
+  min-height: 44px;
 }
 
+/* tombol kecil */
 .btn-small {
   display: inline-block;
-  margin-bottom: 20px;
-  padding: 10px 22px;
+  margin-top: 8px;
+  padding: 8px 14px;
   background: #c62828;
   color: #fff;
-  border-radius: 6px;
+  border-radius: 5px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -204,25 +217,25 @@ img {
   background: #a61f1f;
 }
 
-/* RESPONSIVE */
+/* responsive */
+// tablet
 @media (max-width: 1024px) {
   .featured-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  .featured-card img {
+    height: 130px;
   }
 }
-
+// mobile
 @media (max-width: 768px) {
   .featured-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  .featured-card img {
+    height: 120px;
   }
 }
-
-@media (max-width: 480px) {
-  .featured-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 
 /* ===============================
    BUTTON
