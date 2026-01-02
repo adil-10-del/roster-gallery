@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ===============================
-   AUTO FOTO + LINK OTOMATIS
+   AUTO DETECT JUMLAH FOTO
 ================================ */
 function loadImagesAuto(item, grid, WA_NUMBER) {
   let index = 1;
