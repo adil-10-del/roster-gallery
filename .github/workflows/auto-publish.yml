@@ -1,10 +1,10 @@
-name: Auto Publish Blog + RSS + Sitemap
+name: Auto Publish Blog + Traffic Engine
 
 on:
   schedule:
-    - cron: "0 1 * * *" # 08.00 WIB
-    - cron: "0 5 * * *" # 12.00 WIB
-    - cron: "0 11 * * *" # 18.00 WIB
+    - cron: "0 1 * * *"
+    - cron: "0 5 * * *"
+    - cron: "0 11 * * *"
   workflow_dispatch:
 
 permissions:
@@ -13,40 +13,24 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install || echo "No dependencies"
+      - run: node scripts/refill-queue.js
+      - run: node scripts/generate-article.js
+      - run: node scripts/inject-cta.js
+      - run: node scripts/generate-rss.js
+      - run: node scripts/update-sitemap.js
 
-      - name: Refill queue (artikel otomatis)
-        run: node scripts/refill-queue.js
-
-      - name: Generate article
-        run: node scripts/generate-article.js
-        
-      - name: Inject CTA
-        run: node scripts/inject-cta.js
-
-      - name: Generate RSS
-        run: node scripts/generate-rss.js
-
-      - name: Update sitemap
-        run: node scripts/update-sitemap.js
-
-      - name: Commit & push changes
-        run: |
+      - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
-          git commit -m "Auto publish blog + rss + sitemap" || echo "No changes"
+          git commit -m "🚀 Auto Traffic + Auto Closing" || echo "No changes"
           git push
+
 
 
