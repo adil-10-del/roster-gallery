@@ -1,13 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  const WA_NUMBER = "6283872793673";
+
   const produkData = [
-    { nama: "Roster Beton", folder: "roster" },
-    { nama: "Genteng", folder: "genteng" },
-    { nama: "Bata", folder: "bata" },
-    { nama: "Walpanel", folder: "walpanel" },
-    { nama: "List Pang", folder: "list-pang" },
-    { nama: "Tiang", folder: "tiang" },
-    { nama: "Paving", folder: "paving" }
+    { nama: "Roster Beton", folder: "roster", slug: "roster-beton" },
+    { nama: "Genteng", folder: "genteng", slug: "genteng" },
+    { nama: "Bata", folder: "bata", slug: "bata" },
+    { nama: "Walpanel", folder: "walpanel", slug: "walpanel" },
+    { nama: "List Pang", folder: "list-pang", slug: "list-pang" },
+    { nama: "Tiang", folder: "tiang", slug: "tiang" },
+    { nama: "Paving Block", folder: "paving", slug: "paving" }
   ];
 
   const container = document.getElementById("product-container");
@@ -23,47 +25,51 @@ document.addEventListener("DOMContentLoaded", () => {
     const grid = section.querySelector(".product-grid");
     container.appendChild(section);
 
-    loadImagesAuto(item, grid);
+    loadImagesAuto(item, grid, WA_NUMBER);
   });
 
 });
 
-/* =========================
-   AUTO DETECT JUMLAH FOTO
-========================= */
-function loadImagesAuto(item, grid) {
+/* ===============================
+   AUTO FOTO + LINK OTOMATIS
+================================ */
+function loadImagesAuto(item, grid, WA_NUMBER) {
   let index = 1;
 
-  const tryLoad = () => {
+  const loadNext = () => {
     const img = new Image();
     img.src = `assets/produk/${item.folder}/${index}.jpg`;
-    img.loading = "lazy";
-    img.decoding = "async";
 
     img.onload = () => {
+      const productName = `${item.nama} ${index}`;
+      const waText = encodeURIComponent(
+        `Halo Roster Gallery, saya ingin bertanya harga ${productName}`
+      );
+
       const card = document.createElement("div");
       card.className = "product-card";
       card.innerHTML = `
-        <img src="${img.src}" alt="${item.nama} ${index}">
-        <h3>${item.nama} ${index}</h3>
+        <img src="${img.src}" alt="${productName}" loading="lazy">
+        <h3>${productName}</h3>
         <div class="btn-group">
-          <a href="https://wa.me/6283872793673" class="btn">Tanya Harga</a>
-          <a href="blog.html" class="btn outline">Lihat Artikel</a>
+          <a href="https://wa.me/${WA_NUMBER}?text=${waText}" target="_blank" class="btn">
+            Tanya Harga
+          </a>
+          <a href="blog/${item.slug}.html" class="btn outline">
+            Lihat Artikel
+          </a>
         </div>
       `;
-      grid.appendChild(card);
 
+      grid.appendChild(card);
       index++;
-      tryLoad(); // 🔥 lanjut ke gambar berikutnya
+      loadNext();
     };
 
     img.onerror = () => {
-      // ❌ STOP kalau gambar tidak ada
-      return;
+      return; // stop kalau foto tidak ada
     };
   };
 
-  tryLoad();
+  loadNext();
 }
-
-
