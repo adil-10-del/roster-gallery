@@ -66,6 +66,9 @@ publishItems.forEach(item => {
 <meta charset="UTF-8">
 <title>${title} | Roster Gallery</title>
 <meta name="description" content="${title}">
+<meta property="og:title" content="${title}">
+<meta property="og:image" content="https://adil-10-del.github.io/roster-gallery/assets/blog/${item.slug}.jpg">
+<meta property="og:type" content="article">
 <link rel="canonical" href="https://adil-10-del.github.io/roster-gallery/blog/${slug}.html">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/blog.css">
@@ -73,8 +76,9 @@ ${schema}
 </head>
 
 <body>
-<h1>${title}</h1>
-<img src="../assets/blog/${imageName}" alt="${title}">
+<section class="article-hero" data-title="${title}">
+  <img src="../assets/blog/${item.slug}.jpg" alt="${title} – Roster Gallery" loading="lazy">
+</section>
 <div>${content}</div>
 <a href="../blog.html">← Kembali ke Blog</a>
 </body>
