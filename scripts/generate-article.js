@@ -1,55 +1,29 @@
-/**
- * AUTO BLOG GENERATOR – ROSTER GALLERY
- */
-
 const fs = require("fs");
 const path = require("path");
 
-const ROOT = process.cwd();
-const BLOG_DIR = path.join(ROOT, "blog");
-const DATA_DIR = path.join(ROOT, "data");
-const ASSET_DIR = path.join(ROOT, "assets/blog");
+const BLOG_DIR = "blog";
+const DATA_DIR = "data";
+const ASSET_DIR = "assets/blog";
 
 const queuePath = path.join(DATA_DIR, "queue.json");
 const blogIndexPath = path.join(DATA_DIR, "blog.json");
 
-if (!fs.existsSync(queuePath)) {
-  console.log("Queue kosong.");
-  process.exit(0);
-}
-
-const queueData = JSON.parse(fs.readFileSync(queuePath, "utf8"));
+const queueData = JSON.parse(fs.readFileSync(queuePath));
 if (!queueData.queue.length) {
-  console.log("Tidak ada artikel untuk dipublish.");
+  console.log("Tidak ada artikel.");
   process.exit(0);
 }
 
 const item = queueData.queue.shift();
 const today = new Date().toISOString().split("T")[0];
 
-const title = item.topic;
-const slug = item.slug;
-const imageName = `${slug}.jpg`;
-
-/* ========================
-   ARTIKEL CONTENT (900+)
-======================== */
 const content = `
-<p>${item.topic} merupakan salah satu topik penting dalam dunia material bangunan modern. 
-Material ini banyak digunakan karena kekuatan, daya tahan, serta tampilannya yang fleksibel.</p>
-
-<p>Dalam penerapannya, ${item.category.toLowerCase()} sering digunakan pada bangunan hunian,
-komersial, hingga proyek berskala besar. Penggunaan yang tepat dapat meningkatkan nilai estetika
-dan fungsi bangunan secara keseluruhan.</p>
-
-<p>Keunggulan lainnya adalah kemudahan perawatan serta umur pakai yang panjang. 
-Hal ini menjadikan material ini sebagai solusi jangka panjang bagi pemilik bangunan.</p>
-
-<p>Selain itu, pemilihan material yang sesuai juga membantu efisiensi biaya pembangunan 
-tanpa mengurangi kualitas dan kekuatan struktur.</p>
-
-<p>Dengan perencanaan yang matang dan pemasangan profesional, 
-${item.topic.toLowerCase()} dapat menjadi investasi jangka panjang untuk properti Anda.</p>
+<p>${item.topic} merupakan salah satu solusi material bangunan yang banyak digunakan pada proyek modern.</p>
+<p>Material ini dikenal kuat, tahan lama, serta mudah diaplikasikan pada berbagai jenis bangunan.</p>
+<p>Penggunaan ${item.category.toLowerCase()} sangat cocok untuk rumah tinggal, gedung komersial, hingga area industri.</p>
+<p>Dari sisi biaya, material ini tergolong efisien karena umur pakainya yang panjang.</p>
+<p>Selain itu, tampilannya juga mampu meningkatkan nilai estetika bangunan.</p>
+<p>Dengan pemasangan yang tepat, ${item.topic.toLowerCase()} menjadi investasi jangka panjang.</p>
 `;
 
 /* ========================
@@ -178,7 +152,7 @@ const html = `
   target="_blank"
   aria-label="Chat WhatsApp"
 >
-  <img src="assets/images/whatsapp.jpg" alt="WhatsApp">
+<img src="../assets/images/whatsapp.jpg" alt="WhatsApp">
 </a>
 
 </body>
@@ -188,28 +162,25 @@ const html = `
 /* ========================
    SAVE FILE
 ======================== */
-if (!fs.existsSync(BLOG_DIR)) fs.mkdirSync(BLOG_DIR, { recursive: true });
-if (!fs.existsSync(ASSET_DIR)) fs.mkdirSync(ASSET_DIR, { recursive: true });
+fs.mkdirSync(BLOG_DIR, { recursive: true });
+fs.mkdirSync(ASSET_DIR, { recursive: true });
 
-fs.writeFileSync(path.join(BLOG_DIR, `${slug}.html`), html);
-
-// placeholder image
-fs.writeFileSync(path.join(ASSET_DIR, imageName), "");
+fs.writeFileSync(`${BLOG_DIR}/${item.slug}.html`, html);
+fs.writeFileSync(`${ASSET_DIR}/${item.slug}.jpg`, "");
 
 let blogIndex = { posts: [] };
 if (fs.existsSync(blogIndexPath)) {
-  blogIndex = JSON.parse(fs.readFileSync(blogIndexPath, "utf8"));
+  blogIndex = JSON.parse(fs.readFileSync(blogIndexPath));
 }
 
 blogIndex.posts.unshift({
-  slug,
-  title,
-  image: `assets/blog/${imageName}`,
+  slug: item.slug,
+  title: item.topic,
   date: today,
-  tags: item.tags
+  image: `assets/blog/${item.slug}.jpg`
 });
 
 fs.writeFileSync(blogIndexPath, JSON.stringify(blogIndex, null, 2));
 fs.writeFileSync(queuePath, JSON.stringify(queueData, null, 2));
 
-console.log("✅ Artikel berhasil dipublish:", slug);
+console.log("✅ Artikel publish:", item.slug);
