@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const katalog = [
-    { nama: "Bata", folder: "bata", total: 10 },
+    { nama: "Bata", folder: "bata", total: 8 },
     { nama: "Roster Beton", folder: "roster", total: 10 },
-    { nama: "Genteng", folder: "genteng", total: 6 },
-    { nama: "Paving", folder: "paving", total: 8 },
+    { nama: "Genteng", folder: "genteng", total: 8 },
+    { nama: "Paving", folder: "paving", total: 6 },
     { nama: "Tiang", folder: "tiang", total: 10 },
     { nama: "WalPanel", folder: "walpanel", total: 10 },
     { nama: "List Pang", folder: "list-pang", total: 10 }
