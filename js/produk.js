@@ -1,70 +1,41 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const WA_NUMBER = "6283872793673"; // ganti nomor WA bisnismu
+const produkData = [
+  { nama: "Roster Beton", folder: "roster", slug: "roster-beton" },
+  { nama: "Genteng", folder: "genteng", slug: "genteng" },
+  { nama: "Bata", folder: "bata", slug: "bata" },
+  { nama: "Walpanel", folder: "walpanel", slug: "walpanel" },
+  { nama: "List Pang", folder: "list-pang", slug: "list-pang" },
+  { nama: "Tiang", folder: "tiang", slug: "tiang" },
+  { nama: "Paving", folder: "paving", slug: "paving" }
+];
 
-  const produkData = [
-    { nama: "Roster Beton", folder: "roster", slug: "roster-beton" },
-    { nama: "Genteng", folder: "genteng", slug: "genteng" },
-    { nama: "Bata", folder: "bata", slug: "bata" },
-    { nama: "Walpanel", folder: "walpanel", slug: "walpanel" },
-    { nama: "List Pang", folder: "list-pang", slug: "list-pang" },
-    { nama: "Tiang", folder: "tiang", slug: "tiang" },
-    { nama: "Paving Block", folder: "paving", slug: "paving" }
-  ];
+const container = document.getElementById("productList");
 
-  const container = document.getElementById("product-container");
-  if (!container) return;
+produkData.forEach(item => {
+  const section = document.createElement("section");
 
-  produkData.forEach(item => {
-    const section = document.createElement("section");
-    section.innerHTML = `
-      <h2 class="category-title">${item.nama}</h2>
-      <div class="product-grid"></div>
+  let cards = "";
+  for (let i = 1; i <= 10; i++) {
+    cards += `
+      <div class="product-card">
+        <img src="assets/produk/${item.folder}/${i}.jpg" 
+             alt="${item.nama} ${i}" loading="lazy">
+        <h3>${item.nama} ${i}</h3>
+        <div class="btn-group">
+          <a href="https://wa.me/6283872793673?text=Halo,%20saya%20ingin%20tanya%20${encodeURIComponent(item.nama + ' ' + i)}"
+             class="btn" target="_blank">Tanya Harga</a>
+          <a href="blog/${item.slug}.html" class="btn outline">Lihat Artikel</a>
+        </div>
+      </div>
     `;
+  }
 
-    const grid = section.querySelector(".product-grid");
-    container.appendChild(section);
+  section.innerHTML = `
+    <h2 class="category-title">${item.nama}</h2>
+    <div class="product-grid">
+      ${cards}
+    </div>
+  `;
 
-    loadImagesAuto(item, grid, WA_NUMBER);
-  });
+  container.appendChild(section);
 });
 
-function loadImagesAuto(item, grid, WA_NUMBER) {
-  let index = 1;
-
-  const loadNext = () => {
-    const img = new Image();
-    img.src = `assets/produk/${item.folder}/${index}.jpg`;
-
-    img.onload = () => {
-      const productName = `${item.nama} ${index}`;
-      const waText = encodeURIComponent(
-        `Halo Roster Gallery, saya ingin menanyakan harga ${productName}`
-      );
-
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
-        <img src="${img.src}" alt="${productName}" loading="lazy">
-        <h3>${productName}</h3>
-        <div class="btn-group">
-          <a href="https://wa.me/${WA_NUMBER}?text=${waText}" target="_blank" class="btn">
-            Tanya Harga
-          </a>
-          <a href="blog/${item.slug}.html" class="btn outline">
-            Lihat Artikel
-          </a>
-        </div>
-      `;
-
-      grid.appendChild(card);
-      index++;
-      loadNext();
-    };
-
-    img.onerror = () => {
-      return;
-    };
-  };
-
-  loadNext();
-}
