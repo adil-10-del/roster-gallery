@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const katalog = [
-    { nama: "Bata", folder: "bata", total: 12 },
-    { nama: "Roster Beton", folder: "roster", total: 15 },
-    { nama: "Genteng", folder: "genteng", total: 10 },
-    { nama: "Paving", folder: "paving", total: 14 },
-    { nama: "Tiang", folder: "tiang", total: 8 },
-    { nama: "WalPanel", folder: "walpanel", total: 6 },
-    { nama: "List Pang", folder: "list-pang", total: 5 }
+    { nama: "Bata", folder: "bata", total: 10 },
+    { nama: "Roster Beton", folder: "roster", total: 10 },
+    { nama: "Genteng", folder: "genteng", total: 6 },
+    { nama: "Paving", folder: "paving", total: 8 },
+    { nama: "Tiang", folder: "tiang", total: 10 },
+    { nama: "WalPanel", folder: "walpanel", total: 10 },
+    { nama: "List Pang", folder: "list-pang", total: 10 }
   ];
 
   const container = document.getElementById("productList");
