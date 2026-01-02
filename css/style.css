@@ -942,3 +942,141 @@ img {
 .wa-float:hover {
   background: #1ebe5d;
 }
+/* ===============================
+   CONTACT SECTION
+================================ */
+.contact-section {
+  padding: 70px 20px;
+  background: #f7f7f7;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* GRID */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ===============================
+   INFO KONTAK
+================================ */
+.contact-info h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.contact-info p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.contact-info a {
+  color: #c62828;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-info .btn {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* ===============================
+   FORM KONTAK
+================================ */
+.contact-form h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 13px 14px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: #c62828;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 14px;
+  background: #c62828;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #a61f1f;
+}
+
+/* ===============================
+   FLOATING WHATSAPP
+================================ */
+.wa-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 55px;
+  height: 55px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  z-index: 999;
+}
+
+.wa-float img {
+  width: 28px;
+  height: 28px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-info h2,
+  .contact-form h2 {
+    font-size: 22px;
+  }
+}
