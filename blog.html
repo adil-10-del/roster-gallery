@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Blog | Roster Gallery</title>
-
   <meta name="description" content="Artikel seputar material bangunan seperti roster beton, paving block, bata, genteng, walpanel, dan tips konstruksi.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/blog.css">
 </head>
+
 <body>
 
 <header class="header-small">
@@ -25,51 +25,32 @@
   </div>
 </header>
 
-<!-- HERO TANPA BACKGROUND -->
 <section class="blog-hero">
   <h1>Artikel & Edukasi</h1>
-  <p>Tips, inspirasi, dan wawasan seputar material bangunan untuk rumah & proyek</p>
+  <p>Tips, inspirasi, dan wawasan seputar material bangunan</p>
 
   <div class="blog-search">
     <input
       type="text"
       id="searchInput"
-      placeholder="Cari artikel… (contoh: roster beton, paving block)"
+      placeholder="Cari artikel… (contoh: roster beton)"
     >
   </div>
 </section>
 
-<!-- LIST ARTIKEL (BACKGROUND FOTO DI SINI) -->
 <section class="blog-container">
-  <div class="blog-bg-overlay">
-    <div id="blog-list" class="blog-grid"></div>
-
-    <p id="no-result" class="no-result" style="display:none;">
-      Artikel tidak ditemukan.
-    </p>
-  </div>
+  <div id="blogList"></div>
+  <p id="no-result" class="no-result" style="display:none;">
+    Artikel tidak ditemukan.
+  </p>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  © 2025 Roster Gallery. Hak Cipta Dilindungi.
-</footer>
-
-<!-- WHATSAPP FLOAT -->
-<a
-  href="https://wa.me/6283872793673"
-  class="wa-float"
-  target="_blank"
-  aria-label="Chat WhatsApp"
->
-  <img src="assets/images/whatsapp.jpg" alt="WhatsApp">
-</a>
 <footer class="footer-main">
   <div class="footer-container">
-
     <div class="footer-col">
       <h3>Roster Gallery</h3>
-      <p>Produsen material beton berkualitas untuk kebutuhan konstruksi dan desain bangunan di Purwakarta dan sekitarnya.</p>
+      <p>Produsen material beton berkualitas di Purwakarta dan sekitarnya.</p>
     </div>
 
     <div class="footer-col">
@@ -81,11 +62,11 @@
 
     <div class="footer-col">
       <h4>Menu</h4>
-      <a href="/index.html">Home</a>
-      <a href="/katalog.html">Katalog</a>
-      <a href="/layanan.html">Layanan</a>
-      <a href="/blog/index.html">Blog</a>
-      <a href="/kontak.html">Kontak</a>
+      <a href="index.html">Home</a>
+      <a href="katalog.html">Katalog</a>
+      <a href="layanan.html">Layanan</a>
+      <a href="blog.html">Blog</a>
+      <a href="kontak.html">Kontak</a>
     </div>
 
     <div class="footer-col">
@@ -94,13 +75,32 @@
         Chat WhatsApp
       </a>
     </div>
-
   </div>
 
   <div class="footer-bottom">
     © 2025 Roster Gallery — All Rights Reserved.
   </div>
 </footer>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/6283872793673" class="wa-float" target="_blank">
+  <img src="assets/images/whatsapp.jpg" alt="WhatsApp">
+</a>
+
+<script>
+fetch("data/blog.json")
+.then(r => r.json())
+.then(d => {
+  const list = document.getElementById("blogList");
+  list.innerHTML = d.posts.map(p => `
+    <article class="blog-card">
+      <img src="${p.image}" alt="${p.title}">
+      <h2><a href="blog/${p.slug}.html">${p.title}</a></h2>
+      <small>${p.date}</small>
+    </article>
+  `).join("");
+});
+</script>
 
 <script src="js/blog.js"></script>
 </body>
