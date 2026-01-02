@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm install || echo "No dependencies"
 
+      - name: Refill queue (artikel otomatis)
+        run: node scripts/refill-queue.js
+
       - name: Generate article
         run: node scripts/generate-article.js
 
