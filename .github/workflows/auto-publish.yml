@@ -31,6 +31,9 @@ jobs:
 
       - name: Generate article
         run: node scripts/generate-article.js
+        
+      - name: Inject CTA
+        run: node scripts/inject-cta.js
 
       - name: Generate RSS
         run: node scripts/generate-rss.js
