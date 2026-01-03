@@ -1,35 +1,49 @@
+name: Auto Publish Content
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
 jobs:
   publish:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install deps
-        run: npm ci || true
-
-      - name: Debug & Run Article Generator
+      - name: Install dependencies
         run: |
-          echo "===== FILE CONTENT ====="
-          nl -ba scripts/generate-article.js
-          echo "===== RUN ====="
+          if [ -f package.json ]; then
+            npm install
+          else
+            echo "No package.json, skip install"
+          fi
+
+      - name: Run article generator
+        run: |
           node scripts/generate-article.js
 
-      - run: node scripts/inject-cta.js
-      - run: node scripts/generate-rss.js
-      - run: node scripts/update-sitemap.js
+      - name: Inject CTA
+        run: node scripts/inject-cta.js
+
+      - name: Generate RSS
+        run: node scripts/generate-rss.js
+
+      - name: Update sitemap
+        run: node scripts/update-sitemap.js
 
       - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
-          git commit -m "🚀 Auto Traffic + Auto Closing" || echo "No changes"
+          git commit -m "🚀 Auto publish content" || echo "No changes"
           git push
-
-
-
-
