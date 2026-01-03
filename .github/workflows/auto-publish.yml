@@ -20,7 +20,12 @@ jobs:
           node-version: 18
 
       - run: node scripts/refill-queue.js
-      - run: node scripts/generate-article.js
+      - name: Debug file content
+  run: |
+    echo "===== FILE CONTENT ====="
+    nl -ba scripts/generate-article.js
+    echo "===== RUN ====="
+    node scripts/generate-article.js
       - run: node scripts/inject-cta.js
       - run: node scripts/generate-rss.js
       - run: node scripts/update-sitemap.js
