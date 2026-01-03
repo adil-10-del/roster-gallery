@@ -8,11 +8,10 @@ const ASSET_DIR = "assets/blog";
 const MAX_PER_RUN = 2;
 const today = new Date().toISOString().split("T")[0];
 
-// load queue
-let queue = JSON.parse(fs.readFileSync(queuePath, "utf8"));
+// ===== LOAD DATA =====
+const queue = JSON.parse(fs.readFileSync(queuePath, "utf8"));
 
-// load blog index
-let blogIndex = fs.existsSync(blogIndexPath)
+const blogIndex = fs.existsSync(blogIndexPath)
   ? JSON.parse(fs.readFileSync(blogIndexPath, "utf8"))
   : { posts: [] };
 
@@ -21,17 +20,41 @@ if (!queue.queue.length) {
   process.exit(0);
 }
 
-// ensure dirs
+// ===== ENSURE DIR =====
 fs.mkdirSync(BLOG_DIR, { recursive: true });
 fs.mkdirSync(ASSET_DIR, { recursive: true });
 
-// ambil artikel
+// ===== HELPER =====
+function getRandomImage(folder) {
+  const dir = `assets/image-source/${folder}`;
+  if (!fs.existsSync(dir)) return "default/1.jpg";
+
+  const files = fs.readdirSync(dir).filter(f => f.endsWith(".jpg"));
+  if (!files.length) return "default/1.jpg";
+
+  return `${folder}/${files[Math.floor(Math.random() * files.length)]}`;
+}
+
+const CATEGORY_MAP = {
+  "Roster Beton": "roster",
+  "Paving": "paving",
+  "Bata": "bata",
+  "Genteng": "genteng",
+  "Walpanel": "walpanel",
+  "List Pang": "list",
+  "Tiang": "tiang"
+};
+
+// ===== PROCESS QUEUE =====
 const publishItems = queue.queue.splice(0, MAX_PER_RUN);
 
 publishItems.forEach(item => {
   const title = item.topic;
   const slug = item.slug;
   const imageName = `${slug}.jpg`;
+
+  const folder = CATEGORY_MAP[item.category] || "default";
+  const sourceImage = getRandomImage(folder);
 
   const content = `
 <p>${title} merupakan salah satu solusi material bangunan yang banyak digunakan pada proyek modern.</p>
@@ -67,7 +90,7 @@ publishItems.forEach(item => {
 <title>${title} | Roster Gallery</title>
 <meta name="description" content="${title}">
 <meta property="og:title" content="${title}">
-<meta property="og:image" content="https://adil-10-del.github.io/roster-gallery/assets/blog/${item.slug}.jpg">
+<meta property="og:image" content="https://adil-10-del.github.io/roster-gallery/assets/blog/${imageName}">
 <meta property="og:type" content="article">
 <link rel="canonical" href="https://adil-10-del.github.io/roster-gallery/blog/${slug}.html">
 <link rel="stylesheet" href="../css/style.css">
@@ -76,18 +99,29 @@ ${schema}
 </head>
 
 <body>
-<section class="article-hero" data-title="${title}">
-  <img src="../assets/blog/${item.slug}.jpg" alt="${title} – Roster Gallery" loading="lazy">
+<section class="article-hero">
+  <img src="../assets/blog/${imageName}" alt="${title}" loading="lazy">
 </section>
-<div>${content}</div>
+
+<div class="article-content">
+${content}
+</div>
+
 <a href="../blog.html">← Kembali ke Blog</a>
 </body>
 </html>
 `;
 
+  // write html
   fs.writeFileSync(`${BLOG_DIR}/${slug}.html`, html);
-  fs.writeFileSync(`${ASSET_DIR}/${imageName}`, "");
 
+  // copy image
+  fs.copyFileSync(
+    `assets/image-source/${sourceImage}`,
+    `${ASSET_DIR}/${imageName}`
+  );
+
+  // update index
   blogIndex.posts.unshift({
     slug,
     title,
@@ -98,29 +132,6 @@ ${schema}
   console.log("✅ Publish:", slug);
 });
 
-// save updates
+// ===== SAVE =====
 fs.writeFileSync(blogIndexPath, JSON.stringify(blogIndex, null, 2));
 fs.writeFileSync(queuePath, JSON.stringify(queue, null, 2));
-
-function getRandomImage(folder) {
-  const dir = `assets/image-source/${folder}`;
-  if (!fs.existsSync(dir)) return "default/1.jpg";
-  const files = fs.readdirSync(dir).filter(f => f.endsWith(".jpg"));
-  return `${folder}/${files[Math.floor(Math.random() * files.length)]}`;
-}
-
-const MAP = {
-  "Roster Beton": "roster",
-  "Paving": "paving",
-  "Bata": "bata",
-  "Genteng": "genteng"
-  "Walpanel": "walpanel"
-  "List Pang": "List"
-  "Tiang": "tiang"
-};
-const folder = MAP[item.category] || "default";
-const source = getRandomImage(folder);
-fs.copyFileSync(
-  `assets/image-source/${source}`,
-  `assets/blog/${item.slug}.jpg`
-);
