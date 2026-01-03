@@ -1,12 +1,32 @@
-const fs = require("fs");
+/**
+ * AUTO ARTICLE GENERATOR + IMAGE LEVEL 2
+ * Author: Roster Gallery Automation
+ */
 
+const fs = require("fs");
+const https = require("https");
+const sharp = require("sharp");
+
+// ===== PATH CONFIG =====
 const queuePath = "data/queue.json";
 const blogIndexPath = "data/blog.json";
 const BLOG_DIR = "blog";
 const ASSET_DIR = "assets/blog";
 
+// ===== LIMIT =====
 const MAX_PER_RUN = 2;
 const today = new Date().toISOString().split("T")[0];
+
+// ===== IMAGE KEYWORDS =====
+const IMAGE_KEYWORDS = {
+  "Roster Beton": "concrete,roster,architecture",
+  "Paving": "paving,block,road",
+  "Bata": "brick,wall,construction",
+  "Genteng": "roof,tiles,house",
+  "Walpanel": "wall,interior,modern",
+  "List Pang": "ornament,building",
+  "Tiang": "pillar,column,architecture"
+};
 
 // ===== LOAD DATA =====
 const queue = JSON.parse(fs.readFileSync(queuePath, "utf8"));
@@ -16,7 +36,7 @@ const blogIndex = fs.existsSync(blogIndexPath)
   : { posts: [] };
 
 if (!queue.queue.length) {
-  console.log("Queue kosong");
+  console.log("🟡 Queue kosong, tidak ada artikel dibuat");
   process.exit(0);
 }
 
@@ -24,54 +44,74 @@ if (!queue.queue.length) {
 fs.mkdirSync(BLOG_DIR, { recursive: true });
 fs.mkdirSync(ASSET_DIR, { recursive: true });
 
-// ===== HELPER =====
-function getRandomImage(folder) {
-  const dir = `assets/image-source/${folder}`;
-  if (!fs.existsSync(dir)) return "default/1.jpg";
+// ===== IMAGE DOWNLOADER =====
+function downloadAndResizeImage(url, outputPath) {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, res => {
+        if (res.statusCode !== 200) {
+          return reject(new Error("Image download failed"));
+        }
 
-  const files = fs.readdirSync(dir).filter(f => f.endsWith(".jpg"));
-  if (!files.length) return "default/1.jpg";
+        const transformer = sharp()
+          .resize(1200, 630, { fit: "cover" })
+          .jpeg({ quality: 80 });
 
-  return `${folder}/${files[Math.floor(Math.random() * files.length)]}`;
+        const fileStream = fs.createWriteStream(outputPath);
+        res.pipe(transformer).pipe(fileStream);
+
+        fileStream.on("finish", resolve);
+        fileStream.on("error", reject);
+      })
+      .on("error", reject);
+  });
 }
 
-const CATEGORY_MAP = {
-  "Roster Beton": "roster",
-  "Paving": "paving",
-  "Bata": "bata",
-  "Genteng": "genteng",
-  "Walpanel": "walpanel",
-  "List Pang": "list",
-  "Tiang": "tiang"
-};
+// ===== MAIN PROCESS =====
+(async () => {
+  const publishItems = queue.queue.splice(0, MAX_PER_RUN);
 
-// ===== PROCESS QUEUE =====
-const publishItems = queue.queue.splice(0, MAX_PER_RUN);
+  for (const item of publishItems) {
+    const title = item.topic;
+    const slug = item.slug;
+    const imageName = `${slug}.jpg`;
+    const localImagePath = `${ASSET_DIR}/${imageName}`;
 
-publishItems.forEach(item => {
-  const title = item.topic;
-  const slug = item.slug;
-  const imageName = `${slug}.jpg`;
+    // ===== IMAGE SOURCE =====
+    const keywords =
+      IMAGE_KEYWORDS[item.category] || "building,construction";
 
-  const folder = CATEGORY_MAP[item.category] || "default";
-  const sourceImage = getRandomImage(folder);
+    const unsplashUrl = `https://source.unsplash.com/1600x900/?${encodeURIComponent(
+      keywords
+    )}`;
 
-  const content = `
-<p>${title} merupakan salah satu solusi material bangunan yang banyak digunakan pada proyek modern.</p>
+    try {
+      await downloadAndResizeImage(unsplashUrl, localImagePath);
+      console.log("🖼 Image saved:", imageName);
+    } catch (err) {
+      console.warn("⚠️ Image failed, article continues:", err.message);
+    }
+
+    const imageUrl = `https://adil-10-del.github.io/roster-gallery/assets/blog/${imageName}`;
+
+    // ===== CONTENT =====
+    const content = `
+<p><strong>${title}</strong> merupakan salah satu solusi material bangunan yang banyak digunakan pada proyek modern.</p>
 <p>Material ini dikenal kuat, tahan lama, serta mudah diaplikasikan.</p>
-<p>Penggunaan ${item.category.toLowerCase()} cocok untuk rumah dan bangunan komersial.</p>
-<p>Dari sisi biaya, material ini efisien karena umur pakainya panjang.</p>
-<p>Tampilan modernnya meningkatkan nilai estetika bangunan.</p>
-<p>${title.toLowerCase()} adalah investasi jangka panjang.</p>
+<p>Penggunaan ${item.category.toLowerCase()} sangat cocok untuk rumah tinggal maupun bangunan komersial.</p>
+<p>Dari sisi biaya, material ini relatif efisien karena umur pakainya panjang.</p>
+<p>Tampilan modernnya mampu meningkatkan nilai estetika bangunan.</p>
+<p>Dengan perawatan minimal, ${title.toLowerCase()} menjadi investasi jangka panjang.</p>
 `;
 
-  const schema = `
+    // ===== SCHEMA =====
+    const schema = `
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "${title}",
-  "image": "https://adil-10-del.github.io/roster-gallery/assets/blog/${imageName}",
+  "image": "${imageUrl}",
   "datePublished": "${today}",
   "dateModified": "${today}",
   "author": {
@@ -82,7 +122,8 @@ publishItems.forEach(item => {
 </script>
 `;
 
-  const html = `
+    // ===== HTML =====
+    const html = `
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -90,7 +131,7 @@ publishItems.forEach(item => {
 <title>${title} | Roster Gallery</title>
 <meta name="description" content="${title}">
 <meta property="og:title" content="${title}">
-<meta property="og:image" content="https://adil-10-del.github.io/roster-gallery/assets/blog/${imageName}">
+<meta property="og:image" content="${imageUrl}">
 <meta property="og:type" content="article">
 <link rel="canonical" href="https://adil-10-del.github.io/roster-gallery/blog/${slug}.html">
 <link rel="stylesheet" href="../css/style.css">
@@ -100,7 +141,7 @@ ${schema}
 
 <body>
 <section class="article-hero">
-  <img src="../assets/blog/${imageName}" alt="${title}" loading="lazy">
+  <img src="${imageUrl}" alt="${title}" loading="lazy">
 </section>
 
 <div class="article-content">
@@ -112,26 +153,23 @@ ${content}
 </html>
 `;
 
-  // write html
-  fs.writeFileSync(`${BLOG_DIR}/${slug}.html`, html);
+    // ===== SAVE FILE =====
+    fs.writeFileSync(`${BLOG_DIR}/${slug}.html`, html);
 
-  // copy image
-  fs.copyFileSync(
-    `assets/image-source/${sourceImage}`,
-    `${ASSET_DIR}/${imageName}`
-  );
+    blogIndex.posts.unshift({
+      slug,
+      title,
+      date: today,
+      image: `assets/blog/${imageName}`
+    });
 
-  // update index
-  blogIndex.posts.unshift({
-    slug,
-    title,
-    date: today,
-    image: `assets/blog/${imageName}`
-  });
+    console.log("✅ Publish:", slug);
+  }
 
-  console.log("✅ Publish:", slug);
-});
+  // ===== SAVE DATA =====
+  fs.writeFileSync(blogIndexPath, JSON.stringify(blogIndex, null, 2));
+  fs.writeFileSync(queuePath, JSON.stringify(queue, null, 2));
 
-// ===== SAVE =====
-fs.writeFileSync(blogIndexPath, JSON.stringify(blogIndex, null, 2));
-fs.writeFileSync(queuePath, JSON.stringify(queue, null, 2));
+  console.log("🚀 Auto publish selesai");
+})();
+
