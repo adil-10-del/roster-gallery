@@ -1,1 +1,13 @@
+{
+  "name": "roster-gallery",
+  "version": "1.0.0",
+  "description": "Auto blog generator with image automation",
+  "private": true,
+  "scripts": {
+    "generate": "node scripts/generate-article.js"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  }
+}
 
