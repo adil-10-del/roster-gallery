@@ -19,13 +19,8 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: |
-          if [ -f package.json ]; then
-            npm install
-          else
-            echo "No package.json, skip install"
-          fi
+      - name: Refill Queue
+        run: node scripts/refill-queue.js
 
       - name: Run article generator
         run: |
