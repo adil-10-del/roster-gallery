@@ -1,6 +1,45 @@
 {
   "queue": [
     {
+      "topic": "Genteng Beton Tahan Lama untuk Rumah",
+      "slug": "genteng-beton-tahan-lama-untuk-rumah",
+      "category": "Genteng",
+      "tags": [
+        "genteng",
+        "beton",
+        "tahan",
+        "lama",
+        "untuk",
+        "rumah"
+      ]
+    },
+    {
+      "topic": "Roster Beton Minimalis untuk Rumah Modern",
+      "slug": "roster-beton-minimalis-untuk-rumah-modern",
+      "category": "Roster Beton",
+      "tags": [
+        "roster",
+        "beton",
+        "minimalis",
+        "untuk",
+        "rumah",
+        "modern"
+      ]
+    },
+    {
+      "topic": "Harga Roster Beton per Meter Terbaru",
+      "slug": "harga-roster-beton-per-meter-terbaru",
+      "category": "Roster Beton",
+      "tags": [
+        "harga",
+        "roster",
+        "beton",
+        "per",
+        "meter",
+        "terbaru"
+      ]
+    },
+    {
       "topic": "Paving Block Kuat untuk Area Parkir",
       "slug": "paving-block-kuat-untuk-area-parkir",
       "category": "Paving",
