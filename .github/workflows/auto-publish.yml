@@ -1,41 +1,35 @@
-name: Auto Publish Blog + Traffic Engine
-
-on:
-  schedule:
-    - cron: "0 1 * * *"
-    - cron: "0 5 * * *"
-    - cron: "0 11 * * *"
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - run: node scripts/refill-queue.js
-      - name: Debug file content
-  run: |
-    echo "===== FILE CONTENT ====="
-    nl -ba scripts/generate-article.js
-    echo "===== RUN ====="
-    node scripts/generate-article.js
+      - name: Install deps
+        run: npm ci || true
+
+      - name: Debug & Run Article Generator
+        run: |
+          echo "===== FILE CONTENT ====="
+          nl -ba scripts/generate-article.js
+          echo "===== RUN ====="
+          node scripts/generate-article.js
+
       - run: node scripts/inject-cta.js
       - run: node scripts/generate-rss.js
       - run: node scripts/update-sitemap.js
 
-      - run: |
+      - name: Commit changes
+        run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
           git commit -m "🚀 Auto Traffic + Auto Closing" || echo "No changes"
           git push
+
 
 
 
