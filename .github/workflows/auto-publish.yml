@@ -1,30 +1,36 @@
-name: Auto Publish Content
+name: Auto Publish Blog
 
 on:
+  schedule:
+    - cron: "0 */6 * * *"
   workflow_dispatch:
-  push:
-    branches:
-      - main
+
+permissions:
+  contents: write
 
 jobs:
   publish:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Refill Queue
+      - name: Install dependencies
+        run: npm install
+
+      - name: Refill Queue (AUTO DATA)
         run: node scripts/refill-queue.js
 
-      - name: Run article generator
-        run: |
-          node scripts/generate-article.js
+      - name: Debug Queue
+        run: cat data/queue.json
+
+      - name: Generate Article + Image
+        run: node scripts/generate-article.js
 
       - name: Inject CTA
         run: node scripts/inject-cta.js
@@ -32,13 +38,14 @@ jobs:
       - name: Generate RSS
         run: node scripts/generate-rss.js
 
-      - name: Update sitemap
+      - name: Update Sitemap
         run: node scripts/update-sitemap.js
 
-      - name: Commit changes
+      - name: Commit & Push
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
-          git commit -m "🚀 Auto publish content" || echo "No changes"
+          git commit -m "🚀 Auto publish article" || echo "No changes"
           git push
+
