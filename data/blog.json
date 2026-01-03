@@ -1,3 +1,16 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "slug": "harga-roster-beton-per-meter-terbaru",
+      "title": "Harga Roster Beton per Meter Terbaru",
+      "date": "2026-01-03",
+      "image": "assets/blog/harga-roster-beton-per-meter-terbaru.jpg"
+    },
+    {
+      "slug": "roster-beton-minimalis-untuk-rumah-modern",
+      "title": "Roster Beton Minimalis untuk Rumah Modern",
+      "date": "2026-01-03",
+      "image": "assets/blog/roster-beton-minimalis-untuk-rumah-modern.jpg"
+    }
+  ]
 }
