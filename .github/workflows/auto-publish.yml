@@ -1,45 +1,58 @@
-name: Auto Publish
+name: 🚀 Auto Publish Blog System
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */6 * * *" # tiap 6 jam
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-publish
+  cancel-in-progress: true
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - name: Checkout
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install deps
-        run: npm install
+      - name: 📦 Install Dependencies (Safe)
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          else
+            echo "No package.json, skip npm install"
+          fi
 
-      - name: Refill queue
+      - name: 🧠 Refill Article Queue
         run: node scripts/refill-queue.js
 
-      - name: Generate article
+      - name: ✍️ Generate Article + Image
         run: node scripts/generate-article.js
 
-      - name: Inject CTA
+      - name: 🎯 Inject CTA WhatsApp
         run: node scripts/inject-cta.js
 
-      - name: Generate RSS
+      - name: 📡 Generate RSS
         run: node scripts/generate-rss.js
 
-      - name: Update Sitemap
+      - name: 🗺️ Update Sitemap
         run: node scripts/update-sitemap.js
 
-      - name: Commit & Push
+      - name: 🚀 Commit & Push Changes
         run: |
-         git config user.name "github-actions"
-         git config user.email "github-actions@github.com"
-         git add .
-         git commit -m "🚀 Auto publish article" || echo "No changes"
-         git push
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "🚀 Auto publish blog + image + seo" || echo "No changes to commit"
+          git push
