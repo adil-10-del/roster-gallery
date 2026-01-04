@@ -3,7 +3,7 @@ const angles = [
  "Panduan","Estimasi Biaya","Keunggulan","Penerapan"
 ];
 
-const categories = ["Roster Beton","Paving","Genteng","Bata","Walpanel"];
+const categories = ["Roster Beton","Paving","Genteng","Bata","Walpanel","List Pang","Tiang"];
 
 angles.forEach(a=>{
  categories.forEach(c=>{
