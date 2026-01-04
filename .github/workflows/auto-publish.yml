@@ -1,4 +1,4 @@
-name: 🚀 Auto Publish Blog System
+name: 🚀 Auto Publish Blog
 
 on:
   workflow_dispatch:
@@ -8,51 +8,46 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: auto-publish
-  cancel-in-progress: true
-
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
 
     steps:
-      - name: 📥 Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: ⚙️ Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: 📦 Install Dependencies (Safe)
-        run: |
-          if [ -f package.json ]; then
-            npm install
-          else
-            echo "No package.json, skip npm install"
-          fi
+      - name: Install deps
+        run: npm install --production
 
-      - name: 🧠 Refill Article Queue
+      - name: Refill queue
         run: node scripts/refill-queue.js
 
-      - name: ✍️ Generate Article + Image
+      - name: Generate article + image
         run: node scripts/generate-article.js
 
-      - name: 🎯 Inject CTA WhatsApp
+      - name: Inject CTA
         run: node scripts/inject-cta.js
 
-      - name: 📡 Generate RSS
+      - name: Generate RSS
         run: node scripts/generate-rss.js
 
-      - name: 🗺️ Update Sitemap
+      - name: Update Sitemap
         run: node scripts/update-sitemap.js
 
-      - name: 🚀 Commit & Push Changes
+      - name: Remove node_modules from git
+        run: git rm -r --cached node_modules || true
+
+      - name: Commit & Push
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
-          git commit -m "🚀 Auto publish blog + image + seo" || echo "No changes to commit"
+          git commit -m "🚀 Auto publish article" || echo "No changes"
+          git pull --rebase
           git push
+
