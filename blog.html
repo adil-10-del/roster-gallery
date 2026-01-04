@@ -38,12 +38,27 @@
   </div>
 </section>
 
-<section class="blog-container">
-  <div id="blogList"></div>
-  <p id="no-result" class="no-result" style="display:none;">
-    Artikel tidak ditemukan.
-  </p>
-</section>
+<section class="blog-grid" id="blogList"></section>
+
+<script>
+fetch("data/blog.json")
+.then(r=>r.json())
+.then(d=>{
+  document.getElementById("blogList").innerHTML =
+    d.posts.slice(0,20).map(p=>`
+    <article class="blog-card">
+      <img src="${p.image}" alt="${p.title}">
+      <div class="blog-info">
+        <small>${p.date}</small>
+        <h2>${p.title}</h2>
+        <p>${p.excerpt}</p>
+        <a href="blog/${p.slug}.html" class="btn">Baca Selengkapnya</a>
+      </div>
+    </article>
+  `).join("");
+});
+</script>
+
 
 <!-- FOOTER -->
 <footer class="footer-main">
