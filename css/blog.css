@@ -151,3 +151,232 @@
   border-radius:6px;
   font-weight:bold;
 }
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.7;
+}
+
+/* =========================
+   ARTICLE HERO
+========================= */
+.article-hero {
+  width: 100%;
+  max-height: 420px;
+  overflow: hidden;
+}
+
+.article-hero img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
+   ARTICLE CONTAINER
+========================= */
+.article-container {
+  max-width: 920px;
+  margin: -80px auto 60px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.08);
+  position: relative;
+}
+
+.article-container h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.article-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   ARTICLE CONTENT
+========================= */
+.article-content p {
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+.article-content img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+/* =========================
+   CTA BOX (OPTIONAL)
+========================= */
+.article-cta {
+  background: #0a7cff;
+  color: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.article-cta h3 {
+  margin-bottom: 10px;
+}
+
+.article-cta a {
+  display: inline-block;
+  margin-top: 12px;
+  background: #fff;
+  color: #0a7cff;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* =========================
+   BACK TO BLOG
+========================= */
+.article-nav {
+  margin-top: 40px;
+}
+
+.article-nav a {
+  text-decoration: none;
+  color: #0a7cff;
+  font-weight: 600;
+}
+
+/* =========================
+   RELATED ARTICLES
+========================= */
+.related-articles {
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+}
+
+.related-articles h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.related-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.related-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.related-card h3 {
+  font-size: 16px;
+  margin: 14px;
+}
+
+.related-card p {
+  font-size: 14px;
+  margin: 0 14px 14px;
+  color: #555;
+}
+
+.related-card .btn-read {
+  margin: auto 14px 18px;
+  padding: 10px;
+  background: #0a7cff;
+  color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* =========================
+   FLOATING WHATSAPP
+========================= */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  z-index: 999;
+}
+
+.wa-float img {
+  width: 32px;
+}
+
+/* =========================
+   FOOTER FIX
+========================= */
+.footer-main {
+  background: #111;
+  color: #ccc;
+  padding: 60px 20px 20px;
+}
+
+.footer-main a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 20px;
+  color: #777;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .article-hero img {
+    height: 260px;
+  }
+
+  .article-container {
+    margin-top: -40px;
+    padding: 24px;
+  }
+
+  .article-container h1 {
+    font-size: 24px;
+  }
+}
