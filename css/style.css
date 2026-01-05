@@ -1080,3 +1080,122 @@ img {
     font-size: 22px;
   }
 }
+/* =========================
+   FORM KERJASAMA STYLE
+   ========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== CONTAINER ===== */
+.form-container {
+  max-width: 720px;
+  margin: 60px auto;
+  background: #ffffff;
+  padding: 35px 40px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* ===== TITLE ===== */
+.form-container h1,
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.form-container p {
+  text-align: center;
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* ===== FORM ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ===== LABEL ===== */
+label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+/* ===== INPUT ===== */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  background: #fafafa;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #25d366;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(37,211,102,0.15);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ===== BUTTON ===== */
+button,
+input[type="submit"] {
+  margin-top: 10px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #25d366, #1ebe5d);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(37,211,102,0.35);
+}
+
+/* ===== NOTE / INFO ===== */
+.form-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #777;
+  text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .form-container {
+    margin: 30px 15px;
+    padding: 25px 20px;
+  }
+}
