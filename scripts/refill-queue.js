@@ -1,61 +1,78 @@
+/**
+ * AUTO REFILL QUEUE – FIXED VERSION
+ */
+
 const fs = require("fs");
 const path = require("path");
 
-const queuePath = path.join("data","queue.json");
+const queuePath = path.join("data", "queue.json");
 
-// ===== SAFE INIT =====
+// ===== SAFETY INIT =====
 let queue = { queue: [] };
+
+// ===== LOAD EXISTING QUEUE =====
 if (fs.existsSync(queuePath)) {
-  queue = JSON.parse(fs.readFileSync(queuePath,"utf8"));
+  try {
+    queue = JSON.parse(fs.readFileSync(queuePath, "utf8"));
+    if (!queue.queue) queue.queue = [];
+  } catch (e) {
+    console.error("Queue rusak, reset ulang");
+    queue = { queue: [] };
+  }
 }
 
-// ===== LIMIT ANTI SPAM =====
-if (queue.queue.length >= 15) {
-  console.log("🟡 Queue cukup, tidak refill");
-  process.exit(0);
-}
-
-// ===== DATA =====
+// ===== CONFIG =====
 const angles = [
-  "Tips","Inspirasi","Kesalahan Umum",
-  "Panduan Lengkap","Estimasi Biaya",
-  "Keunggulan","Penerapan"
+  "Tips",
+  "Inspirasi",
+  "Kesalahan",
+  "Perbandingan",
+  "Panduan",
+  "Estimasi Biaya",
+  "Keunggulan",
+  "Penerapan"
 ];
 
 const categories = [
-  "Roster Beton","Paving","Genteng",
-  "Bata","Walpanel","List Pang","Tiang"
+  "Roster Beton",
+  "Paving",
+  "Genteng",
+  "Bata",
+  "Walpanel",
+  "List Pang",
+  "Tiang"
 ];
 
-// ===== RANDOM GENERATOR =====
-function random(arr){
-  return arr[Math.floor(Math.random()*arr.length)];
+// ===== LIMIT BIAR GAK OVERSPAM =====
+const MAX_QUEUE = 30;
+if (queue.queue.length >= MAX_QUEUE) {
+  console.log("🟢 Queue masih cukup:", queue.queue.length);
+  process.exit(0);
 }
 
-// ===== REFILL (SMART) =====
-while (queue.queue.length < 15) {
-  const angle = random(angles);
-  const category = random(categories);
+// ===== GENERATE =====
+angles.forEach(angle => {
+  categories.forEach(category => {
+    const topic = `${angle} ${category} untuk Bangunan Modern`;
+    const slug = topic
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
 
-  const topic = `${angle} ${category} untuk Rumah & Bangunan`;
-  const slug = topic.toLowerCase()
-    .replace(/[^a-z0-9]+/g,"-")
-    .replace(/^-|-$/g,"");
+    // Cegah duplikat
+    if (queue.queue.find(q => q.slug === slug)) return;
 
-  // ❌ Anti duplikat
-  if (queue.queue.find(q=>q.slug===slug)) continue;
-
-  queue.queue.push({
-    topic,
-    category,
-    slug,
-    tags:[category.toLowerCase()]
+    queue.queue.push({
+      topic,
+      category,
+      slug,
+      tags: [category.toLowerCase().replace(/\s+/g, "-")]
+    });
   });
-}
+});
 
 // ===== SAVE =====
-fs.mkdirSync("data",{recursive:true});
-fs.writeFileSync(queuePath, JSON.stringify(queue,null,2));
+fs.mkdirSync("data", { recursive: true });
+fs.writeFileSync(queuePath, JSON.stringify(queue, null, 2));
 
-console.log("✅ Queue siap:", queue.queue.length);
-
+console.log("🚀 Queue berhasil diisi:", queue.queue.length);
