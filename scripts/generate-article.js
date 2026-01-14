@@ -1,6 +1,6 @@
 /**
  * AUTO ARTICLE GENERATOR + AUTO IMAGE + FULL TEMPLATE
- * FINAL PRODUCTION VERSION
+ * FINAL FIX (STABLE FOR GITHUB ACTIONS)
  */
 
 const fs = require("fs");
@@ -83,30 +83,25 @@ function downloadImage(url, outputPath) {
     const imageLocal = `${ASSET_DIR}/${imageName}`;
     const imageUrl = `https://adil-10-del.github.io/roster-gallery/assets/blog/${imageName}`;
 
-    // ===== IMAGE SOURCE (UNSPLASH RANDOM PER CATEGORY)
     const keywords = IMAGE_KEYWORDS[category] || "building,construction";
-    const imageSource = `https://source.unsplash.com/1600x900/?${encodeURIComponent(
-      keywords
-    )}`;
+    const imageSource = `https://source.unsplash.com/1600x900/?${encodeURIComponent(keywords)}`;
 
     try {
       await downloadImage(imageSource, imageLocal);
       console.log("🖼 Image OK:", imageName);
     } catch {
-      console.warn("⚠️ Gagal download image, lanjut publish");
+      console.warn("⚠️ Gagal download image");
     }
 
-    // ===== ARTICLE CONTENT =====
     const content = `
-<p><strong>${title}</strong> merupakan salah satu material bangunan yang banyak digunakan pada proyek modern.</p>
-<p>Material ini dikenal memiliki daya tahan tinggi, kuat terhadap cuaca, dan mudah diaplikasikan.</p>
-<p>Penggunaan ${category.toLowerCase()} sangat cocok untuk rumah tinggal, bangunan komersial, maupun area industri.</p>
-<p>Dari sisi biaya, material ini tergolong efisien karena umur pakainya yang panjang.</p>
-<p>Tampilannya mampu meningkatkan nilai estetika dan fungsi bangunan secara keseluruhan.</p>
-<p>Dengan pemasangan yang tepat, ${title.toLowerCase()} menjadi solusi jangka panjang.</p>
+<p><strong>${title}</strong> merupakan material bangunan yang banyak digunakan pada proyek modern.</p>
+<p>Material ini dikenal kuat, tahan cuaca, dan mudah diaplikasikan.</p>
+<p>${category} cocok digunakan untuk rumah tinggal, bangunan komersial, dan industri.</p>
+<p>Biayanya relatif efisien dengan umur pakai panjang.</p>
+<p>Tampilan estetis meningkatkan nilai bangunan.</p>
+<p>Solusi tepat untuk konstruksi jangka panjang.</p>
 `;
 
-    // ===== SCHEMA =====
     const schema = `
 <script type="application/ld+json">
 {
@@ -116,19 +111,12 @@ function downloadImage(url, outputPath) {
   "image": "${imageUrl}",
   "datePublished": "${today}",
   "dateModified": "${today}",
-  "author": {
-    "@type": "Organization",
-    "name": "Roster Gallery"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Roster Gallery"
-  }
+  "author": { "@type": "Organization", "name": "Roster Gallery" },
+  "publisher": { "@type": "Organization", "name": "Roster Gallery" }
 }
 </script>
 `;
 
-    // ===== FULL HTML TEMPLATE =====
     const html = `
 <!DOCTYPE html>
 <html lang="id">
@@ -137,16 +125,12 @@ function downloadImage(url, outputPath) {
 <title>${title} | Roster Gallery</title>
 <meta name="description" content="${title} - solusi material bangunan berkualitas">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link rel="canonical" href="https://adil-10-del.github.io/roster-gallery/blog/${slug}.html">
-
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/blog.css">
-
 <meta property="og:title" content="${title}">
 <meta property="og:image" content="${imageUrl}">
 <meta property="og:type" content="article">
-
 ${schema}
 </head>
 
@@ -154,7 +138,7 @@ ${schema}
 
 <header class="header-small">
   <div class="navbar">
-    <img src="../assets/images/logo.jpg" class="logo" alt="Roster Gallery">
+    <img src="../assets/images/logo.jpg" class="logo">
     <nav>
       <a href="../index.html">Home</a>
       <a href="../katalog.html">Katalog</a>
@@ -166,7 +150,7 @@ ${schema}
 </header>
 
 <section class="article-hero">
-  <img src="../assets/blog/${imageName}" alt="${title}" loading="lazy">
+  <img src="../assets/blog/${imageName}" alt="${title}">
 </section>
 
 <article class="article-container">
@@ -181,82 +165,61 @@ ${schema}
     ${content}
   </div>
 
+  <section class="related-articles">
+    <h2>Orang lain juga melihat ini</h2>
+    <div id="relatedList" class="related-grid"></div>
+  </section>
+
   <div class="article-nav">
     <a href="../blog.html">← Kembali ke Blog</a>
   </div>
-  <section class="related-articles">
-  <h2>Orang lain juga melihat ini</h2>
-  <div id="relatedList" class="related-grid"></div>
-</section>
 </article>
 
 <footer class="footer-main">
   <div class="footer-container">
     <div class="footer-col">
       <h3>Roster Gallery</h3>
-      <p>Produsen material beton berkualitas untuk kebutuhan konstruksi.</p>
+      <p>Produsen material beton berkualitas.</p>
     </div>
-
     <div class="footer-col">
       <h4>Kontak</h4>
-      <p>📍 Purwakarta, Jawa Barat</p>
+      <p>📍 Purwakarta</p>
       <p>📞 0838-7279-3673</p>
     </div>
-
-    <div class="footer-col">
-      <h4>Menu</h4>
-      <a href="../index.html">Home</a>
-      <a href="../katalog.html">Katalog</a>
-      <a href="../blog.html">Blog</a>
-      <a href="../kontak.html">Kontak</a>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    © 2025 Roster Gallery — All Rights Reserved.
   </div>
 </footer>
 
-<a href="https://wa.me/6283872793673" class="wa-float" target="_blank">
-  <img src="../assets/images/whatsapp.jpg" alt="WhatsApp">
-</a>
 <script>
 fetch("../data/blog.json")
   .then(res => res.json())
   .then(data => {
     const currentSlug = location.pathname.split("/").pop().replace(".html", "");
-    const currentCategory = document
-      .querySelector(".article-meta span:last-child")
-      ?.innerText.replace("🏷️","").trim();
+    const currentCategory = document.querySelector(".article-meta span:last-child")
+      .innerText.replace("🏷️","").trim();
 
-    // Pisahkan kategori sama & lainnya
-    const sameCategory = data.posts.filter(p =>
-      p.slug !== currentSlug && p.category === currentCategory
-    );
+    const related = data.posts
+      .filter(p => p.slug !== currentSlug)
+      .slice(0, 4);
 
-    const randomOthers = data.posts.filter(p =>
-      p.slug !== currentSlug && p.category !== currentCategory
-    );
-
-    const combined = [...sameCategory, ...randomOthers].slice(0, 4);
-
-    const relatedHTML = relatedArticles.map(item => `
-  <div class="related-card">
-    <a href="${item.url}">
-      <img src="${item.image}" alt="${item.title}">
-      <h4>${item.title}</h4>
-    </a>
-  </div>
-`).join("");
+    let html = "";
+    related.forEach(item => {
+      html +=
+        '<div class="related-card">' +
+          '<a href="../blog/' + item.slug + '.html">' +
+            '<img src="../' + item.image + '" alt="' + item.title + '">' +
+            '<h4>' + item.title + '</h4>' +
+          '</a>' +
+        '</div>';
+    });
 
     document.getElementById("relatedList").innerHTML = html;
   });
 </script>
+
 </body>
 </html>
 `;
 
-    // ===== SAVE FILE =====
     fs.writeFileSync(`${BLOG_DIR}/${slug}.html`, html);
 
     blogIndex.posts.unshift({
@@ -275,4 +238,5 @@ fetch("../data/blog.json")
 
   console.log("🚀 AUTO PUBLISH SELESAI (FINAL)");
 })();
+
 
