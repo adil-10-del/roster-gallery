@@ -188,5 +188,48 @@
 </a>
 
 <script src="js/main.js"></script>
+  <script>
+fetch("data/blog.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("blog-container");
+    if (!container || !data.posts) return;
+
+    // 🔀 Shuffle array
+    const shuffle = arr => arr.sort(() => Math.random() - 0.5);
+
+    const shuffled = shuffle([...data.posts]);
+
+    const pickedByCategory = {};
+    const finalArticles = [];
+
+    // Ambil 1 artikel random per kategori
+    shuffled.forEach(post => {
+      if (!pickedByCategory[post.category]) {
+        pickedByCategory[post.category] = true;
+        finalArticles.push(post);
+      }
+    });
+
+    // Batasi maksimal tampil (misal 6)
+    finalArticles.slice(0, 6);
+
+    container.innerHTML = finalArticles.map(p => `
+      <article class="blog-card">
+        <img src="${p.image}" alt="${p.title}">
+        <div class="blog-info">
+          <small>${p.category} • ${p.date}</small>
+          <h3>${p.title}</h3>
+          <p>${p.excerpt}</p>
+          <a href="blog/${p.slug}.html" class="btn-small">
+            Baca Artikel
+          </a>
+        </div>
+      </article>
+    `).join("");
+  })
+  .catch(err => console.error("Blog error:", err));
+</script>
+
 </body>
 </html>
