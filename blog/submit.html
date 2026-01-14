@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Submit Artikel | Roster Gallery</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/blog.css">
 </head>
@@ -15,7 +14,6 @@
   <div class="navbar">
     <img src="../assets/images/logo.jpg" class="logo">
     <nav>
-      <a href="../index.html">Home</a>
       <a href="../blog.html">Blog</a>
       <a href="submit.html" class="active">Submit Artikel</a>
     </nav>
@@ -24,7 +22,7 @@
 
 <section class="form-container">
   <h1>Submit Artikel</h1>
-  <p>Kirim artikel Anda untuk dipublikasikan di Roster Gallery</p>
+  <p>Artikel akan dibuat otomatis dalam format HTML</p>
 
   <form id="articleForm">
     <label>Judul Artikel</label>
@@ -34,57 +32,23 @@
     <select id="category">
       <option>Roster Beton</option>
       <option>Paving</option>
-      <option>Genteng</option>
       <option>Bata</option>
+      <option>Genteng</option>
       <option>Walpanel</option>
+      <option>Tiang</option>
+      <option>List Pang</option>
     </select>
 
     <label>Isi Artikel</label>
-    <textarea id="content" rows="8" required></textarea>
+    <textarea id="content" rows="10" required></textarea>
 
-    <label>Nama Penulis</label>
-    <input type="text" id="author">
+    <label>Gambar Artikel (URL)</label>
+    <input type="url" id="image" placeholder="https://...jpg">
 
-    <button type="submit">Kirim Artikel</button>
+    <button type="submit">Preview Artikel</button>
   </form>
-
-  <p class="form-note">
-    Artikel akan direview terlebih dahulu oleh admin sebelum dipublikasikan.
-  </p>
 </section>
 
-<script>
-document.getElementById("articleForm").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const title = title.value;
-  const category = category.value;
-  const content = content.value;
-  const author = author.value || "Anonim";
-
-  const text = `
-SUBMIT ARTIKEL – ROSTER GALLERY
-
-Judul:
-${title}
-
-Kategori:
-${category}
-
-Penulis:
-${author}
-
-Isi Artikel:
-${content}
-`;
-
-  const phone = "6283872793673";
-  window.open(
-    "https://wa.me/" + phone + "?text=" + encodeURIComponent(text),
-    "_blank"
-  );
-});
-</script>
-
+<script src="../js/submit-article.js"></script>
 </body>
 </html>
