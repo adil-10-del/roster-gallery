@@ -240,14 +240,14 @@ fetch("../data/blog.json")
 
     const combined = [...sameCategory, ...randomOthers].slice(0, 4);
 
-    const html = combined.map(p => `
-      <div class="related-card">
-        <img src="../${p.image}" alt="${p.title}">
-        <h3>${p.title}</h3>
-        <p>${p.title.substring(0, 80)}...</p>
-        <a href="${p.slug}.html" class="btn-read">Baca Selengkapnya</a>
-      </div>
-    `).join("");
+    const relatedHTML = relatedArticles.map(item => `
+  <div class="related-card">
+    <a href="${item.url}">
+      <img src="${item.image}" alt="${item.title}">
+      <h4>${item.title}</h4>
+    </a>
+  </div>
+`).join("");
 
     document.getElementById("relatedList").innerHTML = html;
   });
