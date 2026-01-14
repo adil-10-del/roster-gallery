@@ -42,8 +42,14 @@
     <label>Isi Artikel</label>
     <textarea id="content" rows="10" required></textarea>
 
-    <label>Gambar Artikel (URL)</label>
-    <input type="url" id="image" placeholder="https://...jpg">
+    <label>Gambar Artikel</label>
+<input
+  type="file"
+  id="image"
+  accept="image/*"
+  required
+>
+<small>Upload foto utama artikel (JPG / PNG)</small>
 
     <button type="submit">Preview Artikel</button>
   </form>
