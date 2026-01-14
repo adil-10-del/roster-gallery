@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Preview Artikel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/blog.css">
+</head>
+
+<body>
+
+<div id="preview"></div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("previewArticle"));
+
+document.getElementById("preview").innerHTML = `
+<header class="header-small"></header>
+
+<section class="article-hero">
+  <img src="${data.image}" alt="${data.title}">
+</section>
+
+<article class="article-container">
+  <h1>${data.title}</h1>
+
+  <div class="article-meta">
+    <span>📅 ${data.date}</span>
+    <span>🏷️ ${data.category}</span>
+  </div>
+
+  <div class="article-content">
+    ${data.content.replace(/\n/g,"<p>")}
+  </div>
+
+  <button class="btn" onclick="downloadHTML()">Download HTML</button>
+</article>
+`;
+
+function downloadHTML(){
+  const blob = new Blob([data.html], {type: "text/html"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = data.slug + ".html";
+  a.click();
+}
+</script>
+
+</body>
+</html>
