@@ -4,13 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Paving Block Kuat untuk Area Parkir | Roster Gallery</title>
-<meta name="description" content="Paving Block Kuat untuk Area Parkir">
-<meta property="og:title" content="Paving Block Kuat untuk Area Parkir">
-<meta property="og:image" content="https://adil-10-del.github.io/roster-gallery/assets/blog/paving-block-kuat-untuk-area-parkir.jpg">
-<meta property="og:type" content="article">
+<meta name="description" content="Paving Block Kuat untuk Area Parkir - solusi material bangunan berkualitas">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://adil-10-del.github.io/roster-gallery/blog/paving-block-kuat-untuk-area-parkir.html">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/blog.css">
+<meta property="og:title" content="Paving Block Kuat untuk Area Parkir">
+<meta property="og:image" content="https://adil-10-del.github.io/roster-gallery/assets/blog/paving-block-kuat-untuk-area-parkir.jpg">
+<meta property="og:type" content="article">
 
 <script type="application/ld+json">
 {
@@ -18,12 +19,10 @@
   "@type": "Article",
   "headline": "Paving Block Kuat untuk Area Parkir",
   "image": "https://adil-10-del.github.io/roster-gallery/assets/blog/paving-block-kuat-untuk-area-parkir.jpg",
-  "datePublished": "2026-01-04",
-  "dateModified": "2026-01-04",
-  "author": {
-    "@type": "Organization",
-    "name": "Roster Gallery"
-  }
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15",
+  "author": { "@type": "Organization", "name": "Roster Gallery" },
+  "publisher": { "@type": "Organization", "name": "Roster Gallery" }
 }
 </script>
 
@@ -33,43 +32,99 @@
 
 <header class="header-small">
   <div class="navbar">
-    <img src="../assets/images/logo.jpg" class="logo" alt="Roster Gallery">
+    <img src="../assets/images/logo.jpg" class="logo">
     <nav>
       <a href="../index.html">Home</a>
       <a href="../katalog.html">Katalog</a>
+      <a href="../layanan.html">Layanan</a>
       <a href="../blog.html" class="active">Blog</a>
       <a href="../kontak.html">Kontak</a>
     </nav>
   </div>
 </header>
 
-
 <section class="article-hero">
-  <img src="https://adil-10-del.github.io/roster-gallery/assets/blog/paving-block-kuat-untuk-area-parkir.jpg" alt="Paving Block Kuat untuk Area Parkir" loading="lazy">
+  <img src="../assets/blog/paving-block-kuat-untuk-area-parkir.jpg" alt="Paving Block Kuat untuk Area Parkir">
 </section>
 
-<div class="article-content">
+<article class="article-container">
+  <h1>Paving Block Kuat untuk Area Parkir</h1>
 
-<p><strong>Paving Block Kuat untuk Area Parkir</strong> merupakan salah satu solusi material bangunan yang banyak digunakan pada proyek modern.</p>
-<p>Material ini dikenal kuat, tahan lama, serta mudah diaplikasikan.</p>
-<p>Penggunaan paving sangat cocok untuk rumah tinggal maupun bangunan komersial.</p>
-<p>Dari sisi biaya, material ini relatif efisien karena umur pakainya panjang.</p>
-<p>Tampilan modernnya mampu meningkatkan nilai estetika bangunan.</p>
-<p>Dengan perawatan minimal, paving block kuat untuk area parkir menjadi investasi jangka panjang.</p>
+  <div class="article-meta">
+    <span>📅 2026-01-15</span>
+    <span>🏷️ Paving</span>
+  </div>
 
+  <div class="article-content">
+    
+<p><strong>Paving Block Kuat untuk Area Parkir</strong> merupakan material bangunan yang banyak digunakan pada proyek modern.</p>
+<p>Material ini dikenal kuat, tahan cuaca, dan mudah diaplikasikan.</p>
+<p>Paving cocok digunakan untuk rumah tinggal, bangunan komersial, dan industri.</p>
+<p>Biayanya relatif efisien dengan umur pakai panjang.</p>
+<p>Tampilan estetis meningkatkan nilai bangunan.</p>
+<p>Solusi tepat untuk konstruksi jangka panjang.</p>
+
+  </div>
+
+  <section class="related-articles">
+    <h2>Orang lain juga melihat ini</h2>
+    <div id="relatedList" class="related-grid"></div>
+  </section>
+
+  <div class="article-nav">
+    <a href="../blog.html">← Kembali ke Blog</a>
+  </div>
+
+<div class="cta-wa">
+  <h3>Butuh paving block kuat untuk area parkir?</h3>
+  <p>Konsultasi GRATIS & harga langsung dari produsen.</p>
+  <a href="https://wa.me/6283872793673" target="_blank">
+    📲 Chat WhatsApp Sekarang
+  </a>
 </div>
 
-<a href="../blog.html">← Kembali ke Blog</a>
-
-
-<a href="https://wa.me/6283872793673" class="wa-float" target="_blank">
-  <img src="../assets/images/whatsapp.jpg" alt="WhatsApp">
-</a>
-
+</article>
 
 <footer class="footer-main">
-  <p>© 2026 Roster Gallery. All rights reserved.</p>
+  <div class="footer-container">
+    <div class="footer-col">
+      <h3>Roster Gallery</h3>
+      <p>Produsen material beton berkualitas.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <p>📍 Purwakarta</p>
+      <p>📞 0838-7279-3673</p>
+    </div>
+  </div>
 </footer>
+
+<script>
+fetch("../data/blog.json")
+  .then(res => res.json())
+  .then(data => {
+    const currentSlug = location.pathname.split("/").pop().replace(".html", "");
+    const currentCategory = document.querySelector(".article-meta span:last-child")
+      .innerText.replace("🏷️","").trim();
+
+    const related = data.posts
+      .filter(p => p.slug !== currentSlug)
+      .slice(0, 4);
+
+    let html = "";
+    related.forEach(item => {
+      html +=
+        '<div class="related-card">' +
+          '<a href="../blog/' + item.slug + '.html">' +
+            '<img src="../' + item.image + '" alt="' + item.title + '">' +
+            '<h4>' + item.title + '</h4>' +
+          '</a>' +
+        '</div>';
+    });
+
+    document.getElementById("relatedList").innerHTML = html;
+  });
+</script>
 
 </body>
 </html>
