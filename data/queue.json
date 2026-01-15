@@ -1,31 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Bata Merah Berkualitas untuk Bangunan",
-      "slug": "bata-merah-berkualitas-untuk-bangunan",
-      "category": "Bata",
-      "tags": [
-        "bata",
-        "merah",
-        "berkualitas",
-        "untuk",
-        "bangunan"
-      ]
-    },
-    {
-      "topic": "Genteng Beton Tahan Lama untuk Rumah",
-      "slug": "genteng-beton-tahan-lama-untuk-rumah",
-      "category": "Genteng",
-      "tags": [
-        "genteng",
-        "beton",
-        "tahan",
-        "lama",
-        "untuk",
-        "rumah"
-      ]
-    },
-    {
       "topic": "Tips Roster Beton untuk Bangunan Modern",
       "category": "Roster Beton",
       "slug": "tips-roster-beton-untuk-bangunan-modern",
