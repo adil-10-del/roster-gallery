@@ -1,32 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Harga Roster Beton per Meter Terbaru",
-      "slug": "harga-roster-beton-per-meter-terbaru",
-      "category": "Roster Beton",
-      "tags": [
-        "harga",
-        "roster",
-        "beton",
-        "per",
-        "meter",
-        "terbaru"
-      ]
-    },
-    {
-      "topic": "Paving Block Kuat untuk Area Parkir",
-      "slug": "paving-block-kuat-untuk-area-parkir",
-      "category": "Paving",
-      "tags": [
-        "paving",
-        "block",
-        "kuat",
-        "untuk",
-        "area",
-        "parkir"
-      ]
-    },
-    {
       "topic": "Bata Merah Berkualitas untuk Bangunan",
       "slug": "bata-merah-berkualitas-untuk-bangunan",
       "category": "Bata",
