@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Tips Roster Beton untuk Bangunan Modern",
-      "category": "Roster Beton",
-      "slug": "tips-roster-beton-untuk-bangunan-modern",
-      "tags": [
-        "roster-beton"
-      ]
-    },
-    {
-      "topic": "Tips Paving untuk Bangunan Modern",
-      "category": "Paving",
-      "slug": "tips-paving-untuk-bangunan-modern",
-      "tags": [
-        "paving"
-      ]
-    },
-    {
       "topic": "Tips Genteng untuk Bangunan Modern",
       "category": "Genteng",
       "slug": "tips-genteng-untuk-bangunan-modern",

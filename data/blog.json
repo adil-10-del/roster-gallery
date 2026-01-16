@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "tips-paving-untuk-bangunan-modern",
+      "title": "Tips Paving untuk Bangunan Modern",
+      "date": "2026-01-16",
+      "category": "Paving",
+      "image": "assets/blog/tips-paving-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "tips-roster-beton-untuk-bangunan-modern",
+      "title": "Tips Roster Beton untuk Bangunan Modern",
+      "date": "2026-01-16",
+      "category": "Roster Beton",
+      "image": "assets/blog/tips-roster-beton-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "genteng-beton-tahan-lama-untuk-rumah",
       "title": "Genteng Beton Tahan Lama untuk Rumah",
       "date": "2026-01-15",
