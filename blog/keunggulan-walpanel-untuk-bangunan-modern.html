@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Keunggulan Walpanel untuk Bangunan Modern | Roster Gallery</title>
+<meta name="description" content="Keunggulan Walpanel untuk Bangunan Modern - solusi material bangunan berkualitas">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://adil-10-del.github.io/roster-gallery/blog/keunggulan-walpanel-untuk-bangunan-modern.html">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/blog.css">
+<meta property="og:title" content="Keunggulan Walpanel untuk Bangunan Modern">
+<meta property="og:image" content="https://adil-10-del.github.io/roster-gallery/assets/blog/keunggulan-walpanel-untuk-bangunan-modern.jpg">
+<meta property="og:type" content="article">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Keunggulan Walpanel untuk Bangunan Modern",
+  "image": "https://adil-10-del.github.io/roster-gallery/assets/blog/keunggulan-walpanel-untuk-bangunan-modern.jpg",
+  "datePublished": "2026-01-21",
+  "dateModified": "2026-01-21",
+  "author": { "@type": "Organization", "name": "Roster Gallery" },
+  "publisher": { "@type": "Organization", "name": "Roster Gallery" }
+}
+</script>
+
+</head>
+
+<body>
+
+<header class="header-small">
+  <div class="navbar">
+    <img src="../assets/images/logo.jpg" class="logo">
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../katalog.html">Katalog</a>
+      <a href="../layanan.html">Layanan</a>
+      <a href="../blog.html" class="active">Blog</a>
+      <a href="../kontak.html">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<section class="article-hero">
+  <img src="../assets/blog/keunggulan-walpanel-untuk-bangunan-modern.jpg" alt="Keunggulan Walpanel untuk Bangunan Modern">
+</section>
+
+<article class="article-container">
+  <h1>Keunggulan Walpanel untuk Bangunan Modern</h1>
+
+  <div class="article-meta">
+    <span>📅 2026-01-21</span>
+    <span>🏷️ Walpanel</span>
+  </div>
+
+  <div class="article-content">
+    
+<p><strong>Keunggulan Walpanel untuk Bangunan Modern</strong> merupakan material bangunan yang banyak digunakan pada proyek modern.</p>
+<p>Material ini dikenal kuat, tahan cuaca, dan mudah diaplikasikan.</p>
+<p>Walpanel cocok digunakan untuk rumah tinggal, bangunan komersial, dan industri.</p>
+<p>Biayanya relatif efisien dengan umur pakai panjang.</p>
+<p>Tampilan estetis meningkatkan nilai bangunan.</p>
+<p>Solusi tepat untuk konstruksi jangka panjang.</p>
+
+  </div>
+
+  <section class="related-articles">
+    <h2>Orang lain juga melihat ini</h2>
+    <div id="relatedList" class="related-grid"></div>
+  </section>
+
+  <div class="article-nav">
+    <a href="../blog.html">← Kembali ke Blog</a>
+  </div>
+
+<div class="cta-wa">
+  <h3>Butuh keunggulan walpanel untuk bangunan modern?</h3>
+  <p>Konsultasi GRATIS & harga langsung dari produsen.</p>
+  <a href="https://wa.me/6283872793673" target="_blank">
+    📲 Chat WhatsApp Sekarang
+  </a>
+</div>
+
+</article>
+
+<footer class="footer-main">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h3>Roster Gallery</h3>
+      <p>Produsen material beton berkualitas.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <p>📍 Purwakarta</p>
+      <p>📞 0838-7279-3673</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+fetch("../data/blog.json")
+  .then(res => res.json())
+  .then(data => {
+    const currentSlug = location.pathname.split("/").pop().replace(".html", "");
+    const currentCategory = document.querySelector(".article-meta span:last-child")
+      .innerText.replace("🏷️","").trim();
+
+    const related = data.posts
+      .filter(p => p.slug !== currentSlug)
+      .slice(0, 4);
+
+    let html = "";
+    related.forEach(item => {
+      html +=
+        '<div class="related-card">' +
+          '<a href="../blog/' + item.slug + '.html">' +
+            '<img src="../' + item.image + '" alt="' + item.title + '">' +
+            '<h4>' + item.title + '</h4>' +
+          '</a>' +
+        '</div>';
+    });
+
+    document.getElementById("relatedList").innerHTML = html;
+  });
+</script>
+
+</body>
+</html>
