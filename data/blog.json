@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "perbandingan-walpanel-untuk-bangunan-modern",
+      "title": "Perbandingan Walpanel untuk Bangunan Modern",
+      "date": "2026-01-26",
+      "category": "Walpanel",
+      "image": "assets/blog/perbandingan-walpanel-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "perbandingan-bata-untuk-bangunan-modern",
+      "title": "Perbandingan Bata untuk Bangunan Modern",
+      "date": "2026-01-26",
+      "category": "Bata",
+      "image": "assets/blog/perbandingan-bata-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "perbandingan-genteng-untuk-bangunan-modern",
       "title": "Perbandingan Genteng untuk Bangunan Modern",
       "date": "2026-01-25",
