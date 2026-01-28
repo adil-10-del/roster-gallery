@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "estimasi-biaya-tiang-untuk-bangunan-modern",
+      "title": "Estimasi Biaya Tiang untuk Bangunan Modern",
+      "date": "2026-01-28",
+      "category": "Tiang",
+      "image": "assets/blog/estimasi-biaya-tiang-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "estimasi-biaya-list-pang-untuk-bangunan-modern",
+      "title": "Estimasi Biaya List Pang untuk Bangunan Modern",
+      "date": "2026-01-28",
+      "category": "List Pang",
+      "image": "assets/blog/estimasi-biaya-list-pang-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "estimasi-biaya-walpanel-untuk-bangunan-modern",
       "title": "Estimasi Biaya Walpanel untuk Bangunan Modern",
       "date": "2026-01-27",
