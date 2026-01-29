@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "penerapan-genteng-untuk-bangunan-modern",
+      "title": "Penerapan Genteng untuk Bangunan Modern",
+      "date": "2026-01-29",
+      "category": "Genteng",
+      "image": "assets/blog/penerapan-genteng-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "penerapan-paving-untuk-bangunan-modern",
+      "title": "Penerapan Paving untuk Bangunan Modern",
+      "date": "2026-01-29",
+      "category": "Paving",
+      "image": "assets/blog/penerapan-paving-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "penerapan-roster-beton-untuk-bangunan-modern",
       "title": "Penerapan Roster Beton untuk Bangunan Modern",
       "date": "2026-01-29",
