@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "estimasi-biaya-roster-beton-untuk-bangunan-modern",
+      "title": "Estimasi Biaya Roster Beton untuk Bangunan Modern",
+      "date": "2026-02-03",
+      "category": "Roster Beton",
+      "image": "assets/blog/estimasi-biaya-roster-beton-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "panduan-tiang-untuk-bangunan-modern",
+      "title": "Panduan Tiang untuk Bangunan Modern",
+      "date": "2026-02-03",
+      "category": "Tiang",
+      "image": "assets/blog/panduan-tiang-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "panduan-list-pang-untuk-bangunan-modern",
       "title": "Panduan List Pang untuk Bangunan Modern",
       "date": "2026-02-03",
