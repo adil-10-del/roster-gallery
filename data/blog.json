@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "keunggulan-paving-untuk-bangunan-modern",
+      "title": "Keunggulan Paving untuk Bangunan Modern",
+      "date": "2026-02-04",
+      "category": "Paving",
+      "image": "assets/blog/keunggulan-paving-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "keunggulan-roster-beton-untuk-bangunan-modern",
+      "title": "Keunggulan Roster Beton untuk Bangunan Modern",
+      "date": "2026-02-04",
+      "category": "Roster Beton",
+      "image": "assets/blog/keunggulan-roster-beton-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "estimasi-biaya-tiang-untuk-bangunan-modern",
       "title": "Estimasi Biaya Tiang untuk Bangunan Modern",
       "date": "2026-02-04",
