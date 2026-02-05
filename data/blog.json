@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "penerapan-roster-beton-untuk-bangunan-modern",
+      "title": "Penerapan Roster Beton untuk Bangunan Modern",
+      "date": "2026-02-05",
+      "category": "Roster Beton",
+      "image": "assets/blog/penerapan-roster-beton-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "keunggulan-tiang-untuk-bangunan-modern",
+      "title": "Keunggulan Tiang untuk Bangunan Modern",
+      "date": "2026-02-05",
+      "category": "Tiang",
+      "image": "assets/blog/keunggulan-tiang-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "keunggulan-list-pang-untuk-bangunan-modern",
       "title": "Keunggulan List Pang untuk Bangunan Modern",
       "date": "2026-02-04",
