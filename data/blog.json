@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "perbandingan-genteng-untuk-bangunan-modern",
+      "title": "Perbandingan Genteng untuk Bangunan Modern",
+      "date": "2026-02-08",
+      "category": "Genteng",
+      "image": "assets/blog/perbandingan-genteng-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "perbandingan-paving-untuk-bangunan-modern",
+      "title": "Perbandingan Paving untuk Bangunan Modern",
+      "date": "2026-02-08",
+      "category": "Paving",
+      "image": "assets/blog/perbandingan-paving-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "perbandingan-roster-beton-untuk-bangunan-modern",
       "title": "Perbandingan Roster Beton untuk Bangunan Modern",
       "date": "2026-02-08",
