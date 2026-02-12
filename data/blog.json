@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "penerapan-walpanel-untuk-bangunan-modern",
+      "title": "Penerapan Walpanel untuk Bangunan Modern",
+      "date": "2026-02-12",
+      "category": "Walpanel",
+      "image": "assets/blog/penerapan-walpanel-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "penerapan-bata-untuk-bangunan-modern",
+      "title": "Penerapan Bata untuk Bangunan Modern",
+      "date": "2026-02-12",
+      "category": "Bata",
+      "image": "assets/blog/penerapan-bata-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "penerapan-genteng-untuk-bangunan-modern",
       "title": "Penerapan Genteng untuk Bangunan Modern",
       "date": "2026-02-12",
