@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Perbandingan List Pang untuk Bangunan Modern",
-      "category": "List Pang",
-      "slug": "perbandingan-list-pang-untuk-bangunan-modern",
-      "tags": [
-        "list-pang"
-      ]
-    },
-    {
-      "topic": "Perbandingan Tiang untuk Bangunan Modern",
-      "category": "Tiang",
-      "slug": "perbandingan-tiang-untuk-bangunan-modern",
-      "tags": [
-        "tiang"
-      ]
-    },
-    {
       "topic": "Panduan Roster Beton untuk Bangunan Modern",
       "category": "Roster Beton",
       "slug": "panduan-roster-beton-untuk-bangunan-modern",

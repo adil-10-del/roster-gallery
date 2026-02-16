@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "perbandingan-tiang-untuk-bangunan-modern",
+      "title": "Perbandingan Tiang untuk Bangunan Modern",
+      "date": "2026-02-16",
+      "category": "Tiang",
+      "image": "assets/blog/perbandingan-tiang-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "perbandingan-list-pang-untuk-bangunan-modern",
+      "title": "Perbandingan List Pang untuk Bangunan Modern",
+      "date": "2026-02-16",
+      "category": "List Pang",
+      "image": "assets/blog/perbandingan-list-pang-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "perbandingan-walpanel-untuk-bangunan-modern",
       "title": "Perbandingan Walpanel untuk Bangunan Modern",
       "date": "2026-02-16",
