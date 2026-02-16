@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "panduan-paving-untuk-bangunan-modern",
+      "title": "Panduan Paving untuk Bangunan Modern",
+      "date": "2026-02-16",
+      "category": "Paving",
+      "image": "assets/blog/panduan-paving-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "panduan-roster-beton-untuk-bangunan-modern",
+      "title": "Panduan Roster Beton untuk Bangunan Modern",
+      "date": "2026-02-16",
+      "category": "Roster Beton",
+      "image": "assets/blog/panduan-roster-beton-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "perbandingan-tiang-untuk-bangunan-modern",
       "title": "Perbandingan Tiang untuk Bangunan Modern",
       "date": "2026-02-16",
