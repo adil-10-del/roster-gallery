@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "panduan-bata-untuk-bangunan-modern",
+      "title": "Panduan Bata untuk Bangunan Modern",
+      "date": "2026-02-17",
+      "category": "Bata",
+      "image": "assets/blog/panduan-bata-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "panduan-genteng-untuk-bangunan-modern",
+      "title": "Panduan Genteng untuk Bangunan Modern",
+      "date": "2026-02-17",
+      "category": "Genteng",
+      "image": "assets/blog/panduan-genteng-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "panduan-paving-untuk-bangunan-modern",
       "title": "Panduan Paving untuk Bangunan Modern",
       "date": "2026-02-16",
