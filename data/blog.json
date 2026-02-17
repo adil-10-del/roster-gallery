@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "estimasi-biaya-genteng-untuk-bangunan-modern",
+      "title": "Estimasi Biaya Genteng untuk Bangunan Modern",
+      "date": "2026-02-17",
+      "category": "Genteng",
+      "image": "assets/blog/estimasi-biaya-genteng-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "estimasi-biaya-paving-untuk-bangunan-modern",
+      "title": "Estimasi Biaya Paving untuk Bangunan Modern",
+      "date": "2026-02-17",
+      "category": "Paving",
+      "image": "assets/blog/estimasi-biaya-paving-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "estimasi-biaya-roster-beton-untuk-bangunan-modern",
       "title": "Estimasi Biaya Roster Beton untuk Bangunan Modern",
       "date": "2026-02-17",
