@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "inspirasi-roster-beton-untuk-bangunan-modern",
+      "title": "Inspirasi Roster Beton untuk Bangunan Modern",
+      "date": "2026-02-21",
+      "category": "Roster Beton",
+      "image": "assets/blog/inspirasi-roster-beton-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "tips-tiang-untuk-bangunan-modern",
+      "title": "Tips Tiang untuk Bangunan Modern",
+      "date": "2026-02-21",
+      "category": "Tiang",
+      "image": "assets/blog/tips-tiang-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "tips-list-pang-untuk-bangunan-modern",
       "title": "Tips List Pang untuk Bangunan Modern",
       "date": "2026-02-20",
