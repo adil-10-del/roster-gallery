@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "perbandingan-roster-beton-untuk-bangunan-modern",
+      "title": "Perbandingan Roster Beton untuk Bangunan Modern",
+      "date": "2026-02-22",
+      "category": "Roster Beton",
+      "image": "assets/blog/perbandingan-roster-beton-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "kesalahan-tiang-untuk-bangunan-modern",
+      "title": "Kesalahan Tiang untuk Bangunan Modern",
+      "date": "2026-02-22",
+      "category": "Tiang",
+      "image": "assets/blog/kesalahan-tiang-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "kesalahan-list-pang-untuk-bangunan-modern",
       "title": "Kesalahan List Pang untuk Bangunan Modern",
       "date": "2026-02-22",
