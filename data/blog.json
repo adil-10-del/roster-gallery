@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "panduan-list-pang-untuk-bangunan-modern",
+      "title": "Panduan List Pang untuk Bangunan Modern",
+      "date": "2026-02-24",
+      "category": "List Pang",
+      "image": "assets/blog/panduan-list-pang-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "panduan-walpanel-untuk-bangunan-modern",
+      "title": "Panduan Walpanel untuk Bangunan Modern",
+      "date": "2026-02-24",
+      "category": "Walpanel",
+      "image": "assets/blog/panduan-walpanel-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "panduan-bata-untuk-bangunan-modern",
       "title": "Panduan Bata untuk Bangunan Modern",
       "date": "2026-02-24",
