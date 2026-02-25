@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "keunggulan-bata-untuk-bangunan-modern",
+      "title": "Keunggulan Bata untuk Bangunan Modern",
+      "date": "2026-02-25",
+      "category": "Bata",
+      "image": "assets/blog/keunggulan-bata-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "keunggulan-genteng-untuk-bangunan-modern",
+      "title": "Keunggulan Genteng untuk Bangunan Modern",
+      "date": "2026-02-25",
+      "category": "Genteng",
+      "image": "assets/blog/keunggulan-genteng-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "keunggulan-paving-untuk-bangunan-modern",
       "title": "Keunggulan Paving untuk Bangunan Modern",
       "date": "2026-02-25",
