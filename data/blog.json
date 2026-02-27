@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "tips-paving-untuk-bangunan-modern",
+      "title": "Tips Paving untuk Bangunan Modern",
+      "date": "2026-02-27",
+      "category": "Paving",
+      "image": "assets/blog/tips-paving-untuk-bangunan-modern.jpg"
+    },
+    {
+      "slug": "tips-roster-beton-untuk-bangunan-modern",
+      "title": "Tips Roster Beton untuk Bangunan Modern",
+      "date": "2026-02-27",
+      "category": "Roster Beton",
+      "image": "assets/blog/tips-roster-beton-untuk-bangunan-modern.jpg"
+    },
+    {
       "slug": "penerapan-tiang-untuk-bangunan-modern",
       "title": "Penerapan Tiang untuk Bangunan Modern",
       "date": "2026-02-27",
