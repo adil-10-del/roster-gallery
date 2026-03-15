@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Kesalahan Tiang untuk Bangunan Modern",
-      "category": "Tiang",
-      "slug": "kesalahan-tiang-untuk-bangunan-modern",
-      "tags": [
-        "tiang"
-      ]
-    },
-    {
-      "topic": "Perbandingan Roster Beton untuk Bangunan Modern",
-      "category": "Roster Beton",
-      "slug": "perbandingan-roster-beton-untuk-bangunan-modern",
-      "tags": [
-        "roster-beton"
-      ]
-    },
-    {
       "topic": "Perbandingan Paving untuk Bangunan Modern",
       "category": "Paving",
       "slug": "perbandingan-paving-untuk-bangunan-modern",
