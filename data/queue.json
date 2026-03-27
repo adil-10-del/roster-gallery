@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Tips Roster Beton untuk Bangunan Modern",
-      "category": "Roster Beton",
-      "slug": "tips-roster-beton-untuk-bangunan-modern",
-      "tags": [
-        "roster-beton"
-      ]
-    },
-    {
-      "topic": "Tips Paving untuk Bangunan Modern",
-      "category": "Paving",
-      "slug": "tips-paving-untuk-bangunan-modern",
-      "tags": [
-        "paving"
-      ]
-    },
-    {
       "topic": "Tips Genteng untuk Bangunan Modern",
       "category": "Genteng",
       "slug": "tips-genteng-untuk-bangunan-modern",
@@ -220,6 +204,230 @@
       "topic": "Perbandingan Tiang untuk Bangunan Modern",
       "category": "Tiang",
       "slug": "perbandingan-tiang-untuk-bangunan-modern",
+      "tags": [
+        "tiang"
+      ]
+    },
+    {
+      "topic": "Panduan Roster Beton untuk Bangunan Modern",
+      "category": "Roster Beton",
+      "slug": "panduan-roster-beton-untuk-bangunan-modern",
+      "tags": [
+        "roster-beton"
+      ]
+    },
+    {
+      "topic": "Panduan Paving untuk Bangunan Modern",
+      "category": "Paving",
+      "slug": "panduan-paving-untuk-bangunan-modern",
+      "tags": [
+        "paving"
+      ]
+    },
+    {
+      "topic": "Panduan Genteng untuk Bangunan Modern",
+      "category": "Genteng",
+      "slug": "panduan-genteng-untuk-bangunan-modern",
+      "tags": [
+        "genteng"
+      ]
+    },
+    {
+      "topic": "Panduan Bata untuk Bangunan Modern",
+      "category": "Bata",
+      "slug": "panduan-bata-untuk-bangunan-modern",
+      "tags": [
+        "bata"
+      ]
+    },
+    {
+      "topic": "Panduan Walpanel untuk Bangunan Modern",
+      "category": "Walpanel",
+      "slug": "panduan-walpanel-untuk-bangunan-modern",
+      "tags": [
+        "walpanel"
+      ]
+    },
+    {
+      "topic": "Panduan List Pang untuk Bangunan Modern",
+      "category": "List Pang",
+      "slug": "panduan-list-pang-untuk-bangunan-modern",
+      "tags": [
+        "list-pang"
+      ]
+    },
+    {
+      "topic": "Panduan Tiang untuk Bangunan Modern",
+      "category": "Tiang",
+      "slug": "panduan-tiang-untuk-bangunan-modern",
+      "tags": [
+        "tiang"
+      ]
+    },
+    {
+      "topic": "Estimasi Biaya Roster Beton untuk Bangunan Modern",
+      "category": "Roster Beton",
+      "slug": "estimasi-biaya-roster-beton-untuk-bangunan-modern",
+      "tags": [
+        "roster-beton"
+      ]
+    },
+    {
+      "topic": "Estimasi Biaya Paving untuk Bangunan Modern",
+      "category": "Paving",
+      "slug": "estimasi-biaya-paving-untuk-bangunan-modern",
+      "tags": [
+        "paving"
+      ]
+    },
+    {
+      "topic": "Estimasi Biaya Genteng untuk Bangunan Modern",
+      "category": "Genteng",
+      "slug": "estimasi-biaya-genteng-untuk-bangunan-modern",
+      "tags": [
+        "genteng"
+      ]
+    },
+    {
+      "topic": "Estimasi Biaya Bata untuk Bangunan Modern",
+      "category": "Bata",
+      "slug": "estimasi-biaya-bata-untuk-bangunan-modern",
+      "tags": [
+        "bata"
+      ]
+    },
+    {
+      "topic": "Estimasi Biaya Walpanel untuk Bangunan Modern",
+      "category": "Walpanel",
+      "slug": "estimasi-biaya-walpanel-untuk-bangunan-modern",
+      "tags": [
+        "walpanel"
+      ]
+    },
+    {
+      "topic": "Estimasi Biaya List Pang untuk Bangunan Modern",
+      "category": "List Pang",
+      "slug": "estimasi-biaya-list-pang-untuk-bangunan-modern",
+      "tags": [
+        "list-pang"
+      ]
+    },
+    {
+      "topic": "Estimasi Biaya Tiang untuk Bangunan Modern",
+      "category": "Tiang",
+      "slug": "estimasi-biaya-tiang-untuk-bangunan-modern",
+      "tags": [
+        "tiang"
+      ]
+    },
+    {
+      "topic": "Keunggulan Roster Beton untuk Bangunan Modern",
+      "category": "Roster Beton",
+      "slug": "keunggulan-roster-beton-untuk-bangunan-modern",
+      "tags": [
+        "roster-beton"
+      ]
+    },
+    {
+      "topic": "Keunggulan Paving untuk Bangunan Modern",
+      "category": "Paving",
+      "slug": "keunggulan-paving-untuk-bangunan-modern",
+      "tags": [
+        "paving"
+      ]
+    },
+    {
+      "topic": "Keunggulan Genteng untuk Bangunan Modern",
+      "category": "Genteng",
+      "slug": "keunggulan-genteng-untuk-bangunan-modern",
+      "tags": [
+        "genteng"
+      ]
+    },
+    {
+      "topic": "Keunggulan Bata untuk Bangunan Modern",
+      "category": "Bata",
+      "slug": "keunggulan-bata-untuk-bangunan-modern",
+      "tags": [
+        "bata"
+      ]
+    },
+    {
+      "topic": "Keunggulan Walpanel untuk Bangunan Modern",
+      "category": "Walpanel",
+      "slug": "keunggulan-walpanel-untuk-bangunan-modern",
+      "tags": [
+        "walpanel"
+      ]
+    },
+    {
+      "topic": "Keunggulan List Pang untuk Bangunan Modern",
+      "category": "List Pang",
+      "slug": "keunggulan-list-pang-untuk-bangunan-modern",
+      "tags": [
+        "list-pang"
+      ]
+    },
+    {
+      "topic": "Keunggulan Tiang untuk Bangunan Modern",
+      "category": "Tiang",
+      "slug": "keunggulan-tiang-untuk-bangunan-modern",
+      "tags": [
+        "tiang"
+      ]
+    },
+    {
+      "topic": "Penerapan Roster Beton untuk Bangunan Modern",
+      "category": "Roster Beton",
+      "slug": "penerapan-roster-beton-untuk-bangunan-modern",
+      "tags": [
+        "roster-beton"
+      ]
+    },
+    {
+      "topic": "Penerapan Paving untuk Bangunan Modern",
+      "category": "Paving",
+      "slug": "penerapan-paving-untuk-bangunan-modern",
+      "tags": [
+        "paving"
+      ]
+    },
+    {
+      "topic": "Penerapan Genteng untuk Bangunan Modern",
+      "category": "Genteng",
+      "slug": "penerapan-genteng-untuk-bangunan-modern",
+      "tags": [
+        "genteng"
+      ]
+    },
+    {
+      "topic": "Penerapan Bata untuk Bangunan Modern",
+      "category": "Bata",
+      "slug": "penerapan-bata-untuk-bangunan-modern",
+      "tags": [
+        "bata"
+      ]
+    },
+    {
+      "topic": "Penerapan Walpanel untuk Bangunan Modern",
+      "category": "Walpanel",
+      "slug": "penerapan-walpanel-untuk-bangunan-modern",
+      "tags": [
+        "walpanel"
+      ]
+    },
+    {
+      "topic": "Penerapan List Pang untuk Bangunan Modern",
+      "category": "List Pang",
+      "slug": "penerapan-list-pang-untuk-bangunan-modern",
+      "tags": [
+        "list-pang"
+      ]
+    },
+    {
+      "topic": "Penerapan Tiang untuk Bangunan Modern",
+      "category": "Tiang",
+      "slug": "penerapan-tiang-untuk-bangunan-modern",
       "tags": [
         "tiang"
       ]
