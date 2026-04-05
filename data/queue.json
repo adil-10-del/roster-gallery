@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Kesalahan Roster Beton untuk Bangunan Modern",
-      "category": "Roster Beton",
-      "slug": "kesalahan-roster-beton-untuk-bangunan-modern",
-      "tags": [
-        "roster-beton"
-      ]
-    },
-    {
-      "topic": "Kesalahan Paving untuk Bangunan Modern",
-      "category": "Paving",
-      "slug": "kesalahan-paving-untuk-bangunan-modern",
-      "tags": [
-        "paving"
-      ]
-    },
-    {
       "topic": "Kesalahan Genteng untuk Bangunan Modern",
       "category": "Genteng",
       "slug": "kesalahan-genteng-untuk-bangunan-modern",
