@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Keunggulan Walpanel untuk Bangunan Modern",
-      "category": "Walpanel",
-      "slug": "keunggulan-walpanel-untuk-bangunan-modern",
-      "tags": [
-        "walpanel"
-      ]
-    },
-    {
-      "topic": "Keunggulan List Pang untuk Bangunan Modern",
-      "category": "List Pang",
-      "slug": "keunggulan-list-pang-untuk-bangunan-modern",
-      "tags": [
-        "list-pang"
-      ]
-    },
-    {
       "topic": "Keunggulan Tiang untuk Bangunan Modern",
       "category": "Tiang",
       "slug": "keunggulan-tiang-untuk-bangunan-modern",
