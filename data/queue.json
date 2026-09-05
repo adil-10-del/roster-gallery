@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Penerapan Paving untuk Bangunan Modern",
-      "category": "Paving",
-      "slug": "penerapan-paving-untuk-bangunan-modern",
-      "tags": [
-        "paving"
-      ]
-    },
-    {
-      "topic": "Penerapan Genteng untuk Bangunan Modern",
-      "category": "Genteng",
-      "slug": "penerapan-genteng-untuk-bangunan-modern",
-      "tags": [
-        "genteng"
-      ]
-    },
-    {
       "topic": "Penerapan Bata untuk Bangunan Modern",
       "category": "Bata",
       "slug": "penerapan-bata-untuk-bangunan-modern",
