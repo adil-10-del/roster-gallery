@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Tips Walpanel untuk Bangunan Modern",
-      "category": "Walpanel",
-      "slug": "tips-walpanel-untuk-bangunan-modern",
-      "tags": [
-        "walpanel"
-      ]
-    },
-    {
-      "topic": "Tips List Pang untuk Bangunan Modern",
-      "category": "List Pang",
-      "slug": "tips-list-pang-untuk-bangunan-modern",
-      "tags": [
-        "list-pang"
-      ]
-    },
-    {
       "topic": "Tips Tiang untuk Bangunan Modern",
       "category": "Tiang",
       "slug": "tips-tiang-untuk-bangunan-modern",
