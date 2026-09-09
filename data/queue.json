@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Perbandingan Bata untuk Bangunan Modern",
-      "category": "Bata",
-      "slug": "perbandingan-bata-untuk-bangunan-modern",
-      "tags": [
-        "bata"
-      ]
-    },
-    {
-      "topic": "Perbandingan Walpanel untuk Bangunan Modern",
-      "category": "Walpanel",
-      "slug": "perbandingan-walpanel-untuk-bangunan-modern",
-      "tags": [
-        "walpanel"
-      ]
-    },
-    {
       "topic": "Perbandingan List Pang untuk Bangunan Modern",
       "category": "List Pang",
       "slug": "perbandingan-list-pang-untuk-bangunan-modern",
