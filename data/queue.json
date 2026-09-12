@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Keunggulan Genteng untuk Bangunan Modern",
-      "category": "Genteng",
-      "slug": "keunggulan-genteng-untuk-bangunan-modern",
-      "tags": [
-        "genteng"
-      ]
-    },
-    {
-      "topic": "Keunggulan Bata untuk Bangunan Modern",
-      "category": "Bata",
-      "slug": "keunggulan-bata-untuk-bangunan-modern",
-      "tags": [
-        "bata"
-      ]
-    },
-    {
       "topic": "Keunggulan Walpanel untuk Bangunan Modern",
       "category": "Walpanel",
       "slug": "keunggulan-walpanel-untuk-bangunan-modern",
