@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Penerapan List Pang untuk Bangunan Modern",
-      "category": "List Pang",
-      "slug": "penerapan-list-pang-untuk-bangunan-modern",
-      "tags": [
-        "list-pang"
-      ]
-    },
-    {
-      "topic": "Penerapan Tiang untuk Bangunan Modern",
-      "category": "Tiang",
-      "slug": "penerapan-tiang-untuk-bangunan-modern",
-      "tags": [
-        "tiang"
-      ]
-    },
-    {
       "topic": "Tips Roster Beton untuk Bangunan Modern",
       "category": "Roster Beton",
       "slug": "tips-roster-beton-untuk-bangunan-modern",
