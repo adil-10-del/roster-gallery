@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Panduan Tiang untuk Bangunan Modern",
-      "category": "Tiang",
-      "slug": "panduan-tiang-untuk-bangunan-modern",
-      "tags": [
-        "tiang"
-      ]
-    },
-    {
-      "topic": "Estimasi Biaya Roster Beton untuk Bangunan Modern",
-      "category": "Roster Beton",
-      "slug": "estimasi-biaya-roster-beton-untuk-bangunan-modern",
-      "tags": [
-        "roster-beton"
-      ]
-    },
-    {
       "topic": "Estimasi Biaya Paving untuk Bangunan Modern",
       "category": "Paving",
       "slug": "estimasi-biaya-paving-untuk-bangunan-modern",
