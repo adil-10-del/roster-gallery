@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Estimasi Biaya List Pang untuk Bangunan Modern",
-      "category": "List Pang",
-      "slug": "estimasi-biaya-list-pang-untuk-bangunan-modern",
-      "tags": [
-        "list-pang"
-      ]
-    },
-    {
-      "topic": "Estimasi Biaya Tiang untuk Bangunan Modern",
-      "category": "Tiang",
-      "slug": "estimasi-biaya-tiang-untuk-bangunan-modern",
-      "tags": [
-        "tiang"
-      ]
-    },
-    {
       "topic": "Keunggulan Roster Beton untuk Bangunan Modern",
       "category": "Roster Beton",
       "slug": "keunggulan-roster-beton-untuk-bangunan-modern",
