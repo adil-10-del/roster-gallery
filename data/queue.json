@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Estimasi Biaya Bata untuk Bangunan Modern",
-      "category": "Bata",
-      "slug": "estimasi-biaya-bata-untuk-bangunan-modern",
-      "tags": [
-        "bata"
-      ]
-    },
-    {
-      "topic": "Estimasi Biaya Walpanel untuk Bangunan Modern",
-      "category": "Walpanel",
-      "slug": "estimasi-biaya-walpanel-untuk-bangunan-modern",
-      "tags": [
-        "walpanel"
-      ]
-    },
-    {
       "topic": "Estimasi Biaya List Pang untuk Bangunan Modern",
       "category": "List Pang",
       "slug": "estimasi-biaya-list-pang-untuk-bangunan-modern",
