@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Panduan Genteng untuk Bangunan Modern",
-      "category": "Genteng",
-      "slug": "panduan-genteng-untuk-bangunan-modern",
-      "tags": [
-        "genteng"
-      ]
-    },
-    {
-      "topic": "Panduan Bata untuk Bangunan Modern",
-      "category": "Bata",
-      "slug": "panduan-bata-untuk-bangunan-modern",
-      "tags": [
-        "bata"
-      ]
-    },
-    {
       "topic": "Panduan Walpanel untuk Bangunan Modern",
       "category": "Walpanel",
       "slug": "panduan-walpanel-untuk-bangunan-modern",
