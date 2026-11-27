@@ -1,22 +1,6 @@
 {
   "queue": [
     {
-      "topic": "Keunggulan Roster Beton untuk Bangunan Modern",
-      "category": "Roster Beton",
-      "slug": "keunggulan-roster-beton-untuk-bangunan-modern",
-      "tags": [
-        "roster-beton"
-      ]
-    },
-    {
-      "topic": "Keunggulan Paving untuk Bangunan Modern",
-      "category": "Paving",
-      "slug": "keunggulan-paving-untuk-bangunan-modern",
-      "tags": [
-        "paving"
-      ]
-    },
-    {
       "topic": "Keunggulan Genteng untuk Bangunan Modern",
       "category": "Genteng",
       "slug": "keunggulan-genteng-untuk-bangunan-modern",
